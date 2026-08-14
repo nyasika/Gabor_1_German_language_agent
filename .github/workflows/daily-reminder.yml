@@ -1,0 +1,43 @@
+name: Daily German Learning Reminder
+
+on:
+  schedule:
+    - cron: '0 5 * * *'    # 07:00 CEST (nyár, UTC+2)
+    - cron: '30 11 * * *'  # 13:30 CEST (nyár, UTC+2)
+  workflow_dispatch:       # kézi indítás teszteléshez
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install "supabase>=2.7.0,<2.15.0" python-dotenv
+
+      - name: Check secrets (hossz ellenőrzés, értékek nélkül)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          APP_URL: ${{ secrets.APP_URL }}
+        run: |
+          echo "SUPABASE_URL hossza:      ${#SUPABASE_URL} karakter"
+          echo "SUPABASE_KEY hossza:      ${#SUPABASE_KEY} karakter"
+          echo "GMAIL_USER hossza:        ${#GMAIL_USER} karakter"
+          echo "GMAIL_APP_PASSWORD hossza:${#GMAIL_APP_PASSWORD} karakter"
+          echo "APP_URL hossza:           ${#APP_URL} karakter"
+
+      - name: Send reminder
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          APP_URL: ${{ secrets.APP_URL }}
+        run: python scripts/send_daily_reminder.py
