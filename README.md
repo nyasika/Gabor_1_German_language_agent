@@ -8,8 +8,10 @@
 korábban a `personal-agents` repó `agents/Personal/...` alatt volt beágyazva, azelőtt pedig
 (2026-08-06 előtt) a `nyasika/AI-agents` monorepo része. Történet nélkül, friss git repóként
 lett kiválasztva ide is, a `.devcontainer`, `.github/workflows` (napi emlékeztető) és
-`.streamlit` configgal együtt. **A Streamlit Cloud app forrás-repóját és a GitHub Actions
-secreteket emiatt kézzel át kell állítani** — lásd `SETUP.md`.
+`.streamlit` configgal együtt. **2026-08-26: a GitHub repó átnevezve**
+`nyasika/Gabor_1_German_language_agent`-re, hogy kövesse a helyi mappanevet. **A Streamlit
+Cloud app forrás-repóját és a GitHub Actions secreteket emiatt kézzel át kell állítani** —
+lásd `SETUP.md`.
 
 ---
 
@@ -120,8 +122,8 @@ python -m streamlit run app.py
 - [x] Supabase projekt létrehozva, SQL séma futtatva
 - [x] RLS kikapcsolva mind a 4 táblán
 - [x] Gmail App Password létrehozva
-- [x] GitHub repó: github.com/nyasika/german-language-agent *(korábban AI-agents →
-      personal-agents → ez, 2026-08-14)*
+- [x] GitHub repó: github.com/nyasika/Gabor_1_German_language_agent *(korábban AI-agents →
+      personal-agents → german-language-agent (2026-08-14) → ez, 2026-08-26)*
 - [ ] Streamlit Cloud deploy: nyasikagerman.streamlit.app — **forrás-repó átállítása
       szükséges** a 2026-08-14-i áthelyezés után (l. tetején)
 - [x] Streamlit Secrets beállítva

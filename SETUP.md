@@ -4,11 +4,13 @@
 
 Az app már fut élesben — Supabase/Gmail/cron-job.org lépéseket **nem** kell újra
 elvégezni. Csak ez a kettő szükséges, mert a kód egy új GitHub repóba
-(`github.com/nyasika/german-language-agent`) költözött a korábbi `personal-agents`-ból:
+(`github.com/nyasika/Gabor_1_German_language_agent`, *korábban `german-language-agent`,
+átnevezve 2026-08-26*) költözött a korábbi `personal-agents`-ból:
 
 1. **Streamlit Cloud** (share.streamlit.io) → az app Settings-jében állítsd át a forrás
-   repót `nyasika/personal-agents`-ról `nyasika/german-language-agent`-re, a main file
-   path mostantól egyszerűen `app.py` (nem `agents/Personal/.../app.py`)
+   repót `nyasika/Gabor_1_German_language_agent`-re (ha korábban már `german-language-agent`-re
+   állítottad, azt is frissíteni kell az átnevezés után), a main file path egyszerűen `app.py`
+   (nem `agents/Personal/.../app.py`)
 2. **GitHub Actions secrets** (az új repóban, Settings → Secrets → Actions) — újra be kell
    állítani: `SUPABASE_URL`, `SUPABASE_KEY`, `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `APP_URL`
 
