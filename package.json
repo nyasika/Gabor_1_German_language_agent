@@ -1,0 +1,19 @@
+{
+  "name": "wortweg",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Wortweg - a Duolingo-style German learning PWA (FSRS review + varied lessons)",
+  "scripts": {
+    "serve": "python -m http.server 8080 --directory web",
+    "test": "node --test tests/core.test.mjs tests/content.test.mjs tests/sync.test.mjs tests/reminders.test.mjs",
+    "validate": "node tools/validate_content.mjs",
+    "icons": "node tools/make_icons.mjs",
+    "e2e": "node tests/e2e.mjs",
+    "vapid": "node scripts/gen_vapid.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.48.0",
+    "web-push": "^3.6.7"
+  }
+}

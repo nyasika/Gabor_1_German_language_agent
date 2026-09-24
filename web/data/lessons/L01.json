@@ -1,0 +1,24 @@
+{
+  "id": "L01",
+  "title": "Konjunktiv II: wishes and polite requests",
+  "topic": "Konjunktiv II",
+  "intro": [
+    "Use Konjunktiv II for unreal conditions (Wenn ich Zeit hätte, ...), wishes (Ich wäre so gern ...) and polite requests (Könnten Sie ...?).",
+    "Learn the irregular forms by heart: sein → wäre, haben → hätte, können → könnte, müssen → müsste, dürfen → dürfte.",
+    "For most other verbs use würde + infinitive at the end of the clause: Ich würde gern verreisen."
+  ],
+  "exercises": [
+    { "id": "L01-01", "type": "mc", "topic": "Konjunktiv II", "prompt": "Wenn ich mehr Zeit ___, würde ich öfter reisen.", "options": ["hätte", "hatte", "habe", "haben"], "answer": "hätte", "explain": "haben → hätte: Konjunktiv II for an unreal condition." },
+    { "id": "L01-02", "type": "cloze", "topic": "Konjunktiv II", "prompt": "Reserve a room politely.", "sentence": "Ich ___ gern ein Zimmer für zwei Nächte reservieren.", "answers": ["möchte", "würde"], "hint": "Udvariasan: szeretnék ...", "explain": "möchte (from mögen) or würde gern + infinitive both work." },
+    { "id": "L01-03", "type": "order", "topic": "Konjunktiv II", "prompt": "Ha lenne időm, elutaznék.", "tiles": ["Wenn", "ich", "Zeit", "hätte,", "würde", "ich", "verreisen."], "answers": ["Wenn ich Zeit hätte, würde ich verreisen."], "explain": "After the wenn-clause the verb comes first in the main clause: würde ich." },
+    { "id": "L01-04", "type": "errorspot", "topic": "Konjunktiv II", "prompt": "Tap the word that is wrong.", "tokens": ["Wenn", "wir", "mehr", "Geld", "haben,", "würden", "wir", "ein", "Auto", "kaufen."], "wrongIndex": 4, "fixed": "Wenn wir mehr Geld hätten, würden wir ein Auto kaufen.", "explain": "An unreal condition needs Konjunktiv II: hätten." },
+    { "id": "L01-05", "type": "mc", "topic": "Konjunktiv II", "prompt": "Which request sounds the most polite?", "options": ["Könnten Sie mir bitte helfen?", "Können Sie mir helfen?", "Helfen Sie mir!", "Sie helfen mir jetzt."], "answer": "Könnten Sie mir bitte helfen?", "explain": "könnte + bitte is the polite standard." },
+    { "id": "L01-06", "type": "cloze", "topic": "Konjunktiv II", "prompt": "Say it would be very kind.", "sentence": "Das ___ sehr nett von Ihnen.", "answers": ["wäre"], "hint": "sein → ?", "explain": "sein → wäre." },
+    { "id": "L01-07", "type": "match", "topic": "Konjunktiv II", "prompt": "Match the infinitive with its Konjunktiv II form.", "pairs": [["sein", "wäre"], ["haben", "hätte"], ["können", "könnte"], ["müssen", "müsste"], ["dürfen", "dürfte"]] },
+    { "id": "L01-08", "type": "order", "topic": "Konjunktiv II", "prompt": "A te helyedben elfogadnám az ajánlatot.", "tiles": ["An", "deiner", "Stelle", "würde", "ich", "das", "Angebot", "annehmen."], "answers": ["An deiner Stelle würde ich das Angebot annehmen."], "explain": "An deiner Stelle + würde is the classic advice phrase." },
+    { "id": "L01-09", "type": "cloze", "topic": "Konjunktiv II", "prompt": "Complete the conditional.", "sentence": "Wenn ich mehr Geld hätte, ___ ich ein Auto kaufen.", "answers": ["würde"], "hint": "kaufnék", "explain": "würde + infinitive in the main clause." },
+    { "id": "L01-10", "type": "mc", "topic": "Konjunktiv II", "prompt": "Which sentence expresses a wish?", "options": ["Ich wäre so gern in Berlin.", "Ich bin gern in Berlin.", "Ich war gern in Berlin.", "Ich werde gern in Berlin sein."], "answer": "Ich wäre so gern in Berlin.", "explain": "wäre + gern/so gern expresses a wish." },
+    { "id": "L01-11", "type": "errorspot", "topic": "Konjunktiv II", "prompt": "Tap the word that is in the wrong place.", "tokens": ["Ich", "würde", "gern", "haben", "ein", "Zimmer", "mit", "Balkon."], "wrongIndex": 3, "fixed": "Ich würde gern ein Zimmer mit Balkon haben.", "explain": "The infinitive belongs at the end of the sentence (Satzklammer)." },
+    { "id": "L01-12", "type": "cloze", "topic": "Konjunktiv II", "prompt": "Konjunktiv II of the past: I would have liked to come earlier.", "sentence": "Ich ___ gern früher gekommen, aber der Zug hatte Verspätung.", "answers": ["wäre"], "hint": "wäre + Partizip II", "explain": "Past unreal: wäre/hätte + Partizip II (kommen uses sein)." }
+  ]
+}

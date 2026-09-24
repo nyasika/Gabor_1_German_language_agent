@@ -1,0 +1,32 @@
+name: Reminders
+
+# GitHub cron is UTC. Each slot runs at both possible UTC hours (summer/winter time);
+# scripts/reminder_slots.mjs sends only the run that matches 7:00 / 20:30 Swiss time.
+on:
+  schedule:
+    - cron: '0 5,6 * * *'
+    - cron: '30 18,19 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Send a test notification now'
+        type: boolean
+        default: false
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node scripts/send_push.mjs
+        env:
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          FORCE: ${{ inputs.force }}

@@ -1,6 +1,6 @@
+node_modules/
 .env
-__pycache__/
-*.pyc
-.vscode/
+.env.*
+backups/
+*.log
 .DS_Store
-.streamlit/secrets.toml

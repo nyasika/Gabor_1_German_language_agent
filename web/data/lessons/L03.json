@@ -1,0 +1,26 @@
+{
+  "id": "L03",
+  "title": "Passiv: process and agent",
+  "topic": "Passiv",
+  "intro": [
+    "Vorgangspassiv = werden + Partizip II: Das Haus wird renoviert.",
+    "Past: wurde + Partizip II (Präteritum); Perfekt: ist + Partizip II + worden (not geworden!).",
+    "Name the agent with von + Dativ: Der Patient wird vom Arzt untersucht.",
+    "Zustandspassiv (sein + Partizip II) describes a result, not a process: Das Geschäft ist geschlossen."
+  ],
+  "exercises": [
+    { "id": "L03-01", "type": "mc", "topic": "Passiv", "prompt": "Das Haus ___ gerade renoviert.", "options": ["wird", "ist", "hat", "war"], "answer": "wird", "explain": "Vorgangspassiv Präsens: werden + Partizip II." },
+    { "id": "L03-02", "type": "cloze", "topic": "Passiv", "prompt": "Passive present, plural.", "sentence": "Die Medikamente ___ in der Apotheke ausgegeben.", "answers": ["werden"], "hint": "Plural → werden", "explain": "Plural subject: werden." },
+    { "id": "L03-03", "type": "order", "topic": "Passiv", "prompt": "A beteget az orvos vizsgálja.", "tiles": ["Der", "Patient", "wird", "vom", "Arzt", "untersucht."], "answers": ["Der Patient wird vom Arzt untersucht."], "explain": "vom = von + dem (agent in Dativ)." },
+    { "id": "L03-04", "type": "errorspot", "topic": "Passiv", "prompt": "Tap the wrong word.", "tokens": ["Das", "Fenster", "ist", "geöffnet", "geworden."], "wrongIndex": 4, "fixed": "Das Fenster ist geöffnet worden.", "explain": "Perfekt Passiv uses worden, not geworden." },
+    { "id": "L03-05", "type": "cloze", "topic": "Passiv", "prompt": "Passive perfect.", "sentence": "Der Brief ist gestern abgeschickt ___.", "answers": ["worden"], "hint": "Perfekt Passiv", "explain": "ist ... worden." },
+    { "id": "L03-06", "type": "mc", "topic": "Passiv", "prompt": "Which sentence describes a process (not a state)?", "options": ["Das Geschäft wird geschlossen.", "Das Geschäft ist geschlossen.", "Das Geschäft war geschlossen.", "Das Geschäft bleibt geschlossen."], "answer": "Das Geschäft wird geschlossen.", "explain": "werden + Partizip II = process; sein + Partizip II = state." },
+    { "id": "L03-07", "type": "cloze", "topic": "Passiv", "prompt": "Name the agent.", "sentence": "Der Patient wird ___ Arzt behandelt.", "answers": ["vom", "von dem"], "hint": "von + Dativ (der Arzt)", "explain": "von + dem Arzt = vom Arzt." },
+    { "id": "L03-08", "type": "match", "topic": "Passiv", "prompt": "Match the passive form with its tense.", "pairs": [["wird gebaut", "Präsens"], ["wurde gebaut", "Präteritum"], ["ist gebaut worden", "Perfekt"], ["war gebaut worden", "Plusquamperfekt"]] },
+    { "id": "L03-09", "type": "errorspot", "topic": "Passiv", "prompt": "Tap the wrong word.", "tokens": ["Das", "Buch", "wurde", "von", "der", "Autor", "geschrieben."], "wrongIndex": 4, "fixed": "Das Buch wurde von dem Autor geschrieben.", "explain": "von takes Dativ: von dem Autor (vom Autor)." },
+    { "id": "L03-10", "type": "order", "topic": "Passiv", "prompt": "A várost a munkások felújítják.", "tiles": ["Die", "Stadt", "wird", "von", "den", "Arbeitern", "renoviert."], "answers": ["Die Stadt wird von den Arbeitern renoviert."], "explain": "Plural Dativ: den Arbeitern (with -n)." },
+    { "id": "L03-11", "type": "cloze", "topic": "Passiv", "prompt": "Impersonal passive.", "sentence": "Hier ___ Deutsch gesprochen.", "answers": ["wird"], "hint": "Deutsch (singular) → ?", "explain": "The passive verb agrees with the subject Deutsch: wird." },
+    { "id": "L03-12", "type": "mc", "topic": "Passiv", "prompt": "Perfekt Passiv: which form is correct?", "options": ["Es ist gemacht worden.", "Es hat gemacht worden.", "Es ist gemacht geworden.", "Es wird gemacht worden."], "answer": "Es ist gemacht worden.", "explain": "sein + Partizip II + worden." },
+    { "id": "L03-13", "type": "mc", "topic": "Passiv", "prompt": "Active to passive: 'Man öffnet das Museum um 9 Uhr.'", "options": ["Das Museum wird um 9 Uhr geöffnet.", "Das Museum ist um 9 Uhr geöffnet worden.", "Das Museum wurde von 9 Uhr öffnet.", "Das Museum öffnet um 9 Uhr werden."], "answer": "Das Museum wird um 9 Uhr geöffnet.", "explain": "Present active → present passive; man disappears." }
+  ]
+}

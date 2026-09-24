@@ -1,0 +1,25 @@
+{
+  "id": "L04",
+  "title": "Nebensätze: weil, obwohl, damit, dass",
+  "topic": "Nebensätze",
+  "intro": [
+    "In a subordinate clause the conjugated verb goes to the end: ..., weil ich krank bin.",
+    "weil = reason, obwohl = contrast, dass = content, damit = purpose (different subject), um ... zu = purpose (same subject).",
+    "If the subordinate clause comes first, the main clause starts with its verb: Obwohl es regnet, gehen wir spazieren."
+  ],
+  "exercises": [
+    { "id": "L04-01", "type": "mc", "topic": "Nebensätze", "prompt": "Ich lerne Deutsch, ___ ich in der Schweiz arbeite.", "options": ["weil", "obwohl", "damit", "trotzdem"], "answer": "weil", "explain": "Reason → weil." },
+    { "id": "L04-02", "type": "order", "topic": "Nebensätze", "prompt": "Otthon maradok, mert beteg vagyok.", "tiles": ["Ich", "bleibe", "zu", "Hause,", "weil", "ich", "krank", "bin."], "answers": ["Ich bleibe zu Hause, weil ich krank bin."], "explain": "The verb bin goes to the end after weil." },
+    { "id": "L04-03", "type": "cloze", "topic": "Nebensätze", "prompt": "Verb goes first in the main clause.", "sentence": "Obwohl es regnet, ___ wir spazieren.", "answers": ["gehen"], "hint": "spazieren gehen", "explain": "After a leading subordinate clause: verb + subject (gehen wir)." },
+    { "id": "L04-04", "type": "errorspot", "topic": "Nebensätze", "prompt": "Tap the word in the wrong place.", "tokens": ["Ich", "lerne,", "weil", "ich", "möchte", "die", "Prüfung", "bestehen."], "wrongIndex": 4, "fixed": "Ich lerne, weil ich die Prüfung bestehen möchte.", "explain": "In the weil-clause the conjugated verb (möchte) goes last." },
+    { "id": "L04-05", "type": "mc", "topic": "Nebensätze", "prompt": "Ich erkläre es langsam, ___ du es verstehst.", "options": ["damit", "um", "weil", "obwohl"], "answer": "damit", "explain": "Purpose + different subject (ich / du) → damit." },
+    { "id": "L04-06", "type": "cloze", "topic": "Nebensätze", "prompt": "Purpose with the same subject.", "sentence": "Ich lerne Deutsch, ___ in der Schweiz zu arbeiten.", "answers": ["um"], "hint": "um ... zu", "explain": "Same subject → um ... zu + infinitive." },
+    { "id": "L04-07", "type": "match", "topic": "Nebensätze", "prompt": "Match the conjunction with its meaning.", "pairs": [["weil", "Grund"], ["obwohl", "Gegensatz"], ["damit", "Ziel (anderes Subjekt)"], ["um ... zu", "Ziel (gleiches Subjekt)"]] },
+    { "id": "L04-08", "type": "order", "topic": "Nebensätze", "prompt": "Bár fáradt volt, tovább dolgozott.", "tiles": ["Obwohl", "er", "müde", "war,", "arbeitete", "er", "weiter."], "answers": ["Obwohl er müde war, arbeitete er weiter."], "explain": "Subordinate clause first, then verb + subject." },
+    { "id": "L04-09", "type": "mc", "topic": "Nebensätze", "prompt": "Which sentence is correct?", "options": ["Ich weiß, dass er morgen kommt.", "Ich weiß, dass er kommt morgen.", "Ich weiß, dass kommt er morgen.", "Ich weiß, dass morgen kommt er."], "answer": "Ich weiß, dass er morgen kommt.", "explain": "The verb kommt goes to the end after dass." },
+    { "id": "L04-10", "type": "cloze", "topic": "Nebensätze", "prompt": "Reported content.", "sentence": "Er sagt, ___ er keine Zeit hat.", "answers": ["dass"], "hint": "hogy", "explain": "dass introduces the content of a statement." },
+    { "id": "L04-11", "type": "errorspot", "topic": "Nebensätze", "prompt": "Tap the word in the wrong place.", "tokens": ["Er", "sagt,", "dass", "er", "hat", "keine", "Zeit."], "wrongIndex": 4, "fixed": "Er sagt, dass er keine Zeit hat.", "explain": "After dass the verb hat goes to the end." },
+    { "id": "L04-12", "type": "order", "topic": "Nebensätze", "prompt": "Minden nap tanulok, hogy jobb legyek.", "tiles": ["Ich", "lerne", "jeden", "Tag,", "damit", "ich", "besser", "werde."], "answers": ["Ich lerne jeden Tag, damit ich besser werde."], "explain": "damit + verb at the end." },
+    { "id": "L04-13", "type": "cloze", "topic": "Nebensätze", "prompt": "Time conjunction.", "sentence": "Ich rufe dich an, ___ ich Zeit habe.", "answers": ["wenn", "sobald"], "hint": "amint / ha időm van", "explain": "wenn/sobald + verb at the end." }
+  ]
+}

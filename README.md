@@ -1,139 +1,68 @@
-# Deutsch Üben – German Learning Agent
+# Wortweg
 
-**Állapot: ÉLES, fut a Streamlit Cloudon ✅**
-**URL: [nyasikagerman.streamlit.app](https://nyasikagerman.streamlit.app)**
-**Utoljára frissítve: 2026-05-29**
+A Duolingo-style German learning app for two 15-20 minute sessions a day: **7:00 review** (spaced repetition + colleague-mission phrases) and **20:30 lesson** (varied exercises + evening log). Installs on Android as an app, works on PC in the browser, costs about nothing to run.
 
-**2026-08-14: saját, önálló repóba emelve** (`github.com/nyasika/german-language-agent`),
-korábban a `personal-agents` repó `agents/Personal/...` alatt volt beágyazva, azelőtt pedig
-(2026-08-06 előtt) a `nyasika/AI-agents` monorepo része. Történet nélkül, friss git repóként
-lett kiválasztva ide is, a `.devcontainer`, `.github/workflows` (napi emlékeztető) és
-`.streamlit` configgal együtt. **2026-08-26: a GitHub repó átnevezve**
-`nyasika/Gabor_1_German_language_agent`-re, hogy kövesse a helyi mappanevet. **A Streamlit
-Cloud app forrás-repóját és a GitHub Actions secreteket emiatt kézzel át kell állítani** —
-lásd `SETUP.md`.
+## Status
 
----
+| Part | State |
+|---|---|
+| Learning app (path, XP, streak, goal ring, FSRS review, 6 exercise types, evening log, stats, backup) | Built and tested in a real browser |
+| Progress saving | After **every answer**, verified by test; export/restore in Settings |
+| Phone + PC sync (Supabase) | Built, tested against a faked Supabase; **not yet run against your real project** |
+| Push reminders 7:00 / 20:30 | Built, schedule logic tested (summer, winter, DST days); **not yet run end to end** |
+| Content | 4 placeholder lessons (52 exercises), 46 cards, 24 colleague missions. **Linie B1.1/B1.2 chapters still to be added** |
+| Not built yet | Writing task with AI feedback, more exercise types (transformation, dialogue, reading), boss challenges, weekly report, Work-German track, audio |
 
-## Funkciók
+## Run locally
 
-| Funkció | Státusz |
-|---------|---------|
-| B1-B2 szintfelmérés (20 kérdés) | ✅ |
-| Napi practice session (5 típus) | ✅ |
-| Gyengeség tracking kategóriánként | ✅ |
-| Streak számolás | ✅ |
-| Spaced repetition szókincs (SM-2) | ✅ |
-| Reggeli email emlékeztető (07:00) | ✅ |
-| Esti email emlékeztető (19:00) | ✅ |
-| Heti összefoglaló generálás | ✅ |
-
----
-
-## Fájlstruktúra
-
-```
-Gabor_1_German_language_agent/   (repó gyökér)
-├── app.py           # Streamlit frontend + cron-job.org endpoint
-├── agent.py         # Claude API: szintfelmérés, session gen/eval, heti összefoglaló
-├── database.py      # Supabase: sessions, streak, error_categories, vocabulary
-├── reminder.py      # Gmail SMTP HTML emlékeztető emailek
-├── curriculum.py    # Linie B1.2 fejezetek + grammatika kategóriák
-├── requirements.txt # Python függőségek
-├── .env.example     # Szükséges environment változók listája
-├── SETUP.md         # Deploy útmutató
-└── README.md        # Ez a fájl
-```
-
----
-
-## Tech stack
-
-| Réteg | Technológia | Megjegyzés |
-|-------|-------------|------------|
-| Frontend | Streamlit Cloud | ingyenes, auto-deploy GitHub-ról |
-| AI | Claude claude-opus-4-7 | adaptive thinking + streaming + prompt caching |
-| DB | Supabase (PostgreSQL) | ingyenes tier, 4 tábla |
-| Email | Gmail SMTP port 465 SSL | App Password szükséges |
-| Scheduler | cron-job.org | 2× naponta (07:00 és 19:00) |
-
----
-
-## Supabase táblák
-
-- `user_state` — egyetlen sor (id=1): assessment_done, assessment_results (JSONB), current_chapter, email, current_streak, longest_streak, last_session_date
-- `sessions` — minden gyakorlási session: session_type, score, duration_minutes, errors (JSONB)
-- `error_categories` — grammatika kategóriánként: total_attempts, wrong_attempts
-- `vocabulary` — spaced repetition SM-2: german, hungarian, next_review, ease_factor, interval_days
-
-SQL séma generálása:
 ```bash
-python -c "from database import Database; print(Database.sql_setup())"
+npm install
+npm run serve        # then open http://localhost:8080
+npm test             # logic, content and sync tests
+npm run e2e          # drives the real app in Edge (needs Edge installed)
+npm run validate     # structural check of all lesson content
 ```
 
----
+## Deploy (free)
 
-## Session típusok
+1. Create a GitHub repo and push this folder. GitHub Pages on a free account needs a **public** repo; nothing secret is in it (progress lives in your browser and, if you enable sync, in your own Supabase row protected by login).
+2. Repo Settings, Pages, Source: **GitHub Actions**. The `Deploy app` workflow tests and publishes `web/`.
+3. On your Android phone open the site in Chrome, menu, **Add to Home screen** (or "Install app").
 
-| Típus | Leírás | Feladatszám |
-|-------|--------|-------------|
-| `lueckentext` | Lückentext – hiányzó szavak kitöltése | 6 |
-| `fehlerkorrektur` | Hibás mondatok javítása | 6 |
-| `schreiben` | Szabad fogalmazás (3-5 mondat) | 3 |
-| `grammatik` | Intenzív grammatika drill | 8 |
-| `vokabeln` | Szókincs (spaced repetition) | 8 |
+## Sync phone and PC (optional, recommended)
 
----
+1. Create a free project at supabase.com. In the SQL editor run `supabase/schema.sql`.
+2. Authentication, Users, **Add user** (email + password of your choice). Turn off public sign-ups in Authentication settings.
+3. In the app, Settings, "Sync phone and PC": paste the project URL, the **anon** key, your email and password, tap **Save and sync now**. Do this on both devices.
+4. Optional weekly safety net: add repo secrets `SUPABASE_URL` and `SUPABASE_SERVICE_KEY`; the `Backup progress` workflow then stores a copy of your progress twice a week.
 
-## Emlékeztető flow
+Sync merges instead of overwriting: phone and PC progress are combined, so doing the review on the phone and the lesson on the PC loses nothing.
 
-1. cron-job.org → GET `https://nyasikagerman.streamlit.app/?action=remind&token=deutsch-reminder-2026`
-2. `app.py` elején: ha token egyezik `REMINDER_TOKEN` env var-ral → `reminder.send_reminder()` → `st.stop()`
-3. Email: HTML, progress bar, streak badge, CTA gomb az appra
+## Reminders (7:00 and 20:30 Swiss time)
 
----
+1. `npm run vapid` prints a key pair. Put the **public** key into `web/config.js` (`vapidPublicKey`), commit, deploy.
+2. Add repo secrets: `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` (e.g. `mailto:you@example.com`).
+3. On the phone: Settings, "Reminders on this phone", **Enable reminders**, allow notifications, copy the text shown into the repo secret `PUSH_SUBSCRIPTION`.
+4. Actions, Reminders, **Run workflow** with "force" ticked to send a test notification.
+5. On Android, exclude Chrome/the app from battery optimisation, otherwise notifications can arrive late.
 
-## Environment változók (Streamlit Secrets, TOML formátum)
+GitHub's scheduler can start a few minutes late; a run more than 45 minutes late is skipped rather than sent at a wrong time.
 
-```toml
-ANTHROPIC_API_KEY = "sk-ant-..."
-SUPABASE_URL = "https://qrcmwdsdipwixqqhhdby.supabase.co"
-SUPABASE_KEY = "eyJ..."
-APP_URL = "https://nyasikagerman.streamlit.app"
-REMINDER_TOKEN = "deutsch-reminder-2026"
-GMAIL_USER = "nyasika@gmail.com"
-GMAIL_APP_PASSWORD = "xxxx xxxx xxxx xxxx"
-```
+## Adding the Linie chapters
 
----
+Content is plain JSON in `web/data/`:
 
-## Lokális futtatás
+- `path.json`: chapters and the order of lessons.
+- `lessons/Lxx.json`: intro bullets and 10+ exercises (types: `mc`, `article`, `cloze`, `order`, `match`, `errorspot`). Every lesson needs at least 4 different types.
+- `cards.json`: review deck (`flip` = Hungarian cue to German, `cloze` = typed gap). New cards enter at 4 per day plus 3 colleague missions.
+- `missions.json`: phrases to use with your colleague that day.
 
-```powershell
-pip install -r requirements.txt
-# töltsd ki a .env fájlt a .env.example alapján
-python -m streamlit run app.py
-```
+Run `npm run validate` after editing: it checks, for example, that every word-order answer can be built from its tiles and every multiple-choice answer is among the options.
 
----
+## How it works
 
-## Deploy checklist (kész)
-
-- [x] Supabase projekt létrehozva, SQL séma futtatva
-- [x] RLS kikapcsolva mind a 4 táblán
-- [x] Gmail App Password létrehozva
-- [x] GitHub repó: github.com/nyasika/Gabor_1_German_language_agent *(korábban AI-agents →
-      personal-agents → german-language-agent (2026-08-14) → ez, 2026-08-26)*
-- [ ] Streamlit Cloud deploy: nyasikagerman.streamlit.app — **forrás-repó átállítása
-      szükséges** a 2026-08-14-i áthelyezés után (l. tetején)
-- [x] Streamlit Secrets beállítva
-- [x] cron-job.org 2× napi trigger (07:00 és 19:00)
-- [x] Email emlékeztető tesztelve ✅
-
----
-
-## Ismert megoldott problémák
-
-- `supabase>=2.15.0` pyiceberg C++ fordítót igényel Python 3.14-en → verzió pinelve `<2.15.0`
-- Settings oldal csak assessment után volt elérhető → javítva: settings mindig elérhető
-- Streamlit Cloud nem tölti be a `.env` fájlt → `python-dotenv` hozzáadva az `app.py` tetejére
+- **Scheduler**: FSRS-4.5 (`web/js/fsrs.js`), target retention 90%.
+- **Variety**: `buildLesson` cycles through exercise types, never repeats a type back to back, and never opens with the type that opened the previous lesson.
+- **Mistakes come back**: a wrong answer is asked again at the end of the lesson and becomes a review card for the next session.
+- **Streak**: a day counts at 10+ active minutes; one freeze is earned every 7 days (max 2) and covers one missed day.
+- **Security**: all learning content is inserted as text (no `innerHTML`); Supabase access is protected by row level security.

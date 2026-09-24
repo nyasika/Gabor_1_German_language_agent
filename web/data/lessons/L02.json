@@ -1,0 +1,27 @@
+{
+  "id": "L02",
+  "title": "Wechselpräpositionen: Wo? or Wohin?",
+  "topic": "Wechselpräpositionen",
+  "intro": [
+    "Nine prepositions take Dativ or Akkusativ: an, auf, hinter, in, neben, über, unter, vor, zwischen.",
+    "Wo? (position, no movement) → Dativ: Das Buch liegt auf dem Tisch.",
+    "Wohin? (movement to a new place) → Akkusativ: Ich lege das Buch auf den Tisch.",
+    "Pairs help: stehen/stellen, liegen/legen, sitzen/setzen, hängen/hängen."
+  ],
+  "exercises": [
+    { "id": "L02-01", "type": "mc", "topic": "Wechselpräpositionen", "prompt": "Ich lege das Buch auf ___ Tisch.", "options": ["den", "dem", "der", "das"], "answer": "den", "explain": "Wohin? → Akkusativ. Tisch is masculine: den." },
+    { "id": "L02-02", "type": "mc", "topic": "Wechselpräpositionen", "prompt": "Das Buch liegt auf ___ Tisch.", "options": ["den", "dem", "der", "das"], "answer": "dem", "explain": "Wo? → Dativ: dem." },
+    { "id": "L02-03", "type": "article", "topic": "Artikel", "noun": "Bahnhof", "hu": "pályaudvar", "answer": "der" },
+    { "id": "L02-04", "type": "article", "topic": "Artikel", "noun": "Verspätung", "hu": "késés", "answer": "die", "explain": "Nouns ending in -ung are always feminine." },
+    { "id": "L02-05", "type": "article", "topic": "Artikel", "noun": "Flugzeug", "hu": "repülőgép", "answer": "das", "explain": "Nouns with -zeug are neuter." },
+    { "id": "L02-06", "type": "cloze", "topic": "Wechselpräpositionen", "prompt": "Wohin? → Akkusativ.", "sentence": "Er hängt das Bild an ___ Wand.", "answers": ["die"], "hint": "Wohin? – Akkusativ", "explain": "Wand is feminine; Akkusativ feminine = die." },
+    { "id": "L02-07", "type": "cloze", "topic": "Wechselpräpositionen", "prompt": "Wo? → Dativ.", "sentence": "Das Bild hängt an ___ Wand.", "answers": ["der"], "hint": "Wo? – Dativ", "explain": "Dativ feminine = der." },
+    { "id": "L02-08", "type": "order", "topic": "Wechselpräpositionen", "prompt": "A városba megyünk (járművel).", "tiles": ["Wir", "fahren", "in", "die", "Stadt."], "answers": ["Wir fahren in die Stadt."], "explain": "Movement into the city: in + Akkusativ." },
+    { "id": "L02-09", "type": "errorspot", "topic": "Wechselpräpositionen", "prompt": "Tap the wrong word.", "tokens": ["Ich", "gehe", "in", "dem", "Supermarkt."], "wrongIndex": 3, "fixed": "Ich gehe in den Supermarkt.", "explain": "gehen = movement (Wohin?) → Akkusativ: in den." },
+    { "id": "L02-10", "type": "mc", "topic": "Wechselpräpositionen", "prompt": "Ich sitze auf ___ Sofa.", "options": ["dem", "das", "den", "die"], "answer": "dem", "explain": "Wo? → Dativ. Sofa is neuter: auf dem Sofa." },
+    { "id": "L02-11", "type": "match", "topic": "Wechselpräpositionen", "prompt": "Match each item with the question or case it goes with.", "pairs": [["stehen / liegen", "Position: Dativ"], ["stellen / legen", "Movement: Akkusativ"], ["Ich bin in der Küche.", "Wo?"], ["Ich gehe in die Küche.", "Wohin?"]] },
+    { "id": "L02-12", "type": "cloze", "topic": "Wechselpräpositionen", "prompt": "The car is parked in front of the house.", "sentence": "Das Auto steht ___ dem Haus.", "answers": ["vor"], "hint": "a ház előtt", "explain": "vor + Dativ (Wo?)." },
+    { "id": "L02-13", "type": "mc", "topic": "Wechselpräpositionen", "prompt": "Er stellt die Flasche in ___ Kühlschrank.", "options": ["den", "dem", "der", "die"], "answer": "den", "explain": "stellen = Wohin? → Akkusativ; Kühlschrank is masculine." },
+    { "id": "L02-14", "type": "order", "topic": "Wechselpräpositionen", "prompt": "A repülő a repülőtéren száll le.", "tiles": ["Das", "Flugzeug", "landet", "auf", "dem", "Flughafen."], "answers": ["Das Flugzeug landet auf dem Flughafen."], "explain": "The landing takes place at a location (Wo?): auf dem." }
+  ]
+}

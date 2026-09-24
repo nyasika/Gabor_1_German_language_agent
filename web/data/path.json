@@ -1,0 +1,8 @@
+{
+  "note": "PLACEHOLDER path built from the old curriculum. Replace chapters/lessons with the Linie B1.1 and B1.2 table of contents.",
+  "chapters": [
+    { "id": "c1", "title": "Reisen und Mobilität", "subtitle": "Wishes, polite requests, where things go", "lessons": ["L01", "L02"] },
+    { "id": "c2", "title": "Gesundheit und Körper", "subtitle": "Who does what to whom: the passive", "lessons": ["L03"] },
+    { "id": "c3", "title": "Arbeit und Beruf", "subtitle": "Reasons, contrasts and goals", "lessons": ["L04"] }
+  ]
+}
