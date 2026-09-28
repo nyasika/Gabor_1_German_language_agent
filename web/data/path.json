@@ -1,8 +1,7 @@
 {
-  "note": "PLACEHOLDER path built from the old curriculum. Replace chapters/lessons with the Linie B1.1 and B1.2 table of contents.",
   "chapters": [
-    { "id": "c1", "title": "Reisen und Mobilität", "subtitle": "Wishes, polite requests, where things go", "lessons": ["L01", "L02"] },
-    { "id": "c2", "title": "Gesundheit und Körper", "subtitle": "Who does what to whom: the passive", "lessons": ["L03"] },
-    { "id": "c3", "title": "Arbeit und Beruf", "subtitle": "Reasons, contrasts and goals", "lessons": ["L04"] }
+    { "id": "c1", "title": "Sentence building & the past", "subtitle": "Word order, Perfekt vs. Präteritum, giving reasons, everyday requests", "lessons": ["G01", "G02", "G03", "G04"] },
+    { "id": "c2", "title": "Describing things precisely", "subtitle": "Politeness, relative clauses, adjective endings, prepositions, separable/reflexive verbs", "lessons": ["G05", "G06", "G07", "G08", "G09"] },
+    { "id": "c3", "title": "Passive & connecting ideas", "subtitle": "The passive voice, infinitive clauses, ordering events in time", "lessons": ["G10", "G11", "G12"] }
   ]
 }

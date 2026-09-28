@@ -1,0 +1,23 @@
+{
+  "id": "G04",
+  "title": "Modal verbs and everyday requests",
+  "topic": "G04",
+  "intro": [
+    "können (ability), müssen (necessity), dürfen (permission), sollen (an expectation from outside), wollen (intention).",
+    "The modal verb sits in position 2 and is irregular in the singular: ich kann/muss/darf/soll/will, du kannst/musst/darfst...",
+    "The plain infinitive it belongs with goes to the very end of the clause."
+  ],
+  "exercises": [
+    { "id": "G04-01", "type": "mc", "topic": "G04", "prompt": "___ du mir bitte helfen?", "options": ["Kannst", "Kann", "Könnt", "Können"], "answer": "Kannst", "explain": "du-form: kannst." },
+    { "id": "G04-02", "type": "cloze", "topic": "G04", "prompt": "müssen, ich-form.", "sentence": "Ich ___ das heute noch erledigen.", "answers": ["muss"], "hint": "kell", "explain": "müssen: ich muss." },
+    { "id": "G04-03", "type": "order", "topic": "G04", "prompt": "Tudsz nekem segíteni?", "tiles": ["Kannst", "du", "mir", "helfen?"], "answers": ["Kannst du mir helfen?"] },
+    { "id": "G04-04", "type": "errorspot", "topic": "G04", "prompt": "Tap the word in the wrong place.", "tokens": ["Ich", "muss", "erledigen", "das", "heute."], "wrongIndex": 2, "fixed": "Ich muss das heute erledigen.", "explain": "The infinitive (erledigen) goes to the end; muss stays in position 2." },
+    { "id": "G04-05", "type": "mc", "topic": "G04", "prompt": "Er ___ heute nicht kommen.", "options": ["kann", "kannst", "könnt", "können"], "answer": "kann", "explain": "er-form: kann." },
+    { "id": "G04-06", "type": "cloze", "topic": "G04", "prompt": "Polite permission.", "sentence": "___ ich kurz etwas fragen?", "answers": ["Darf"], "hint": "szabad?", "explain": "dürfen for polite permission: Darf ich?" },
+    { "id": "G04-07", "type": "match", "topic": "G04", "prompt": "Match the modal verb with its meaning.", "pairs": [["können", "ability or possibility"], ["müssen", "necessity"], ["dürfen", "permission"], ["sollen", "an expectation from outside"]] },
+    { "id": "G04-08", "type": "mc", "topic": "G04", "prompt": "Wir ___ das dem Kunden mitteilen.", "options": ["sollen", "soll", "sollst", "sollest"], "answer": "sollen", "explain": "wir-form: sollen." },
+    { "id": "G04-09", "type": "order", "topic": "G04", "prompt": "Ma nem kell dolgoznom.", "tiles": ["Ich", "muss", "heute", "nicht", "arbeiten."], "answers": ["Ich muss heute nicht arbeiten."] },
+    { "id": "G04-10", "type": "errorspot", "topic": "G04", "prompt": "Tap the word in the wrong place.", "tokens": ["Du", "musst", "nicht", "kommen", "heute."], "wrongIndex": 4, "fixed": "Du musst heute nicht kommen.", "explain": "Time expressions like heute usually come right after the modal verb, before nicht." },
+    { "id": "G04-11", "type": "mc", "topic": "G04", "prompt": "Which is the most polite way to ask for help?", "options": ["Könntest du mir helfen?", "Du hilfst mir.", "Hilf mir!", "Du musst mir helfen."], "answer": "Könntest du mir helfen?", "explain": "Konjunktiv II (könntest) sounds noticeably more polite than the plain modal." }
+  ]
+}

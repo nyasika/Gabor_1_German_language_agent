@@ -1,0 +1,23 @@
+{
+  "id": "G02",
+  "title": "Perfekt and Präteritum in conversation",
+  "topic": "G02",
+  "intro": [
+    "Spoken German mostly uses Perfekt (habe/bin + Partizip II) for the past.",
+    "Exception: sein, haben and modal verbs (können, müssen...) are normally used in Präteritum even in speech — war, hatte, konnte.",
+    "haben/sein choice: movement or a change of state usually takes sein (fahren, kommen, werden, bleiben); most other verbs take haben."
+  ],
+  "exercises": [
+    { "id": "G02-01", "type": "mc", "topic": "G02", "prompt": "Ich ___ gestern müde.", "options": ["war", "bin gewesen", "habe gewesen", "werde"], "answer": "war", "explain": "sein → Präteritum, even in spoken German: war." },
+    { "id": "G02-02", "type": "mc", "topic": "G02", "prompt": "Er ___ nach Bern gefahren.", "options": ["ist", "hat", "war", "wurde"], "answer": "ist", "explain": "fahren takes sein in Perfekt: ist gefahren." },
+    { "id": "G02-03", "type": "cloze", "topic": "G02", "prompt": "haben + Partizip II.", "sentence": "Ich ___ das Dokument gelesen.", "answers": ["habe"], "hint": "haben, ich-alak", "explain": "lesen takes haben: habe gelesen." },
+    { "id": "G02-04", "type": "cloze", "topic": "G02", "prompt": "A change of place takes sein.", "sentence": "Sie ___ letztes Jahr nach Zürich gezogen.", "answers": ["ist"], "hint": "ziehen (=költözni) → sein", "explain": "A change of place/state uses sein: ist gezogen." },
+    { "id": "G02-05", "type": "order", "topic": "G02", "prompt": "Tegnap sokat dolgoztam.", "tiles": ["Ich", "habe", "gestern", "viel", "gearbeitet."], "answers": ["Ich habe gestern viel gearbeitet."] },
+    { "id": "G02-06", "type": "errorspot", "topic": "G02", "prompt": "Tap the wrong word.", "tokens": ["Ich", "bin", "das", "Dokument", "gelesen."], "wrongIndex": 1, "fixed": "Ich habe das Dokument gelesen.", "explain": "lesen takes haben, not sein." },
+    { "id": "G02-07", "type": "match", "topic": "G02", "prompt": "Match the auxiliary or tense with its use.", "pairs": [["haben", "the default auxiliary"], ["sein", "movement or a change of state"], ["war / hatte", "used in Präteritum even in speech"], ["wurde", "Präteritum of werden"]] },
+    { "id": "G02-08", "type": "mc", "topic": "G02", "prompt": "Which sounds like natural spoken German?", "options": ["Ich habe gestern Deutsch gelernt.", "Ich lernte gestern Deutsch.", "Ich habe gestern Deutsch gelernen.", "Ich bin gestern Deutsch gelernt."], "answer": "Ich habe gestern Deutsch gelernt.", "explain": "Perfekt is the natural spoken past for lernen." },
+    { "id": "G02-09", "type": "cloze", "topic": "G02", "prompt": "Modal verbs stay in Präteritum, even in speech.", "sentence": "Ich ___ gestern nicht kommen, weil ich krank war.", "answers": ["konnte"], "hint": "können → Präteritum", "explain": "konnte: modal verbs are normally used in Präteritum, not Perfekt." },
+    { "id": "G02-10", "type": "order", "topic": "G02", "prompt": "Tegnap este találkoztunk egy ügyféllel.", "tiles": ["Wir", "haben", "gestern", "Abend", "einen", "Kunden", "getroffen."], "answers": ["Wir haben gestern Abend einen Kunden getroffen."] },
+    { "id": "G02-11", "type": "mc", "topic": "G02", "prompt": "Which verb forms its Perfekt with sein?", "options": ["kommen", "essen", "machen", "sehen"], "answer": "kommen", "explain": "kommen is a movement verb: ist gekommen." }
+  ]
+}

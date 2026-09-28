@@ -1,0 +1,87 @@
+{
+  "id": "G05",
+  "title": "Konjunktiv II, deep dive: diplomacy and past regret",
+  "topicId": "G05",
+  "days": [
+    {
+      "day": 1,
+      "focus": "notice",
+      "title": "Notice: how Konjunktiv II sounds in the office",
+      "intro": [
+        "A handful of Konjunktiv II phrases carry a lot of business German: soft suggestions, diplomatic pushback, and talking about what should have happened.",
+        "Suggestions: Ich würde vorschlagen, dass ... / Es wäre sinnvoll, wenn ...",
+        "Past regret: hätte/wäre + Partizip II — Wir hätten das früher klären sollen.",
+        "als ob ('as if') also triggers Konjunktiv II: Er tut, als ob er nichts wüsste."
+      ],
+      "chunks": [
+        { "de": "Ich würde vorschlagen, dass wir das Budget neu prüfen." },
+        { "de": "Es wäre sinnvoll, wenn wir das Meeting verschieben." },
+        { "de": "Wir hätten das früher klären sollen." },
+        { "de": "An deiner Stelle würde ich das anders machen." },
+        { "de": "Er tut, als ob nichts passiert wäre." }
+      ]
+    },
+    {
+      "day": 2,
+      "focus": "drill",
+      "title": "Getting the forms right",
+      "exercises": [
+        { "id": "G05S-d2-01", "type": "cloze", "topic": "G05", "prompt": "A diplomatic opener.", "sentence": "Es ___ sinnvoll, wenn wir das Meeting verschieben.", "answers": ["wäre"], "hint": "sein → ?", "explain": "wäre + Adjektiv is a standard diplomatic opener." },
+        { "id": "G05S-d2-02", "type": "mc", "topic": "G05", "prompt": "Ich ___ vorschlagen, dass wir das Budget neu prüfen.", "options": ["würde", "werde", "würdet", "würden"], "answer": "würde", "explain": "ich-form: würde." },
+        { "id": "G05S-d2-03", "type": "cloze", "topic": "G05", "prompt": "Past Konjunktiv II.", "sentence": "Wir ___ das früher klären sollen.", "answers": ["hätten"], "hint": "haben → múlt Konjunktiv", "explain": "hätten + Partizip II; sollen keeps its infinitive form at the very end." },
+        { "id": "G05S-d2-04", "type": "order", "topic": "G05", "prompt": "Ezt korábban is jelezhettük volna.", "tiles": ["Das", "hätten", "wir", "früher", "sagen", "können."], "answers": ["Das hätten wir früher sagen können."] },
+        { "id": "G05S-d2-05", "type": "errorspot", "topic": "G05", "prompt": "Tap the wrong word.", "tokens": ["Wir", "haben", "das", "früher", "klären", "sollen."], "wrongIndex": 1, "fixed": "Wir hätten das früher klären sollen.", "explain": "A missed opportunity needs past Konjunktiv II: hätten, not haben." },
+        { "id": "G05S-d2-06", "type": "mc", "topic": "G05", "prompt": "Das würde ___, dass wir mehr Zeit brauchen.", "options": ["bedeuten", "bedeutet", "bedeuteten", "bedeutete"], "answer": "bedeuten", "explain": "würde + infinitive: bedeuten." },
+        { "id": "G05S-d2-07", "type": "cloze", "topic": "G05", "prompt": "als ob triggers Konjunktiv II.", "sentence": "Er tut, ___ ob er nichts wüsste.", "answers": ["als"], "hint": "mintha", "explain": "als ob + Konjunktiv II: wüsste." },
+        { "id": "G05S-d2-08", "type": "match", "topic": "G05", "prompt": "Match the phrase with what it does.", "pairs": [["Ich würde vorschlagen, dass ...", "a soft suggestion"], ["Es wäre sinnvoll, wenn ...", "a diplomatic recommendation"], ["Wir hätten das früher klären sollen.", "regret about the past"], ["Er tut, als ob ...", "a false impression"]] },
+        { "id": "G05S-d2-09", "type": "order", "topic": "G05", "prompt": "Jó lenne, ha korábban szólnátok.", "tiles": ["Es", "wäre", "gut,", "wenn", "ihr", "früher", "Bescheid", "geben", "würdet."], "answers": ["Es wäre gut, wenn ihr früher Bescheid geben würdet."] },
+        { "id": "G05S-d2-10", "type": "cloze", "topic": "G05", "prompt": "A regret.", "sentence": "___ hätte ich das gewusst!", "answers": ["Wenn"], "hint": "ha tudtam volna!", "explain": "Wenn + past Konjunktiv II expresses a regret about the past." }
+      ]
+    },
+    {
+      "day": 3,
+      "focus": "drill",
+      "title": "Choosing the right phrase",
+      "exercises": [
+        { "id": "G05S-d3-01", "type": "mc", "topic": "G05", "prompt": "Which phrasing is more diplomatic in a meeting?", "options": ["Es wäre vielleicht sinnvoll, das noch einmal zu prüfen.", "Das ist falsch.", "Das müssen wir ändern.", "Das stimmt nicht."], "answer": "Es wäre vielleicht sinnvoll, das noch einmal zu prüfen.", "explain": "Konjunktiv II softens the same content into a recommendation." },
+        { "id": "G05S-d3-02", "type": "cloze", "topic": "G05", "prompt": "Softening a personal opinion.", "sentence": "Ich ___ eher vorsichtig sein.", "answers": ["würde"], "hint": "lennék", "explain": "würde softens a personal opinion." },
+        { "id": "G05S-d3-03", "type": "cloze", "topic": "G05", "prompt": "A classic hypothetical-advice pattern.", "sentence": "___ ich an deiner Stelle wäre, würde ich das anders machen.", "answers": ["Wenn"], "hint": "ha a helyedben lennék", "explain": "Wenn ich an deiner Stelle wäre — a standard way to give advice." },
+        { "id": "G05S-d3-04", "type": "order", "topic": "G05", "prompt": "Szívesebben halasztanám el a döntést.", "tiles": ["Ich", "würde", "die", "Entscheidung", "lieber", "verschieben."], "answers": ["Ich würde die Entscheidung lieber verschieben."] },
+        { "id": "G05S-d3-05", "type": "mc", "topic": "G05", "prompt": "Which sentence expresses regret about a missed deadline?", "options": ["Wir hätten das früher liefern sollen.", "Wir haben das früher geliefert.", "Wir werden das früher liefern.", "Wir liefern das früher."], "answer": "Wir hätten das früher liefern sollen." },
+        { "id": "G05S-d3-06", "type": "errorspot", "topic": "G05", "prompt": "Tap the wrong word.", "tokens": ["Es", "wäre", "besser,", "wenn", "du", "kommst."], "wrongIndex": 5, "fixed": "Es wäre besser, wenn du kommen würdest.", "explain": "Both parts of the sentence need Konjunktiv II: kommen würdest." },
+        { "id": "G05S-d3-07", "type": "match", "topic": "G05", "prompt": "Match the direct sentence with its softened version.", "pairs": [["Das ist ein Problem.", "Das könnte ein Problem sein."], ["Mach das anders.", "Ich würde das anders machen."], ["Das stimmt nicht.", "Das würde ich nicht sagen."], ["Wir müssen warten.", "Es wäre besser zu warten."]] },
+        { "id": "G05S-d3-08", "type": "cloze", "topic": "G05", "prompt": "als + Konjunktiv II, inverted word order.", "sentence": "Sie tut so, ___ wäre nichts passiert.", "answers": ["als"], "hint": "mintha", "explain": "als wäre (without ob) inverts: als + verb." }
+      ]
+    },
+    {
+      "day": 4,
+      "focus": "produce",
+      "title": "Say it: diplomacy out loud",
+      "speak_items": [
+        { "id": "G05S-4-1", "de": "Ich würde vorschlagen, dass wir das Budget neu prüfen.", "en": "I'd suggest we review the budget again." },
+        { "id": "G05S-4-2", "de": "Es wäre sinnvoll, wenn wir das Meeting verschieben.", "en": "It would make sense to postpone the meeting." },
+        { "id": "G05S-4-3", "de": "Wir hätten das früher klären sollen.", "en": "We should have clarified that earlier." },
+        { "id": "G05S-4-4", "de": "An deiner Stelle würde ich das anders machen.", "en": "In your place, I'd do it differently." },
+        { "id": "G05S-4-5", "de": "Das würde bedeuten, dass wir mehr Zeit brauchen.", "en": "That would mean we need more time." },
+        { "id": "G05S-4-6", "de": "Ich würde eher vorsichtig sein.", "en": "I'd rather be careful." }
+      ]
+    },
+    {
+      "day": 5,
+      "focus": "check",
+      "title": "Mixed check",
+      "exercises": [
+        { "id": "G05S-d5-01", "type": "cloze", "topic": "G05", "prompt": "Diplomatic opener.", "sentence": "Es ___ sinnvoll, das noch einmal zu prüfen.", "answers": ["wäre"] },
+        { "id": "G05S-d5-02", "type": "mc", "topic": "G05", "prompt": "Which is past Konjunktiv II?", "options": ["hätten sollen", "haben sollen", "werden sollen", "sollen haben"], "answer": "hätten sollen" },
+        { "id": "G05S-d5-03", "type": "order", "topic": "G05", "prompt": "Ezt máshogy csinálnám a helyedben.", "tiles": ["An", "deiner", "Stelle", "würde", "ich", "das", "anders", "machen."], "answers": ["An deiner Stelle würde ich das anders machen."] },
+        { "id": "G05S-d5-04", "type": "errorspot", "topic": "G05", "prompt": "Tap the wrong word.", "tokens": ["Ich", "würde", "vorschlagen,", "dass", "warten", "wir."], "wrongIndex": 4, "fixed": "Ich würde vorschlagen, dass wir warten.", "explain": "After dass: subject then verb at the end — wir warten." },
+        { "id": "G05S-d5-05", "type": "cloze", "topic": "G05", "prompt": "als ob.", "sentence": "___ ob er nichts wüsste, schwieg er.", "answers": ["Als"], "hint": "mintha" },
+        { "id": "G05S-d5-06", "type": "mc", "topic": "G05", "prompt": "Wir ___ das früher liefern sollen.", "options": ["hätten", "haben", "würden", "werden"], "answer": "hätten" },
+        { "id": "G05S-d5-07", "type": "match", "topic": "G05", "prompt": "Match the phrase with what it does.", "pairs": [["Ich würde vorschlagen ...", "soft suggestion"], ["Es wäre sinnvoll ...", "diplomatic recommendation"], ["Wir hätten ... sollen", "regret about the past"], ["als ob ...", "a false impression"]] },
+        { "id": "G05S-d5-08", "type": "order", "topic": "G05", "prompt": "Jó lenne, ha megbeszélnénk.", "tiles": ["Es", "wäre", "gut,", "wenn", "wir", "das", "besprechen", "würden."], "answers": ["Es wäre gut, wenn wir das besprechen würden."] },
+        { "id": "G05S-d5-09", "type": "cloze", "topic": "G05", "prompt": "würde + infinitive.", "sentence": "Das ___ bedeuten, dass wir umplanen müssen.", "answers": ["würde"] },
+        { "id": "G05S-d5-10", "type": "mc", "topic": "G05", "prompt": "Which sentence is the most diplomatic?", "options": ["Es wäre vielleicht sinnvoll, das noch einmal zu prüfen.", "Das ist falsch.", "Das müssen wir ändern.", "Das stimmt nicht."], "answer": "Es wäre vielleicht sinnvoll, das noch einmal zu prüfen." }
+      ]
+    }
+  ]
+}

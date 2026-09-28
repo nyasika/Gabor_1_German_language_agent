@@ -1,0 +1,23 @@
+{
+  "id": "G11",
+  "title": "Infinitive clauses: zu, um ... zu, ohne ... zu",
+  "topic": "G11",
+  "intro": [
+    "Many verbs and expressions are followed by zu + infinitive: Ich vergesse, dich anzurufen. Ich habe keine Zeit, das zu lesen.",
+    "um ... zu + infinitive expresses purpose, when the subject is the same in both parts: Ich lerne, um die Prüfung zu bestehen.",
+    "ohne ... zu + infinitive means 'without doing something': Er ging, ohne sich zu verabschieden.",
+    "With a separable verb, zu slots in between the prefix and the base verb: aufzustehen, anzurufen."
+  ],
+  "exercises": [
+    { "id": "G11-01", "type": "mc", "topic": "G11", "prompt": "Ich habe vergessen, dich ___.", "options": ["anzurufen", "zu anrufen", "anrufen zu", "rufe an zu"], "answer": "anzurufen", "explain": "With a separable verb, zu goes between the prefix and the stem: an-zu-rufen." },
+    { "id": "G11-02", "type": "cloze", "topic": "G11", "prompt": "Purpose, same subject.", "sentence": "Ich nutze das Tool, ___ Zeit zu sparen.", "answers": ["um"], "hint": "azért, hogy", "explain": "um ... zu + infinitive expresses purpose." },
+    { "id": "G11-03", "type": "order", "topic": "G11", "prompt": "Elfelejtettem elolvasni az e-mailt.", "tiles": ["Ich", "habe", "vergessen,", "die", "E-Mail", "zu", "lesen."], "answers": ["Ich habe vergessen, die E-Mail zu lesen."] },
+    { "id": "G11-04", "type": "errorspot", "topic": "G11", "prompt": "Tap the wrong word.", "tokens": ["Es", "ist", "wichtig,", "pünktlich", "kommen", "zu."], "wrongIndex": 5, "fixed": "Es ist wichtig, pünktlich zu kommen.", "explain": "zu comes right before the infinitive: zu kommen." },
+    { "id": "G11-05", "type": "mc", "topic": "G11", "prompt": "Er hat das Meeting verlassen, ___ etwas zu sagen.", "options": ["ohne", "um", "damit", "weil"], "answer": "ohne", "explain": "ohne ... zu = 'without doing something'." },
+    { "id": "G11-06", "type": "cloze", "topic": "G11", "prompt": "zu + infinitive after 'keine Zeit'.", "sentence": "Ich habe keine Zeit, das heute ___ erledigen.", "answers": ["zu"], "hint": "zu + infinitivus", "explain": "keine Zeit, ... zu erledigen." },
+    { "id": "G11-07", "type": "match", "topic": "G11", "prompt": "Match the connector with its meaning.", "pairs": [["um ... zu", "purpose, same subject"], ["ohne ... zu", "without doing something"], ["damit", "purpose, different subject"], ["zu + infinitive", "after many verbs/expressions (vergessen, wichtig sein...)"]] },
+    { "id": "G11-08", "type": "order", "topic": "G11", "prompt": "Anélkül, hogy megkérdezett volna, elküldte az e-mailt.", "tiles": ["Er", "hat", "die", "E-Mail", "geschickt,", "ohne", "mich", "zu", "fragen."], "answers": ["Er hat die E-Mail geschickt, ohne mich zu fragen."] },
+    { "id": "G11-09", "type": "cloze", "topic": "G11", "prompt": "Separable verb with zu.", "sentence": "Ich habe vor, morgen früh ___.", "answers": ["aufzustehen"], "hint": "aufstehen + zu", "explain": "aufstehen → auf-zu-stehen." },
+    { "id": "G11-10", "type": "mc", "topic": "G11", "prompt": "Which sentence is correct?", "options": ["Ich versuche, pünktlich zu sein.", "Ich versuche pünktlich zu sein zu.", "Ich versuche zu pünktlich sein.", "Ich versuche, zu pünktlich zu sein."], "answer": "Ich versuche, pünktlich zu sein.", "explain": "zu sits directly before the infinitive: zu sein." }
+  ]
+}

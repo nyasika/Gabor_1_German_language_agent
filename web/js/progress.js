@@ -1,7 +1,7 @@
 // XP, levels, streak, topic mastery. All pure functions over the state object.
 import { daysBetween } from './fsrs.js';
 
-export const SLOTS = ['review', 'lesson', 'extra'];
+export const SLOTS = ['review', 'lesson', 'extra', 'speak', 'sprint'];
 
 export function defaultState() {
   return {
@@ -24,6 +24,7 @@ export function defaultState() {
     missionsUsed: {},
     speaking: { phrases: {}, log: {} },
     talks: {},
+    sprints: { active: null, progress: {} },
     lastLead: null,
   };
 }

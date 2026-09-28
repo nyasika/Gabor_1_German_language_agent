@@ -1,0 +1,24 @@
+{
+  "id": "G07",
+  "title": "Adjective endings",
+  "topic": "G07",
+  "intro": [
+    "The adjective ending depends on what comes before it: a definite article, an indefinite article, or nothing.",
+    "After der/die/das the article already shows gender and case, so the adjective takes a light ending: mostly -e or -en.",
+    "After ein/eine/kein... the adjective sometimes has to do the article's job too, so it takes a strong ending in a few spots (ein guter Mann, ein neues Auto).",
+    "With no article at all, the adjective alone shows the case: gutes Wetter, mit frischem Brot."
+  ],
+  "exercises": [
+    { "id": "G07-01", "type": "mc", "topic": "G07", "prompt": "Das ist der neu___ Kollege.", "options": ["e", "en", "er", "es"], "answer": "e", "explain": "Definite article, Nominativ maskulin: der neue Kollege." },
+    { "id": "G07-02", "type": "mc", "topic": "G07", "prompt": "Wir haben ein gut___ Ergebnis erreicht.", "options": ["es", "e", "en", "er"], "answer": "es", "explain": "ein + neuter, Akkusativ: ein gutes Ergebnis." },
+    { "id": "G07-03", "type": "cloze", "topic": "G07", "prompt": "No article at all.", "sentence": "Wir haben heute schön___ Wetter.", "answers": ["es"], "hint": "das Wetter → das végződés hiányában erős", "explain": "No article: the adjective takes the strong ending — schönes Wetter." },
+    { "id": "G07-04", "type": "order", "topic": "G07", "prompt": "Ez egy fontos megbeszélés.", "tiles": ["Das", "ist", "eine", "wichtige", "Besprechung."], "answers": ["Das ist eine wichtige Besprechung."] },
+    { "id": "G07-05", "type": "errorspot", "topic": "G07", "prompt": "Tap the wrong word.", "tokens": ["Ich", "arbeite", "mit", "einem", "neue", "Kollegen."], "wrongIndex": 4, "fixed": "Ich arbeite mit einem neuen Kollegen.", "explain": "Dativ masculine after einem: neuen, not neue." },
+    { "id": "G07-06", "type": "cloze", "topic": "G07", "prompt": "Definite article, plural.", "sentence": "Die neu___ Kollegen fangen morgen an.", "answers": ["en"], "hint": "die + többes szám → -en", "explain": "Plural after a definite article: die neuen Kollegen." },
+    { "id": "G07-07", "type": "match", "topic": "G07", "prompt": "Match the phrase with the reason for its ending.", "pairs": [["der neue Plan", "definite article already shows the case"], ["ein neuer Plan", "no ending on 'ein' here, so the adjective takes it"], ["neuer Plan", "no article at all, strong ending"], ["die neuen Pläne", "plural after a definite article: -en"]] },
+    { "id": "G07-08", "type": "mc", "topic": "G07", "prompt": "Ich brauche ein___ neuen Laptop.", "options": ["en", "e", "es", "er"], "answer": "en", "explain": "ein + masculine, Akkusativ: einen neuen Laptop." },
+    { "id": "G07-09", "type": "order", "topic": "G07", "prompt": "Egy fontos ügyfelet vártunk.", "tiles": ["Wir", "haben", "einen", "wichtigen", "Kunden", "erwartet."], "answers": ["Wir haben einen wichtigen Kunden erwartet."] },
+    { "id": "G07-10", "type": "cloze", "topic": "G07", "prompt": "kein + feminine, Nominativ.", "sentence": "Das ist kein___ gute Idee.", "answers": ["e"], "hint": "die Idee → nőnemű", "explain": "kein takes the same endings as ein: keine gute Idee." },
+    { "id": "G07-11", "type": "mc", "topic": "G07", "prompt": "Which is correct: 'mit frisch___ Kaffee'?", "options": ["em", "e", "es", "er"], "answer": "em", "explain": "No article, Dativ masculine: mit frischem Kaffee." }
+  ]
+}

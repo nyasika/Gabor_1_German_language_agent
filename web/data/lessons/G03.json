@@ -1,0 +1,24 @@
+{
+  "id": "G03",
+  "title": "Subordinate clauses: weil, dass, wenn, obwohl",
+  "topic": "G03",
+  "intro": [
+    "In a subordinate clause the conjugated verb goes to the very end: ..., weil ich krank bin.",
+    "weil gives a reason, dass reports content, wenn states a condition, obwohl marks an unexpected contrast.",
+    "If the subordinate clause opens the sentence, the main clause starts with its verb: Obwohl es regnet, gehen wir spazieren.",
+    "denn also gives a reason but is not a subordinating conjunction — normal word order follows it (verb stays 2nd)."
+  ],
+  "exercises": [
+    { "id": "G03-01", "type": "mc", "topic": "G03", "prompt": "Ich lerne Deutsch, ___ ich in der Schweiz arbeite.", "options": ["weil", "obwohl", "damit", "trotzdem"], "answer": "weil", "explain": "A reason is introduced with weil." },
+    { "id": "G03-02", "type": "order", "topic": "G03", "prompt": "Otthon maradok, mert beteg vagyok.", "tiles": ["Ich", "bleibe", "zu", "Hause,", "weil", "ich", "krank", "bin."], "answers": ["Ich bleibe zu Hause, weil ich krank bin."], "explain": "The verb bin goes to the end after weil." },
+    { "id": "G03-03", "type": "cloze", "topic": "G03", "prompt": "Reporting content.", "sentence": "Ich denke, ___ wir das heute klären können.", "answers": ["dass"], "hint": "hogy", "explain": "dass introduces reported content; the verb goes to the end." },
+    { "id": "G03-04", "type": "errorspot", "topic": "G03", "prompt": "Tap the word in the wrong place.", "tokens": ["Ich", "weiß,", "dass", "er", "kommt", "morgen."], "wrongIndex": 4, "fixed": "Ich weiß, dass er morgen kommt.", "explain": "After dass, the verb goes to the very end: morgen kommt." },
+    { "id": "G03-05", "type": "cloze", "topic": "G03", "prompt": "Main clause after a leading subordinate clause.", "sentence": "Obwohl es regnet, ___ wir spazieren.", "answers": ["gehen"], "hint": "megyünk", "explain": "After a leading subordinate clause the main clause starts verb + subject: gehen wir." },
+    { "id": "G03-06", "type": "mc", "topic": "G03", "prompt": "Ich rufe dich an, ___ ich Zeit habe.", "options": ["wenn", "weil", "dass", "obwohl"], "answer": "wenn", "explain": "A condition is introduced with wenn." },
+    { "id": "G03-07", "type": "match", "topic": "G03", "prompt": "Match the conjunction with its meaning.", "pairs": [["weil", "reason"], ["obwohl", "unexpected contrast"], ["dass", "reported content"], ["wenn", "condition"]] },
+    { "id": "G03-08", "type": "order", "topic": "G03", "prompt": "Tudom, hogy holnap találkozunk.", "tiles": ["Ich", "weiß,", "dass", "wir", "uns", "morgen", "treffen."], "answers": ["Ich weiß, dass wir uns morgen treffen."] },
+    { "id": "G03-09", "type": "errorspot", "topic": "G03", "prompt": "Tap the word in the wrong place.", "tokens": ["Ich", "gehe", "spazieren,", "obwohl", "regnet", "es."], "wrongIndex": 4, "fixed": "Ich gehe spazieren, obwohl es regnet.", "explain": "After obwohl the subject comes first, then the verb at the end: es regnet." },
+    { "id": "G03-10", "type": "mc", "topic": "G03", "prompt": "Which conjunction keeps normal word order (verb stays 2nd)?", "options": ["denn", "weil", "da", "obwohl"], "answer": "denn", "explain": "denn is coordinating, not subordinating — the verb stays in position 2 after it." },
+    { "id": "G03-11", "type": "cloze", "topic": "G03", "prompt": "weil + verb at the end.", "sentence": "Ich lerne, ___ ich die Prüfung bestehen will.", "answers": ["weil"], "hint": "mert", "explain": "weil ich ... will: the verb goes to the end." }
+  ]
+}

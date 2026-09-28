@@ -1,0 +1,23 @@
+{
+  "id": "G12",
+  "title": "Time links: als, wenn, seit, bevor, nachdem, während",
+  "topic": "G12",
+  "intro": [
+    "als: one single event in the past (Als ich jung war, ...). wenn: present/future, or a repeated event in the past.",
+    "bevor and nachdem order two events; nachdem needs the earlier action one tense further back (usually Perfekt in the nachdem-clause if the main clause is Präsens).",
+    "während marks two things happening at the same time. seit marks a starting point that continues into the present.",
+    "All of these are subordinating: the conjugated verb goes to the end of their clause."
+  ],
+  "exercises": [
+    { "id": "G12-01", "type": "mc", "topic": "G12", "prompt": "___ ich jung war, wohnte ich in Budapest.", "options": ["Als", "Wenn", "Seit", "Während"], "answer": "Als", "explain": "als: one single past event." },
+    { "id": "G12-02", "type": "mc", "topic": "G12", "prompt": "___ ich Zeit habe, lese ich gern.", "options": ["Wenn", "Als", "Bevor", "Nachdem"], "answer": "Wenn", "explain": "wenn: present, repeated or general situations." },
+    { "id": "G12-03", "type": "cloze", "topic": "G12", "prompt": "A starting point that continues to now.", "sentence": "___ letztem Jahr arbeite ich in diesem Team.", "answers": ["Seit"], "hint": "tavaly óta", "explain": "seit marks the point where something started and is still going on." },
+    { "id": "G12-04", "type": "order", "topic": "G12", "prompt": "Mielőtt elindulsz, hívj fel.", "tiles": ["Bevor", "du", "gehst,", "ruf", "mich", "an."], "answers": ["Bevor du gehst, ruf mich an."] },
+    { "id": "G12-05", "type": "errorspot", "topic": "G12", "prompt": "Tap the wrong word.", "tokens": ["Während", "ich", "arbeite,", "hört", "er", "Musik", "während."], "wrongIndex": 6, "fixed": "Während ich arbeite, hört er Musik.", "explain": "während is only used once, at the start of the clause it introduces." },
+    { "id": "G12-06", "type": "mc", "topic": "G12", "prompt": "Nachdem er gegessen ___, schlief er ein.", "options": ["hatte", "hat", "war", "ist"], "answer": "hatte", "explain": "nachdem needs the earlier event one step further back: Plusquamperfekt (hatte gegessen)." },
+    { "id": "G12-07", "type": "match", "topic": "G12", "prompt": "Match the time word with its use.", "pairs": [["als", "one single event in the past"], ["wenn", "present, future, or repeated past"], ["bevor", "before the other event"], ["während", "at the same time as the other event"]] },
+    { "id": "G12-08", "type": "order", "topic": "G12", "prompt": "Amíg ő telefonál, én e-mailt írok.", "tiles": ["Während", "er", "telefoniert,", "schreibe", "ich", "eine", "E-Mail."], "answers": ["Während er telefoniert, schreibe ich eine E-Mail."] },
+    { "id": "G12-09", "type": "cloze", "topic": "G12", "prompt": "als vs wenn: a single childhood event.", "sentence": "___ ich ein Kind war, hatten wir keinen Computer.", "answers": ["Als"], "hint": "amikor gyerek voltam (egyszeri)", "explain": "A single, completed period in the past: als." },
+    { "id": "G12-10", "type": "mc", "topic": "G12", "prompt": "Which sentence correctly uses nachdem?", "options": ["Nachdem ich gegessen hatte, ging ich schlafen.", "Nachdem ich esse, ging ich schlafen.", "Nachdem ich gegessen hatte, gehe schlafen ich.", "Ich ging schlafen, nachdem gegessen ich hatte."], "answer": "Nachdem ich gegessen hatte, ging ich schlafen.", "explain": "nachdem-clause in Plusquamperfekt, main clause verb second: ging ich." }
+  ]
+}

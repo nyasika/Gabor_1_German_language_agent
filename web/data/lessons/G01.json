@@ -1,0 +1,24 @@
+{
+  "id": "G01",
+  "title": "Sentence building: verb second, inversion, Satzklammer",
+  "topic": "G01",
+  "intro": [
+    "The conjugated verb is always in position 2 of a main clause — not necessarily the 2nd word.",
+    "If something other than the subject opens the sentence (time, place, a connector), subject and verb swap: inversion.",
+    "If the verb has two parts (haben/sein + Partizip II, or a modal + infinitive), the second part goes to the very end: the Satzklammer.",
+    "nicht negating the whole clause goes at the end, just before the final verb part."
+  ],
+  "exercises": [
+    { "id": "G01-01", "type": "mc", "topic": "G01", "prompt": "Heute ___ ich ins Büro.", "options": ["gehe", "gehst", "geht", "gehen"], "answer": "gehe", "explain": "ich gehe — the verb still agrees with ich even though Heute opens the sentence." },
+    { "id": "G01-02", "type": "mc", "topic": "G01", "prompt": "Nach der Besprechung ___ wir weiter.", "options": ["arbeiten", "arbeitet", "arbeite", "arbeitest"], "answer": "arbeiten", "explain": "wir arbeiten — inversion after the opening phrase, verb still in position 2." },
+    { "id": "G01-03", "type": "cloze", "topic": "G01", "prompt": "Even after 'Morgen', the verb stays in position 2.", "sentence": "Morgen ___ ich einen Termin.", "answers": ["habe"], "hint": "haben, ich-alak", "explain": "Morgen habe ich — habe is still the 2nd sentence element." },
+    { "id": "G01-04", "type": "order", "topic": "G01", "prompt": "Ma este találkozom egy kollégával.", "tiles": ["Heute", "Abend", "treffe", "ich", "einen", "Kollegen."], "answers": ["Heute Abend treffe ich einen Kollegen."], "explain": "Time phrase first, then the verb (position 2), then the subject: inversion." },
+    { "id": "G01-05", "type": "errorspot", "topic": "G01", "prompt": "Tap the word in the wrong place.", "tokens": ["Heute", "ich", "gehe", "ins", "Büro."], "wrongIndex": 1, "fixed": "Heute gehe ich ins Büro.", "explain": "After an opening time phrase, verb and subject swap: gehe ich." },
+    { "id": "G01-06", "type": "mc", "topic": "G01", "prompt": "Which sentence has the correct word order?", "options": ["Deshalb hat er nicht geantwortet.", "Deshalb er hat nicht geantwortet.", "Deshalb hat nicht er geantwortet.", "Er deshalb hat nicht geantwortet."], "answer": "Deshalb hat er nicht geantwortet.", "explain": "deshalb also triggers inversion: hat er." },
+    { "id": "G01-07", "type": "cloze", "topic": "G01", "prompt": "sein + Partizip II for a movement verb.", "sentence": "Ich ___ gestern spät nach Hause gekommen.", "answers": ["bin"], "hint": "sein, ich-alak", "explain": "bin ... gekommen: the auxiliary sits in position 2, the participle at the end (Satzklammer)." },
+    { "id": "G01-08", "type": "order", "topic": "G01", "prompt": "Tegnap sokáig dolgoztam.", "tiles": ["Ich", "habe", "gestern", "lange", "gearbeitet."], "answers": ["Ich habe gestern lange gearbeitet."], "explain": "habe ... gearbeitet forms the Satzklammer; everything else sits in the middle." },
+    { "id": "G01-09", "type": "match", "topic": "G01", "prompt": "Match the sentence with what happens to the verb.", "pairs": [["Ich lerne jeden Tag.", "verb in position 2, right after the subject"], ["Jeden Tag lerne ich.", "verb in position 2, subject moves after it"], ["Deshalb lerne ich.", "verb in position 2, after 'deshalb'"], ["Weil ich lerne, ...", "verb at the very end (subordinate clause)"]] },
+    { "id": "G01-10", "type": "mc", "topic": "G01", "prompt": "Ich habe das Dokument ___ gelesen.", "options": ["nicht", "kein", "nie", "nichts"], "answer": "nicht", "explain": "nicht goes right before the final verb part when negating the whole clause." },
+    { "id": "G01-11", "type": "order", "topic": "G01", "prompt": "Holnap a vonattal megyek Bernbe a munka miatt.", "tiles": ["Ich", "fahre", "morgen", "wegen", "der", "Arbeit", "mit", "dem", "Zug", "nach", "Bern."], "answers": ["Ich fahre morgen wegen der Arbeit mit dem Zug nach Bern."], "explain": "TeKaMoLo order: temporal (morgen) → kausal (wegen der Arbeit) → modal (mit dem Zug) → lokal (nach Bern)." }
+  ]
+}

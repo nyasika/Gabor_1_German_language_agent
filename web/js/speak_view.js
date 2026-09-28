@@ -15,32 +15,17 @@ function diffView(cmp, heard) {
     cmp.extras.length ? h('p', { class: 'muted small' }, `Extra words: ${cmp.extras.join(', ')}`) : null);
 }
 
-export function speakView(ctx) {
-  const root = h('div', { class: 'run' });
+// Runs a sequence of shadow/prompt items into `root` (recording each attempt via ctx.store),
+// then calls onDone({ results, xp }). Shared by the daily speaking session and a sprint's produce day.
+export function runSpeakSequence(ctx, root, items, { title = 'Speaking', onDone, recordScore = recordAttempt } = {}) {
   const today = localDateStr();
   const support = speechSupport();
-  const items = buildSpeakSession(ctx.store.get(), ctx.data, today);
   const results = [];
   let idx = 0;
   let xp = 0;
 
-  function intro() {
-    mount(root, topBar('Speaking', ctx),
-      h('div', { class: 'card' },
-        h('p', { class: 'eyebrow' }, 'Speaking practice · about 5 minutes'),
-        h('h1', {}, 'Hear it, say it, see how close you got'),
-        h('ul', { class: 'intro' },
-          h('li', {}, `${items.filter((i) => i.kind === 'shadow').length} phrases to shadow: listen, then repeat.`),
-          h('li', {}, `${items.filter((i) => i.kind === 'prompt').length} colleague missions to say from memory.`),
-          h('li', {}, 'Up to three tries each. If the recogniser mishears you, you can overrule it.')),
-        !support.stt ? h('p', { class: 'note' }, 'This browser has no speech recognition (Chrome has it), so you will rate yourself instead. You can still listen.') : null,
-        !support.tts ? h('p', { class: 'note' }, 'This browser cannot read German aloud, so there is no Listen button.') : null,
-        support.stt ? h('p', { class: 'muted small' }, 'Chrome sends the audio to Google\'s speech service to turn it into text. Nothing is stored by this app.') : null,
-        h('button', { class: 'btn primary', onclick: () => { ctx.tracker(); next(); } }, 'Start')));
-  }
-
   function next() {
-    if (idx >= items.length) return summary();
+    if (idx >= items.length) return onDone({ results, xp });
     showItem(items[idx]);
   }
 
@@ -56,7 +41,7 @@ export function speakView(ctx) {
     function record(score) {
       const secs = ctx.tracker();
       let res;
-      ctx.store.save((s) => { res = recordAttempt(s, today, it.id, score, { seconds: secs }); });
+      ctx.store.save((s) => { res = recordScore(s, today, it.id, score, { seconds: secs }); });
       xp += res.xp;
       best = Math.max(best, score);
       tries += 1;
@@ -71,7 +56,7 @@ export function speakView(ctx) {
 
     function draw() {
       const face = it.kind === 'prompt'
-        ? h('div', { class: 'card-face' }, h('div', { class: 'card-cue' }, it.en), h('div', { class: 'muted' }, it.hu),
+        ? h('div', { class: 'card-face' }, h('div', { class: 'card-cue' }, it.en), it.hu ? h('div', { class: 'muted' }, it.hu) : null,
             revealed ? h('div', { class: 'card-answer' }, it.de) : h('p', { class: 'muted small' }, 'Say it in German. Tap Peek if you are stuck.'))
         : h('div', { class: 'card-face' }, h('div', { class: 'card-answer big-de' }, it.de), it.revisit ? h('p', { class: 'muted small' }, 'A phrase to revisit') : null);
       mount(stage,
@@ -122,7 +107,7 @@ export function speakView(ctx) {
         diffView(cmp, transcript));
       const more = [];
       if (!pass && tries < MAX_TRIES) more.push(h('button', { class: 'btn primary', onclick: () => { mount(feedback); feedback.className = 'feedback'; attempt(); } }, `Try again (${MAX_TRIES - tries} left)`));
-      if (!pass) more.push(h('button', { class: 'btn', onclick: () => { const r = record(1); xp += 0; showOverruled(r); } }, 'Count it as correct'));
+      if (!pass) more.push(h('button', { class: 'btn', onclick: () => { const r = record(1); showOverruled(r); } }, 'Count it as correct'));
       more.push(h('button', { class: pass || tries >= MAX_TRIES ? 'btn primary' : 'btn ghost small', onclick: finishItem }, 'Next'));
       mount(actions, more);
     }
@@ -140,18 +125,42 @@ export function speakView(ctx) {
       mount(actions, h('button', { class: 'btn primary', onclick: finishItem }, 'Next'));
     }
 
-    mount(root, topBar('Speaking', ctx), stage, status, feedback, actions);
+    mount(root, topBar(title, ctx), stage, status, feedback, actions);
     draw();
   }
 
-  function summary() {
+  next();
+}
+
+export function speakView(ctx) {
+  const root = h('div', { class: 'run' });
+  const today = localDateStr();
+  const support = speechSupport();
+  const items = buildSpeakSession(ctx.store.get(), ctx.data, today);
+
+  function intro() {
+    mount(root, topBar('Speaking', ctx),
+      h('div', { class: 'card' },
+        h('p', { class: 'eyebrow' }, 'Speaking practice · about 5 minutes'),
+        h('h1', {}, 'Hear it, say it, see how close you got'),
+        h('ul', { class: 'intro' },
+          h('li', {}, `${items.filter((i) => i.kind === 'shadow').length} phrases to shadow: listen, then repeat.`),
+          h('li', {}, `${items.filter((i) => i.kind === 'prompt').length} colleague missions to say from memory.`),
+          h('li', {}, 'Up to three tries each. If the recogniser mishears you, you can overrule it.')),
+        !support.stt ? h('p', { class: 'note' }, 'This browser has no speech recognition (Chrome has it), so you will rate yourself instead. You can still listen.') : null,
+        !support.tts ? h('p', { class: 'note' }, 'This browser cannot read German aloud, so there is no Listen button.') : null,
+        support.stt ? h('p', { class: 'muted small' }, 'Chrome sends the audio to Google\'s speech service to turn it into text. Nothing is stored by this app.') : null,
+        h('button', { class: 'btn primary', onclick: () => { ctx.tracker(); runSpeakSequence(ctx, root, items, { title: 'Speaking', onDone: summary }); } }, 'Start')));
+  }
+
+  function summary({ results, xp }) {
     const passed = results.filter((r) => r.best >= PASS_THRESHOLD).length;
     const avg = results.length ? results.reduce((s, r) => s + r.best, 0) / results.length : 0;
     const chosen = ctx.store.get().speaking.log[today]?.confidence;
     const confRow = h('div', { class: 'conf' }, CONFIDENCE_LABELS.map((label, i) =>
       h('button', { class: `btn small${chosen === i + 1 ? ' primary' : ''}`, onclick: () => {
         ctx.store.save((s) => recordConfidence(s, today, i + 1));
-        summary();
+        summary({ results, xp });
       } }, `${i + 1} ${label}`)));
     mount(root, topBar('Speaking', ctx),
       h('div', { class: 'card summary' },

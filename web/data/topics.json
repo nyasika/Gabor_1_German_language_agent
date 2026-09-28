@@ -1,0 +1,248 @@
+{
+  "G01": {
+    "title": "Sentence building: verb second, inversion, Satzklammer",
+    "level": "B1",
+    "cando": "I can build clear main clauses in the right order, also after an opening time or place phrase.",
+    "kind": "grammar"
+  },
+  "G02": {
+    "title": "Perfekt and Präteritum in conversation",
+    "level": "B1",
+    "cando": "I can talk about past events naturally: Perfekt for most verbs, Präteritum for sein, haben and modal verbs.",
+    "kind": "grammar"
+  },
+  "G03": {
+    "title": "Subordinate clauses: weil, dass, wenn, obwohl",
+    "level": "B1",
+    "cando": "I can give reasons, report content and set conditions with the verb at the end.",
+    "kind": "grammar"
+  },
+  "G04": {
+    "title": "Modal verbs and everyday requests",
+    "level": "B1",
+    "cando": "I can ask, offer and decline in everyday work situations.",
+    "kind": "grammar"
+  },
+  "G05": {
+    "title": "Konjunktiv II: wishes, suggestions, politeness",
+    "level": "B1",
+    "cando": "I can make polite requests, suggestions and hypothetical statements.",
+    "kind": "grammar"
+  },
+  "G06": {
+    "title": "Relative clauses (nominative, accusative, dative)",
+    "level": "B1",
+    "cando": "I can describe people, things and situations with a relative clause.",
+    "kind": "grammar"
+  },
+  "G07": {
+    "title": "Adjective endings",
+    "level": "B1",
+    "cando": "I can use adjective endings correctly in common phrases.",
+    "kind": "grammar"
+  },
+  "G08": {
+    "title": "Case and prepositions: two-way and fixed combinations",
+    "level": "B1",
+    "cando": "I can choose the right case after common prepositions and verb-preposition pairs.",
+    "kind": "grammar"
+  },
+  "G09": {
+    "title": "Reflexive and separable verbs",
+    "level": "B1",
+    "cando": "I can use reflexive and separable verbs in main and subordinate clauses.",
+    "kind": "grammar"
+  },
+  "G10": {
+    "title": "Passive: process and result",
+    "level": "B1",
+    "cando": "I can say what is done without naming who does it.",
+    "kind": "grammar"
+  },
+  "G11": {
+    "title": "Infinitive clauses: zu, um ... zu, ohne ... zu",
+    "level": "B1",
+    "cando": "I can express purpose and attitude with infinitive clauses.",
+    "kind": "grammar"
+  },
+  "G12": {
+    "title": "Time links: als, wenn, seit, bevor, nachdem, während",
+    "level": "B1",
+    "cando": "I can order events in time and choose between als and wenn.",
+    "kind": "grammar"
+  },
+  "G13": {
+    "title": "Connectors in main clauses: deshalb, trotzdem, außerdem",
+    "level": "B1+",
+    "cando": "I can link ideas across sentences with the verb in second position.",
+    "kind": "grammar"
+  },
+  "G14": {
+    "title": "Comparison: je ... desto and degrees",
+    "level": "B1+",
+    "cando": "I can compare and grade things precisely.",
+    "kind": "grammar"
+  },
+  "G15": {
+    "title": "Verb-preposition pairs and pronominal adverbs (darauf, worüber)",
+    "level": "B2",
+    "cando": "I can ask and answer with da- and wo- words instead of repeating long phrases.",
+    "kind": "grammar"
+  },
+  "G16": {
+    "title": "Passive extended: modal verbs, state passive, man",
+    "level": "B2",
+    "cando": "I can use passive with modal verbs and tell a process from a state.",
+    "kind": "grammar"
+  },
+  "G17": {
+    "title": "Konjunktiv II of the past",
+    "level": "B2",
+    "cando": "I can talk about missed chances and regrets.",
+    "kind": "grammar"
+  },
+  "G18": {
+    "title": "Conditions: falls, sofern, es sei denn, unreal sentences",
+    "level": "B2",
+    "cando": "I can state conditions and exceptions precisely.",
+    "kind": "grammar"
+  },
+  "G19": {
+    "title": "Reasons, results, aims: da, zumal, sodass, damit",
+    "level": "B2",
+    "cando": "I can justify decisions and state consequences and goals.",
+    "kind": "grammar"
+  },
+  "G20": {
+    "title": "Contrast and concession: zwar ... aber, während, wohingegen",
+    "level": "B2",
+    "cando": "I can weigh two sides and concede a point before arguing my own.",
+    "kind": "grammar"
+  },
+  "G21": {
+    "title": "Genitive and prepositions with genitive: wegen, trotz, aufgrund",
+    "level": "B2",
+    "cando": "I can use genitive prepositions in formal speech and writing.",
+    "kind": "grammar"
+  },
+  "G22": {
+    "title": "Relative clauses extended: preposition, was, wo, genitive",
+    "level": "B2",
+    "cando": "I can build longer relative clauses without losing the thread.",
+    "kind": "grammar"
+  },
+  "G23": {
+    "title": "Verb-noun phrases and fixed expressions (Funktionsverbgefüge)",
+    "level": "B2",
+    "cando": "I can use typical formal verb-noun combinations instead of plain verbs.",
+    "kind": "grammar"
+  },
+  "G24": {
+    "title": "Modal particles: doch, mal, eben, halt, ja",
+    "level": "B2",
+    "cando": "I can soften or colour a sentence the way native speakers do.",
+    "kind": "grammar"
+  },
+  "G25": {
+    "title": "Discourse markers and conversation strategies",
+    "level": "B2",
+    "cando": "I can take time to think, change direction and correct myself smoothly.",
+    "kind": "grammar"
+  },
+  "G26": {
+    "title": "Politeness and register: du/Sie, formal and informal",
+    "level": "B2",
+    "cando": "I can adjust my language to the person and the situation.",
+    "kind": "grammar"
+  },
+  "G27": {
+    "title": "Word order in the middle field, stress and negation",
+    "level": "B2",
+    "cando": "I can place pronouns, time, place and negation naturally.",
+    "kind": "grammar"
+  },
+  "G28": {
+    "title": "Indirect speech: Konjunktiv I and substitutes",
+    "level": "C1",
+    "cando": "I can report what others said accurately and neutrally.",
+    "kind": "grammar"
+  },
+  "G29": {
+    "title": "Participial attributes and extended attributes",
+    "level": "C1",
+    "cando": "I can read and use compact noun phrases with participles.",
+    "kind": "grammar"
+  },
+  "G30": {
+    "title": "Nominalisation and nominal style",
+    "level": "C1",
+    "cando": "I can switch between verbal and nominal style to fit formal contexts.",
+    "kind": "grammar"
+  },
+  "G31": {
+    "title": "Reporting and referring: laut, zufolge, demnach",
+    "level": "C1",
+    "cando": "I can attribute information to sources and mark my distance.",
+    "kind": "grammar"
+  },
+  "G32": {
+    "title": "Nuance: lassen constructions, sein + zu, passive alternatives",
+    "level": "C1",
+    "cando": "I can express possibility and necessity without modal verbs.",
+    "kind": "grammar"
+  },
+  "G33": {
+    "title": "Arguing and weighing: supporting, limiting, concluding",
+    "level": "C1",
+    "cando": "I can build a balanced argument and draw a clear conclusion aloud.",
+    "kind": "grammar"
+  },
+  "G34": {
+    "title": "Precision: prefix verbs and word formation",
+    "level": "C1",
+    "cando": "I can pick the exact verb and derive related words.",
+    "kind": "grammar"
+  },
+  "SP01": {
+    "title": "Hungarian-speaker pitfalls: articles, gender, plural",
+    "level": null,
+    "cando": null,
+    "kind": "extra",
+    "days": 5
+  },
+  "SP02": {
+    "title": "Hungarian-speaker pitfalls: word order and prepositions",
+    "level": null,
+    "cando": null,
+    "kind": "extra",
+    "days": 5
+  },
+  "SP03": {
+    "title": "Fluency: fillers, pauses and self-correction",
+    "level": null,
+    "cando": null,
+    "kind": "extra",
+    "days": 5
+  },
+  "SP04": {
+    "title": "Speaking numbers, dates and trends",
+    "level": null,
+    "cando": null,
+    "kind": "extra",
+    "days": 3
+  },
+  "SP05": {
+    "title": "Understanding Swiss dialect: common patterns and words",
+    "level": null,
+    "cando": null,
+    "kind": "extra",
+    "days": 5
+  },
+  "SP06": {
+    "title": "Phone and Teams calls: openings, closings, repairs",
+    "level": null,
+    "cando": null,
+    "kind": "extra",
+    "days": 3
+  }
+}

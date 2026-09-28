@@ -39,7 +39,7 @@ const shot = async (name) => { await noJunk(name); if (SHOTS) await page.screens
 const state = () => page.evaluate(() => JSON.parse(localStorage.getItem('wortweg.state.v1') || 'null'));
 const today = await page.evaluate(() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; });
 const lessons = {};
-for (const id of ['L01', 'L02', 'L03', 'L04']) lessons[id] = JSON.parse(readFileSync(join(ROOT, 'data', 'lessons', `${id}.json`), 'utf8'));
+for (const id of ['G01','G02','G03','G04','G05','G06','G07','G08','G09','G10','G11','G12']) lessons[id] = JSON.parse(readFileSync(join(ROOT, 'data', 'lessons', `${id}.json`), 'utf8'));
 
 const escapeRe = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, (c) => `\\${c}`);
 const rx = (t) => new RegExp(`^${escapeRe(t)}$`);
@@ -100,7 +100,7 @@ try {
   await shot('05-review-done');
 
   // ---- lesson: variety + save-after-every-answer + retry + error card
-  await page.goto(`${base}#/lesson/L01`);
+  await page.goto(`${base}#/lesson/G01`);
   await page.waitForSelector('text=Start lesson');
   await shot('06-lesson-intro');
   await page.click('a:has-text("Start lesson")');
@@ -119,7 +119,7 @@ try {
     if (!isRetry && !shotTypes.has(label)) { shotTypes.add(label); await shot(`ex-${label.toLowerCase().replace(/\s+/g, '-')}`); }
     const isMatch = (await page.locator('.ex-match').count()) > 0; // match pairs cannot be answered wrongly on purpose here
     const wrongOnPurpose = !isRetry && answered >= 2 && !deliberateWrong && !isMatch;
-    const L = 'L01';
+    const L = 'G01';
 
     if (await page.locator('.ex-choice').count()) {
       const prompt = (await page.locator('.ex-choice .prompt').first().innerText()).trim();
@@ -175,11 +175,11 @@ try {
   ok(`variety rule holds: ${labels.join(' > ')}`);
 
   const s2 = await state();
-  assert.equal(s2.lessons.L01.done, true);
-  assert.ok(s2.lessons.L01.bestScore < 1 && s2.lessons.L01.bestScore >= 0.8, `score reflects the deliberate mistake (${s2.lessons.L01.bestScore})`);
+  assert.equal(s2.lessons.G01.done, true);
+  assert.ok(s2.lessons.G01.bestScore < 1 && s2.lessons.G01.bestScore >= 0.8, `score reflects the deliberate mistake (${s2.lessons.G01.bestScore})`);
   assert.ok(Object.keys(s2.cards).some((k) => k.startsWith('err_')), 'the mistake became a review card');
-  assert.ok(s2.topics['Konjunktiv II'].hist.length >= 10);
-  ok(`lesson saved: score ${s2.lessons.L01.bestScore}, mistake turned into a card, topic mastery recorded`);
+  assert.ok(s2.topics['G01'].hist.length >= 10);
+  ok(`lesson saved: score ${s2.lessons.G01.bestScore}, mistake turned into a card, topic mastery recorded`);
 
   // ---- unlock chain
   await page.goto(`${base}#/path`);
@@ -225,7 +225,7 @@ try {
   assert.ok(/done today/.test(homeText), 'home remembers today\'s sessions after reload');
   assert.ok(/Saved \d{2}:\d{2}:\d{2}/.test(homeText), 'save indicator visible');
   const s4 = await state();
-  assert.equal(s4.lessons.L01.done, true);
+  assert.equal(s4.lessons.G01.done, true);
   await shot('14-home-after');
   ok('everything persists across a reload');
 

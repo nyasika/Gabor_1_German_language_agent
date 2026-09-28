@@ -155,3 +155,11 @@ textarea, input[type=text], input[type=url], input[type=email], input[type=passw
 .w-close { color: var(--warn); font-weight: 700; text-decoration: underline dotted; }
 .w-wrong, .w-missing { color: var(--bad); font-weight: 700; text-decoration: underline wavy; }
 .conf { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 8px 0; } .conf .btn { margin: 0; }
+
+.sprint-banner { background: var(--brand-soft); border-color: var(--brand); }
+.sprint-banner .eyebrow { color: var(--brand); }
+.chunk-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); }
+.chunk-row:first-of-type { border-top: 0; }
+.chunk-row .btn { margin: 0; }
+.chrow span:first-child { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.chrow .btn.small { margin: 0; }

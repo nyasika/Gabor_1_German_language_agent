@@ -106,6 +106,26 @@ function mergeCounts(a = {}, b = {}) {
   return out;
 }
 
+function mergeSprintProgress(a = {}, b = {}) {
+  const out = { ...a };
+  for (const [id, pb] of Object.entries(b)) {
+    const pa = out[id];
+    if (!pa) { out[id] = pb; continue; }
+    const dayResults = { ...pa.dayResults };
+    for (const [day, rb] of Object.entries(pb.dayResults || {})) {
+      const ra = dayResults[day];
+      dayResults[day] = ra ? { done: ra.done || rb.done, score: maxNum(ra.score, rb.score) } : rb;
+    }
+    out[id] = {
+      day: maxNum(pa.day, pb.day),
+      dayResults,
+      startedDate: pa.startedDate && pb.startedDate ? (pa.startedDate < pb.startedDate ? pa.startedDate : pb.startedDate) : (pa.startedDate || pb.startedDate),
+      completedDate: pa.completedDate || pb.completedDate || null,
+    };
+  }
+  return out;
+}
+
 export function mergeStates(local, remote) {
   const base = defaultState();
   const newer = (remote.updatedAt || 0) > (local.updatedAt || 0) ? remote : local;
@@ -132,6 +152,10 @@ export function mergeStates(local, remote) {
     missionsUsed: mergeUnionMap(local.missionsUsed || {}, remote.missionsUsed || {}),
     speaking: mergeSpeaking(local.speaking, remote.speaking),
     talks: mergeCounts(local.talks, remote.talks),
+    sprints: {
+      active: newer.sprints?.active ?? other.sprints?.active ?? null,
+      progress: mergeSprintProgress(local.sprints?.progress, remote.sprints?.progress),
+    },
     lastLead: newer.lastLead ?? other.lastLead ?? null,
   };
 }

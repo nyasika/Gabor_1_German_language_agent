@@ -9,6 +9,7 @@ import { CONFIG } from '../config.js';
 import { enablePush, pushSupported } from './push.js';
 import { speak, speechSupport } from './speech.js';
 import { addTalk, speakingStats } from './speaking.js';
+import { suggestSprint, isSprintDone, sprintProgress } from './sprint.js';
 
 const errorBox = (e) => h('div', { class: 'card error' }, h('strong', {}, 'Something went wrong'), h('p', {}, String(e?.message || e)));
 
@@ -72,7 +73,22 @@ export function homeView(ctx) {
     h('button', { type: 'button', class: 'btn small', onclick: () => bumpTalks(1) }, '+1'),
     undoBtn);
 
+  const activeId = s.sprints.active;
+  const suggestedId = activeId ? null : suggestSprint(s, data.sprintIds);
+  const sprintBanner = activeId
+    ? h('section', { class: 'card sprint-banner' },
+        h('p', { class: 'eyebrow' }, 'Sprint in progress'),
+        h('p', {}, data.topics[activeId]?.title || activeId, ` · Day ${sprintProgress(s, activeId)?.day ?? 1}`),
+        h('a', { class: 'btn primary', href: `#/sprint/${activeId}` }, 'Continue'))
+    : suggestedId
+      ? h('section', { class: 'card sprint-banner' },
+          h('p', { class: 'eyebrow' }, 'Worth a closer look'),
+          h('p', {}, `Your accuracy on “${data.topics[suggestedId]?.title || suggestedId}” has been low — spend a few focused days on it?`),
+          h('a', { class: 'btn primary', href: `#/sprint/${suggestedId}` }, 'Start a sprint'))
+      : null;
+
   return h('div', { class: 'home' },
+    sprintBanner,
     h('section', { class: 'hero card' },
       ring(totals.seconds / goal, fmtMin(totals.seconds), `of ${s.settings.dailyGoalMin} min`),
       h('div', { class: 'hero-stats' },
@@ -446,8 +462,17 @@ export function statsView(ctx) {
     h('section', { class: 'card' }, h('h2', {}, 'Grammar mastery'),
       topics.length ? topics.map((t) => {
         const m = mastery(s, t);
-        return h('div', { class: 'chrow' }, h('span', {}, t), h('span', { class: 'muted' }, `${Math.round(m * 100)}% · last ${s.topics[t].hist.length}`), bar(m, m < 0.6 ? 'low' : ''));
-      }) : h('p', { class: 'muted' }, 'Finish a lesson to see mastery per topic.')));
+        const title = ctx.data.topics[t]?.title || t;
+        const weak = m < 0.6 && s.topics[t].hist.length >= 6;
+        const sprintReady = weak && ctx.data.sprintIds.includes(t) && !isSprintDone(s, t);
+        return h('div', { class: 'chrow' },
+          h('span', {}, title, sprintReady ? h('a', { class: 'btn small', href: `#/sprint/${t}` }, 'Sprint this') : null),
+          h('span', { class: 'muted' }, `${Math.round(m * 100)}% · last ${s.topics[t].hist.length}`),
+          bar(m, weak ? 'low' : ''));
+      }) : h('p', { class: 'muted' }, 'Finish a lesson to see mastery per topic.')),
+    h('section', { class: 'card' }, h('h2', {}, 'Sprints'),
+      h('p', { class: 'muted' }, 'Spend a focused few days on one topic, on top of your regular path.'),
+      h('a', { class: 'btn', href: '#/sprints' }, 'Browse sprints')));
 }
 
 // ---------------------------------------------------------------- Settings

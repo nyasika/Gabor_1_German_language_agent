@@ -6,6 +6,59 @@ import { dirname, join } from 'node:path';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', 'web', 'data');
 const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
 
+// Structurally validates one exercise object (shared by lessons and sprint days). `err(msg)` reports a problem.
+export function validateExercise(ex, err) {
+  if (!ex.topic) err('missing topic');
+  switch (ex.type) {
+    case 'mc':
+      if (!ex.prompt) err('missing prompt');
+      if (!Array.isArray(ex.options) || ex.options.length < 2) err('needs >= 2 options');
+      else {
+        if (new Set(ex.options).size !== ex.options.length) err('duplicate options');
+        if (!ex.options.includes(ex.answer)) err('answer is not among the options');
+      }
+      break;
+    case 'article':
+      if (!ex.noun) err('missing noun');
+      if (!['der', 'die', 'das'].includes(ex.answer)) err('answer must be der/die/das');
+      break;
+    case 'cloze':
+      if (!ex.sentence?.includes('___')) err('sentence needs ___');
+      if ((ex.sentence?.match(/___/g) || []).length !== 1) err('exactly one ___ expected');
+      if (!Array.isArray(ex.answers) || !ex.answers.length) err('needs answers[]');
+      break;
+    case 'order': {
+      if (!Array.isArray(ex.tiles) || ex.tiles.length < 3) err('needs >= 3 tiles');
+      if (!Array.isArray(ex.answers) || !ex.answers.length) err('needs answers[]');
+      else if (Array.isArray(ex.tiles)) {
+        const key = (arr) => [...arr].sort().join('|');
+        for (const a of ex.answers) {
+          if (key(a.split(' ')) !== key(ex.tiles)) err(`answer "${a}" cannot be built from the tiles`);
+        }
+      }
+      break;
+    }
+    case 'match':
+      if (!Array.isArray(ex.pairs) || ex.pairs.length < 3) err('needs >= 3 pairs');
+      else {
+        const lefts = ex.pairs.map((p) => p[0]);
+        const rights = ex.pairs.map((p) => p[1]);
+        if (new Set(lefts).size !== lefts.length || new Set(rights).size !== rights.length) err('pairs must be unique on both sides');
+      }
+      break;
+    case 'errorspot':
+      if (!Array.isArray(ex.tokens)) err('needs tokens[]');
+      else {
+        if (!(ex.wrongIndex >= 0 && ex.wrongIndex < ex.tokens.length)) err('wrongIndex out of range');
+        if (!ex.fixed) err('missing fixed sentence');
+        else if (ex.fixed === ex.tokens.join(' ')) err('fixed equals the wrong sentence');
+      }
+      break;
+    default:
+      err(`unknown type ${ex.type}`);
+  }
+}
+
 export function validateContent() {
   const errors = [];
   const err = (where, msg) => errors.push(`${where}: ${msg}`);
@@ -33,55 +86,7 @@ export function validateContent() {
       if (seenIds.has(ex.id)) err(w, 'duplicate exercise id');
       seenIds.add(ex.id);
       if (!ex.id?.startsWith(L)) err(w, 'id should start with lesson id');
-      if (!ex.topic) err(w, 'missing topic');
-      switch (ex.type) {
-        case 'mc':
-          if (!ex.prompt) err(w, 'missing prompt');
-          if (!Array.isArray(ex.options) || ex.options.length < 2) err(w, 'needs >= 2 options');
-          else {
-            if (new Set(ex.options).size !== ex.options.length) err(w, 'duplicate options');
-            if (!ex.options.includes(ex.answer)) err(w, 'answer is not among the options');
-          }
-          break;
-        case 'article':
-          if (!ex.noun) err(w, 'missing noun');
-          if (!['der', 'die', 'das'].includes(ex.answer)) err(w, 'answer must be der/die/das');
-          break;
-        case 'cloze':
-          if (!ex.sentence?.includes('___')) err(w, 'sentence needs ___');
-          if ((ex.sentence?.match(/___/g) || []).length !== 1) err(w, 'exactly one ___ expected');
-          if (!Array.isArray(ex.answers) || !ex.answers.length) err(w, 'needs answers[]');
-          break;
-        case 'order': {
-          if (!Array.isArray(ex.tiles) || ex.tiles.length < 3) err(w, 'needs >= 3 tiles');
-          if (!Array.isArray(ex.answers) || !ex.answers.length) err(w, 'needs answers[]');
-          else if (Array.isArray(ex.tiles)) {
-            const key = (arr) => [...arr].sort().join('|');
-            for (const a of ex.answers) {
-              if (key(a.split(' ')) !== key(ex.tiles)) err(w, `answer "${a}" cannot be built from the tiles`);
-            }
-          }
-          break;
-        }
-        case 'match':
-          if (!Array.isArray(ex.pairs) || ex.pairs.length < 3) err(w, 'needs >= 3 pairs');
-          else {
-            const lefts = ex.pairs.map((p) => p[0]);
-            const rights = ex.pairs.map((p) => p[1]);
-            if (new Set(lefts).size !== lefts.length || new Set(rights).size !== rights.length) err(w, 'pairs must be unique on both sides');
-          }
-          break;
-        case 'errorspot':
-          if (!Array.isArray(ex.tokens)) err(w, 'needs tokens[]');
-          else {
-            if (!(ex.wrongIndex >= 0 && ex.wrongIndex < ex.tokens.length)) err(w, 'wrongIndex out of range');
-            if (!ex.fixed) err(w, 'missing fixed sentence');
-            else if (ex.fixed === ex.tokens.join(' ')) err(w, 'fixed equals the wrong sentence');
-          }
-          break;
-        default:
-          err(w, `unknown type ${ex.type}`);
-      }
+      validateExercise(ex, (msg) => err(w, msg));
     }
     if (lesson.exercises.length < 10) err(L, 'needs >= 10 exercises to fill a lesson');
     if (types.size < 4) err(L, 'needs >= 4 distinct exercise types');

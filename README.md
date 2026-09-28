@@ -10,10 +10,11 @@ A Duolingo-style German learning app for two 15-20 minute sessions a day: **7:00
 | Progress saving | After **every answer**, verified by test; export/restore in Settings |
 | Phone + PC sync (Supabase) | Built, tested against a faked Supabase; **not yet run against your real project** |
 | Push reminders 7:00 / 20:30 | Built, schedule logic tested (summer, winter, DST days); **not yet run end to end** |
-| Content | 4 placeholder lessons (52 exercises), 46 cards, 24 colleague missions. **Linie B1.1/B1.2 chapters still to be added** |
+| Curriculum map | `content/curriculum_map.json`: 34 grammar topics B1→C1 in prerequisite order (can-do statements + spoken chunks), 13 vocabulary clusters, 12 situations, sprint template. Original content, not the Linie textbook |
+| Content | 12 real B1 lessons (G01-G12, 136 exercises) covering the map's B1 grammar topics, 46 review cards, 24 colleague missions. **B1+/B2/C1 lessons (G13-G34) not yet written** |
+| Sprints (3-7 day topic deep-dives) | Built: notice → drill → drill → produce (speaking) → check, with a home-page suggestion when a topic's accuracy is low. 2 examples written (`G05` Konjunktiv II, `SP01` Hungarian-speaker pitfalls); more topics can be added as sprint content without touching the engine |
 | Speaking practice (browser speech, free) | Built: hear a phrase, say it, word-by-word feedback, confidence rating, conversation counter. Tested with a fake recogniser; **not yet tried with a real microphone on your phone** |
-| Curriculum map | Drafted in `content/curriculum_map.json` (34 grammar topics, 13 vocabulary clusters, 12 situations, sprints); lessons still use the 4 placeholders |
-| Not built yet | Sprint mechanism, real lessons from the map, placement test, writing task with feedback, more exercise types (transformation, dialogue, reading), boss challenges, weekly report |
+| Not built yet | Lessons for G13-G34, more sprint topics, a placement test, writing task with AI feedback, more exercise types (transformation, dialogue, reading), boss challenges, weekly report |
 
 ## Run locally
 
@@ -59,19 +60,26 @@ The **Speaking practice** card starts a 5-minute session: shadow a few phrases (
 - It compares words, so it does **not** judge pronunciation quality (vowel length, ch/sch, intonation). If it mishears you, tap "Count it as correct".
 - Practice phrases come from the spoken chunks of the curriculum map: after editing `content/curriculum_map.json` run `npm run chunks`.
 
-## Adding the Linie chapters (superseded)
+## Sprints
 
-The curriculum map in `content/curriculum_map.json` replaces the plan to follow a textbook. The section below describes the lesson file format, which stays the same.
+A sprint is 3-7 focused days on one topic, on top of the normal daily path: **notice** (see the pattern in context) → **drill** → **drill** (form, then choice/meaning) → **produce** (say it, via the same speaking flow as daily practice) → **check** (mixed, scored). Reviews and lessons continue as normal alongside it.
 
+- The Home page suggests a sprint once a topic has 6+ samples and under 60% accuracy, if sprint content exists for it (`suggestSprint` in `web/js/sprint.js`).
+- Browse and start any sprint from the Progress page ("Browse sprints") or `#/sprints`.
+- Mistakes on drill/check days become review cards, same as a lesson.
+- **Adding a sprint**: write `web/data/sprints/<id>.json` (`notice`/`drill`/`drill`/`produce`/`check` days; drill/check days reuse the lesson exercise schema, produce uses `speak_items: [{id, de}]`), add its id to `web/data/sprints.json`, and make sure the id is in `web/data/topics.json` (regenerate with `npm run topics` after editing the curriculum map, or add an `extra_sprints` entry for a topic outside the grammar map). Run `npm run validate` — it checks day numbering, exercise structure, and id uniqueness across all sprints.
+
+## Content format
 
 Content is plain JSON in `web/data/`:
 
-- `path.json`: chapters and the order of lessons.
-- `lessons/Lxx.json`: intro bullets and 10+ exercises (types: `mc`, `article`, `cloze`, `order`, `match`, `errorspot`). Every lesson needs at least 4 different types.
+- `path.json`: chapters and the order of lessons. Lesson ids match the curriculum map's grammar topic ids (e.g. `G05`).
+- `lessons/<id>.json`: intro bullets and 10+ exercises (types: `mc`, `article`, `cloze`, `order`, `match`, `errorspot`). Every lesson needs at least 4 different types. Each exercise's `topic` field should be a topic id from `topics.json`, so mastery and sprint suggestions line up.
 - `cards.json`: review deck (`flip` = Hungarian cue to German, `cloze` = typed gap). New cards enter at 4 per day plus 3 colleague missions.
 - `missions.json`: phrases to use with your colleague that day.
+- `topics.json`, `chunks.json`: generated from `content/curriculum_map.json` via `npm run topics` / `npm run chunks` — edit the map, not these files.
 
-Run `npm run validate` after editing: it checks, for example, that every word-order answer can be built from its tiles and every multiple-choice answer is among the options.
+Run `npm run validate` after editing: it checks, for example, that every word-order answer can be built from its tiles, every multiple-choice answer is among the options, and sprint days are numbered correctly.
 
 ## How it works
 

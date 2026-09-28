@@ -1,0 +1,24 @@
+{
+  "id": "G06",
+  "title": "Relative clauses (nominative, accusative, dative)",
+  "topic": "G06",
+  "intro": [
+    "A relative clause pins down a noun: Das ist der Mann, der gestern hier war.",
+    "The relative pronoun (der/die/das/dem/den...) matches the noun's gender and number, but its case depends on its own role inside the relative clause.",
+    "The conjugated verb goes to the end of the relative clause, exactly like in any subordinate clause.",
+    "With a preposition, it goes right before the relative pronoun: die Stadt, in der ich geboren bin."
+  ],
+  "exercises": [
+    { "id": "G06-01", "type": "mc", "topic": "G06", "prompt": "Das ist der Kollege, ___ das Projekt leitet.", "options": ["der", "den", "dem", "die"], "answer": "der", "explain": "Nominativ: der Kollege leitet — der is the subject of the relative clause." },
+    { "id": "G06-02", "type": "mc", "topic": "G06", "prompt": "Der Film, ___ ich gesehen habe, war gut.", "options": ["den", "der", "dem", "die"], "answer": "den", "explain": "Akkusativ: ich habe den Film gesehen — den is the object." },
+    { "id": "G06-03", "type": "cloze", "topic": "G06", "prompt": "Dativ: to whom did I help?", "sentence": "Der Kollege, ___ ich geholfen habe, ist dankbar.", "answers": ["dem"], "hint": "helfen + Dativ", "explain": "helfen takes Dativ: dem Kollegen → dem." },
+    { "id": "G06-04", "type": "order", "topic": "G06", "prompt": "Ő a kolléga, aki az irodában dolgozik.", "tiles": ["Das", "ist", "der", "Kollege,", "der", "im", "Büro", "arbeitet."], "answers": ["Das ist der Kollege, der im Büro arbeitet."] },
+    { "id": "G06-05", "type": "errorspot", "topic": "G06", "prompt": "Tap the wrong word.", "tokens": ["Die", "Frau,", "die", "arbeitet", "hier,", "ist", "meine", "Chefin."], "wrongIndex": 3, "fixed": "Die Frau, die hier arbeitet, ist meine Chefin.", "explain": "The verb of a relative clause goes to the end: hier arbeitet." },
+    { "id": "G06-06", "type": "match", "topic": "G06", "prompt": "Match the relative pronoun with its role.", "pairs": [["der Mann, der ...", "subject of the relative clause"], ["der Mann, den ...", "object of the relative clause"], ["der Mann, dem ...", "receives the action (Dativ)"], ["der Mann, dessen Auto ...", "possession (whose)"]] },
+    { "id": "G06-07", "type": "cloze", "topic": "G06", "prompt": "Relative clause with a preposition.", "sentence": "Das ist die Stadt, ___ der ich geboren bin.", "answers": ["in"], "hint": "-ban/-ben születtem", "explain": "The preposition sits right before the relative pronoun: in der." },
+    { "id": "G06-08", "type": "mc", "topic": "G06", "prompt": "Das Team, ___ Ergebnisse sehr gut waren, wurde gelobt.", "options": ["dessen", "deren", "das", "dem"], "answer": "dessen", "explain": "Genitiv (whose) for a masculine/neuter noun: dessen." },
+    { "id": "G06-09", "type": "order", "topic": "G06", "prompt": "Ez az a projekt, amiről tegnap beszéltünk.", "tiles": ["Das", "ist", "das", "Projekt,", "über", "das", "wir", "gestern", "gesprochen", "haben."], "answers": ["Das ist das Projekt, über das wir gestern gesprochen haben."] },
+    { "id": "G06-10", "type": "cloze", "topic": "G06", "prompt": "Plural relative pronoun, Dativ.", "sentence": "Die Kollegen, ___ ich die E-Mail geschickt habe, haben noch nicht geantwortet.", "answers": ["denen"], "hint": "nekik", "explain": "Plural Dativ relative pronoun: denen." },
+    { "id": "G06-11", "type": "mc", "topic": "G06", "prompt": "Which relative pronoun fits: 'Das Angebot, ___ wir bekommen haben, war fair.'?", "options": ["das", "der", "den", "dem"], "answer": "das", "explain": "das Angebot (neuter) as the object → Akkusativ neuter = das." }
+  ]
+}
