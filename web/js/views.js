@@ -7,10 +7,12 @@ import {
 import { buildLesson, introduceNewCards, dueCards, pickMissions, nextLesson, isUnlocked } from './session.js';
 import { CONFIG } from '../config.js';
 import { enablePush, pushSupported } from './push.js';
+import { speak, speechSupport } from './speech.js';
+import { addTalk, speakingStats } from './speaking.js';
 
 const errorBox = (e) => h('div', { class: 'card error' }, h('strong', {}, 'Something went wrong'), h('p', {}, String(e?.message || e)));
 
-function topBar(title, ctx, { back = '#/' } = {}) {
+export function topBar(title, ctx, { back = '#/' } = {}) {
   return h('div', { class: 'runbar' },
     h('button', { class: 'btn ghost small', onclick: () => ctx.go(back) }, 'Quit'),
     h('span', { class: 'runtitle' }, title));
@@ -44,13 +46,31 @@ export function homeView(ctx) {
           st.missionsUsed[today] = [...set];
         });
       } }),
-      h('span', {}, h('strong', {}, m.de), h('em', {}, `${m.en} · ${m.hu}`))));
+      h('span', { class: 'grow' }, h('strong', {}, m.de), h('em', {}, `${m.en} · ${m.hu}`)),
+      speechSupport().tts ? h('button', { type: 'button', class: 'btn small listen', onclick: (e) => { e.preventDefault(); speak(m.de); } }, 'Listen') : null));
+
+  const talks = s.talks[today] || 0;
+  const lastConf = s.speaking.log[today]?.confidence;
+  const speakDone = (s.speaking.log[today]?.attempts || 0) > 0;
 
   const pathRows = data.path.chapters.map((ch) => {
     const done = ch.lessons.filter((id) => s.lessons[id]?.done).length;
     return h('div', { class: 'chrow' }, h('span', {}, ch.title), h('span', { class: 'muted' }, `${done}/${ch.lessons.length}`),
       bar(done / ch.lessons.length));
   });
+
+  const talkCount = h('strong', { 'data-role': 'talks' }, talks);
+  const undoBtn = h('button', { type: 'button', class: 'btn ghost small', disabled: talks ? null : true, onclick: () => bumpTalks(-1) }, 'undo');
+  function bumpTalks(delta) {
+    store.save((st) => addTalk(st, today, delta));
+    const n = store.get().talks[today] || 0;
+    talkCount.textContent = n;
+    undoBtn.disabled = n === 0;
+  }
+  const talksRow = h('div', { class: 'talks' },
+    h('span', {}, 'German conversations today: ', talkCount),
+    h('button', { type: 'button', class: 'btn small', onclick: () => bumpTalks(1) }, '+1'),
+    undoBtn);
 
   return h('div', { class: 'home' },
     h('section', { class: 'hero card' },
@@ -72,6 +92,13 @@ export function homeView(ctx) {
         ? h('p', { class: 'muted' }, `Next: ${nextTitle}`)
         : h('p', { class: 'muted' }, 'You finished every lesson in the path. Replay one from the path to keep it fresh.'),
       nextId ? h('a', { class: 'btn primary', href: `#/lesson/${nextId}` }, lessonDone ? 'One more lesson' : 'Start lesson') : h('a', { class: 'btn', href: '#/path' }, 'Open path')),
+
+    h('section', { class: 'card session' },
+      h('div', { class: 'session-head' }, h('h2', {}, 'Speaking practice'), h('span', { class: `chip ${speakDone ? 'ok' : ''}` }, speakDone ? 'done today' : '5 min')),
+      h('p', { class: 'muted' }, 'Hear a phrase, say it, see word by word how close you got.'),
+      h('a', { class: 'btn primary', href: '#/speak' }, speakDone ? 'Speak more' : 'Start speaking'),
+      talksRow,
+      lastConf ? h('p', { class: 'muted small' }, `Confidence rated today: ${lastConf} / 5`) : null),
 
     h('section', { class: 'card' },
       h('h2', {}, "Today's colleague missions"),
@@ -377,6 +404,25 @@ function heatmap(s, today) {
   return h('div', { class: 'heatmap', 'aria-label': 'Activity in the last 12 weeks' }, cells);
 }
 
+function delta(now, before, digits = 0, unit = '') {
+  if (now == null || before == null) return '';
+  const d = now - before;
+  if (Math.abs(d) < 0.05) return ' (same as before)';
+  return ` (${d > 0 ? '+' : ''}${d.toFixed(digits)}${unit} vs previous week)`;
+}
+
+function speakingCard(s, today) {
+  const { week, previous } = speakingStats(s, today);
+  const pct = (x) => (x == null ? '–' : `${Math.round(x * 100)}%`);
+  return h('section', { class: 'card' }, h('h2', {}, 'Speaking'),
+    week.attempts || week.talks ? h('div', { class: 'grid4' },
+      h('div', { class: 'stat' }, h('strong', {}, week.talks), h('span', {}, `conversations in German${delta(week.talks, previous.talks)}`)),
+      h('div', { class: 'stat' }, h('strong', {}, week.attempts), h('span', {}, `phrases spoken (${week.passes} clear)`)),
+      h('div', { class: 'stat' }, h('strong', {}, pct(week.accuracy)), h('span', {}, `accuracy${delta(week.accuracy == null ? null : week.accuracy * 100, previous.accuracy == null ? null : previous.accuracy * 100, 0, ' pts')}`)),
+      h('div', { class: 'stat' }, h('strong', {}, week.confidence == null ? '–' : `${week.confidence.toFixed(1)} / 5`), h('span', {}, `confidence${delta(week.confidence, previous.confidence, 1)}`)))
+      : h('p', { class: 'muted' }, 'Do a speaking session and log your conversations to see your confidence trend here.'));
+}
+
 export function statsView(ctx) {
   const s = ctx.store.get();
   const today = localDateStr();
@@ -396,6 +442,7 @@ export function statsView(ctx) {
       h('div', { class: 'stat' }, h('strong', {}, fmtMin(weekSec)), h('span', {}, 'last 7 days'))),
     h('section', { class: 'card' }, h('h2', {}, 'Last 12 weeks'), heatmap(s, today),
       h('p', { class: 'muted small' }, `Streak freezes available: ${s.streak.freezes}. A day counts at ${s.settings.streakMinMinutes}+ minutes.`)),
+    speakingCard(s, today),
     h('section', { class: 'card' }, h('h2', {}, 'Grammar mastery'),
       topics.length ? topics.map((t) => {
         const m = mastery(s, t);

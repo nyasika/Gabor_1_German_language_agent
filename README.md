@@ -11,7 +11,9 @@ A Duolingo-style German learning app for two 15-20 minute sessions a day: **7:00
 | Phone + PC sync (Supabase) | Built, tested against a faked Supabase; **not yet run against your real project** |
 | Push reminders 7:00 / 20:30 | Built, schedule logic tested (summer, winter, DST days); **not yet run end to end** |
 | Content | 4 placeholder lessons (52 exercises), 46 cards, 24 colleague missions. **Linie B1.1/B1.2 chapters still to be added** |
-| Not built yet | Writing task with AI feedback, more exercise types (transformation, dialogue, reading), boss challenges, weekly report, Work-German track, audio |
+| Speaking practice (browser speech, free) | Built: hear a phrase, say it, word-by-word feedback, confidence rating, conversation counter. Tested with a fake recogniser; **not yet tried with a real microphone on your phone** |
+| Curriculum map | Drafted in `content/curriculum_map.json` (34 grammar topics, 13 vocabulary clusters, 12 situations, sprints); lessons still use the 4 placeholders |
+| Not built yet | Sprint mechanism, real lessons from the map, placement test, writing task with feedback, more exercise types (transformation, dialogue, reading), boss challenges, weekly report |
 
 ## Run locally
 
@@ -48,7 +50,19 @@ Sync merges instead of overwriting: phone and PC progress are combined, so doing
 
 GitHub's scheduler can start a few minutes late; a run more than 45 minutes late is skipped rather than sent at a wrong time.
 
-## Adding the Linie chapters
+## Speaking
+
+The **Speaking practice** card starts a 5-minute session: shadow a few phrases (listen, then repeat), say today's colleague missions from memory, and revisit phrases you found hard. You see word by word what the recogniser heard (green = right, amber = nearly, red = wrong or missing), get up to three tries, and can overrule a mishearing. At the end you rate your confidence 1-5; the Progress page shows the trend next to your count of German conversations.
+
+- Uses the browser's built-in German voice and speech recognition: no account, no cost. Works best in **Chrome on Android**.
+- In Chrome the audio goes to Google's speech service to become text. This app stores only the scores.
+- It compares words, so it does **not** judge pronunciation quality (vowel length, ch/sch, intonation). If it mishears you, tap "Count it as correct".
+- Practice phrases come from the spoken chunks of the curriculum map: after editing `content/curriculum_map.json` run `npm run chunks`.
+
+## Adding the Linie chapters (superseded)
+
+The curriculum map in `content/curriculum_map.json` replaces the plan to follow a textbook. The section below describes the lesson file format, which stays the same.
+
 
 Content is plain JSON in `web/data/`:
 

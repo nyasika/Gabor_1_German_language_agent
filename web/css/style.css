@@ -144,3 +144,14 @@ textarea, input[type=text], input[type=url], input[type=email], input[type=passw
 .hm { aspect-ratio: 1; border-radius: 4px; background: var(--border); }
 .hm-1 { background: #bfe6d3; } .hm-2 { background: #7fcfa9; } .hm-3 { background: #3cb88a; } .hm-4 { background: #1f7a5a; } .hm-future { background: transparent; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+.grow { flex: 1; } .mission .listen { margin: 0; align-self: center; }
+.talks { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; } .talks .btn { margin: 0; }
+.big-de { font-size: 1.5rem; border-top: 0; margin: 0; padding: 0; }
+.speak-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; } .speak-actions .btn { margin: 0; }
+.listening { min-height: 1.5em; color: var(--brand); font-weight: 600; }
+.diff { font-size: 1.3rem; line-height: 1.8; margin: 8px 0 4px; }
+.w-ok { color: var(--good); font-weight: 700; }
+.w-close { color: var(--warn); font-weight: 700; text-decoration: underline dotted; }
+.w-wrong, .w-missing { color: var(--bad); font-weight: 700; text-decoration: underline wavy; }
+.conf { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 8px 0; } .conf .btn { margin: 0; }

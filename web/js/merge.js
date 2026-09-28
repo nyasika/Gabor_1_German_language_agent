@@ -77,6 +77,35 @@ function mergeUnionMap(a, b) {
   return out;
 }
 
+function mergeSpeaking(a = {}, b = {}) {
+  const phrases = { ...(a.phrases || {}) };
+  for (const [id, pb] of Object.entries(b.phrases || {})) {
+    const pa = phrases[id];
+    phrases[id] = pa
+      ? { tries: maxNum(pa.tries, pb.tries), best: maxNum(pa.best, pb.best), last: (pb.last || '') > (pa.last || '') ? pb.last : pa.last }
+      : pb;
+  }
+  const log = {};
+  for (const date of new Set([...Object.keys(a.log || {}), ...Object.keys(b.log || {})])) {
+    const da = (a.log || {})[date] || {};
+    const db = (b.log || {})[date] || {};
+    log[date] = {
+      attempts: maxNum(da.attempts, db.attempts),
+      passes: maxNum(da.passes, db.passes),
+      scoreSum: maxNum(da.scoreSum, db.scoreSum),
+      confidence: db.confidence ?? da.confidence ?? null,
+      ids: [...new Set([...(da.ids || []), ...(db.ids || [])])],
+    };
+  }
+  return { phrases, log };
+}
+
+function mergeCounts(a = {}, b = {}) {
+  const out = { ...a };
+  for (const [k, v] of Object.entries(b)) out[k] = maxNum(out[k], v);
+  return out;
+}
+
 export function mergeStates(local, remote) {
   const base = defaultState();
   const newer = (remote.updatedAt || 0) > (local.updatedAt || 0) ? remote : local;
@@ -101,6 +130,8 @@ export function mergeStates(local, remote) {
     topics: mergeTopics(local.topics || {}, remote.topics || {}),
     gaps: mergeGaps(local.gaps || [], remote.gaps || []),
     missionsUsed: mergeUnionMap(local.missionsUsed || {}, remote.missionsUsed || {}),
+    speaking: mergeSpeaking(local.speaking, remote.speaking),
+    talks: mergeCounts(local.talks, remote.talks),
     lastLead: newer.lastLead ?? other.lastLead ?? null,
   };
 }

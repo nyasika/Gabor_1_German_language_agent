@@ -22,6 +22,8 @@ export function defaultState() {
     topics: {},
     gaps: [],
     missionsUsed: {},
+    speaking: { phrases: {}, log: {} },
+    talks: {},
     lastLead: null,
   };
 }
