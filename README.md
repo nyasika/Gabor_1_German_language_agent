@@ -1,20 +1,22 @@
 # Wortweg
 
-A Duolingo-style German learning app for two 15-20 minute sessions a day: **7:00 review** (spaced repetition + colleague-mission phrases) and **20:30 lesson** (varied exercises + evening log). Installs on Android as an app, works on PC in the browser, costs about nothing to run.
+A Duolingo-style German learning app, in Hungarian, for two 15-20 minute sessions a day: **7:00 review** (spaced repetition + colleague-mission phrases) and **20:30 lesson** (varied exercises + evening log). Installs on Android as an app, works on PC in the browser, costs about nothing to run.
 
 ## Status
 
 | Part | State |
 |---|---|
+| Interface language | Hungarian throughout (buttons, instructions, exercise prompts, grammar explanations). German target content stays German |
 | Learning app (path, XP, streak, goal ring, FSRS review, 6 exercise types, evening log, stats, backup) | Built and tested in a real browser |
 | Progress saving | After **every answer**, verified by test; export/restore in Settings |
 | Phone + PC sync (Supabase) | Built, tested against a faked Supabase; **not yet run against your real project** |
 | Push reminders 7:00 / 20:30 | Built, schedule logic tested (summer, winter, DST days); **not yet run end to end** |
-| Curriculum map | `content/curriculum_map.json`: 34 grammar topics B1→C1 in prerequisite order (can-do statements + spoken chunks), 13 vocabulary clusters, 12 situations, sprint template. Original content, not the Linie textbook |
-| Content | 12 real B1 lessons (G01-G12, 136 exercises) covering the map's B1 grammar topics, 46 review cards, 24 colleague missions. **B1+/B2/C1 lessons (G13-G34) not yet written** |
+| Curriculum map | `content/curriculum_map.json`: 34 grammar topics B1→C1 in prerequisite order (Hungarian can-do statements + spoken chunks), 13 vocabulary clusters, 12 situations, sprint template. Original content, not the Linie textbook |
+| Content | 12 real B1 lessons (G01-G12, 136 exercises) covering the map's B1 grammar topics, with long, detailed Hungarian explanations and grammar tables (declension/conjugation patterns) where relevant. 46 review cards, 24 colleague missions. **B1+/B2/C1 lessons (G13-G34) not yet written** |
 | Sprints (3-7 day topic deep-dives) | Built: notice → drill → drill → produce (speaking) → check, with a home-page suggestion when a topic's accuracy is low. 2 examples written (`G05` Konjunktiv II, `SP01` Hungarian-speaker pitfalls); more topics can be added as sprint content without touching the engine |
+| Vocabulary packs (every 10 days) | Built: basic verbs (with Präteritum + Partizip II + auxiliary), adjectives and adverbs, unlocked on a 10-day clock and added to the review deck on claim. 3 starter packs (10 words each); more are just a content file away |
 | Speaking practice (browser speech, free) | Built: hear a phrase, say it, word-by-word feedback, confidence rating, conversation counter. Tested with a fake recogniser; **not yet tried with a real microphone on your phone** |
-| Not built yet | Lessons for G13-G34, more sprint topics, a placement test, writing task with AI feedback, more exercise types (transformation, dialogue, reading), boss challenges, weekly report |
+| Not built yet | Lessons for G13-G34, more sprint topics, more vocab packs, a placement test, writing task with AI feedback, more exercise types (transformation, dialogue, reading), boss challenges, weekly report |
 
 ## Run locally
 
@@ -69,17 +71,26 @@ A sprint is 3-7 focused days on one topic, on top of the normal daily path: **no
 - Mistakes on drill/check days become review cards, same as a lesson.
 - **Adding a sprint**: write `web/data/sprints/<id>.json` (`notice`/`drill`/`drill`/`produce`/`check` days; drill/check days reuse the lesson exercise schema, produce uses `speak_items: [{id, de}]`), add its id to `web/data/sprints.json`, and make sure the id is in `web/data/topics.json` (regenerate with `npm run topics` after editing the curriculum map, or add an `extra_sprints` entry for a topic outside the grammar map). Run `npm run validate` — it checks day numbering, exercise structure, and id uniqueness across all sprints.
 
+## Vocabulary packs
+
+A separate, lighter-weight track next to the lessons: basic verbs (with full principal parts), adjectives and adverbs, grouped into 10-word packs. A new pack unlocks every 10 days, counted from the first time the app checks (`web/js/vocabpacks.js`); claiming one (from the Home banner or `#/vocab`) adds every word as a normal FSRS review card, so it folds straight into the existing review session — no separate scheduler.
+
+- Verb cards show the full principal parts on the back: `gehen – ging – ist gegangen`.
+- Adjective cards carry the opposite as a hint, where there is a natural one.
+- **Adding a pack**: append an entry to `web/data/vocab_packs.json` (`category`: `verb`/`adjective`/`adverb`; verb items need `praeteritum`, `partizip2`, `aux`). It unlocks automatically once its turn in the array comes up. Run `npm run validate` — it checks every verb item has its past-tense forms and that words aren't duplicated within a pack.
+
 ## Content format
 
 Content is plain JSON in `web/data/`:
 
 - `path.json`: chapters and the order of lessons. Lesson ids match the curriculum map's grammar topic ids (e.g. `G05`).
-- `lessons/<id>.json`: intro bullets and 10+ exercises (types: `mc`, `article`, `cloze`, `order`, `match`, `errorspot`). Every lesson needs at least 4 different types. Each exercise's `topic` field should be a topic id from `topics.json`, so mastery and sprint suggestions line up.
+- `lessons/<id>.json`: `intro` (an array of Hungarian paragraphs — these are meant to be long and detailed, not terse bullets), an optional `tables` array for declension/conjugation patterns (`{title, headers, rows}}`, rendered as a real, horizontally-scrollable `<table>`), and 10+ exercises (types: `mc`, `article`, `cloze`, `order`, `match`, `errorspot`). Every lesson needs at least 4 different exercise types. Each exercise's `topic` field should be a topic id from `topics.json`, so mastery and sprint suggestions line up. Exercise instructions/prompts are Hungarian; the German sentences, tiles and answers stay German.
 - `cards.json`: review deck (`flip` = Hungarian cue to German, `cloze` = typed gap). New cards enter at 4 per day plus 3 colleague missions.
 - `missions.json`: phrases to use with your colleague that day.
-- `topics.json`, `chunks.json`: generated from `content/curriculum_map.json` via `npm run topics` / `npm run chunks` — edit the map, not these files.
+- `vocab_packs.json`: the 10-day vocabulary track, see above.
+- `topics.json`, `chunks.json`: generated from `content/curriculum_map.json` via `npm run topics` / `npm run chunks` — edit the map, not these files. Topic `title`/`cando` in the map are Hungarian; regenerate after editing.
 
-Run `npm run validate` after editing: it checks, for example, that every word-order answer can be built from its tiles, every multiple-choice answer is among the options, and sprint days are numbered correctly.
+Run `npm run validate` after editing: it checks, for example, that every word-order answer can be built from its tiles, every multiple-choice answer is among the options, sprint days are numbered correctly, every grammar table's rows match its header count, and vocab pack verbs carry their past-tense forms.
 
 ## How it works
 

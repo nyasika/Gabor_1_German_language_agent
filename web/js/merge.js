@@ -2,6 +2,7 @@
 import { defaultState } from './progress.js';
 
 const maxNum = (a, b) => Math.max(a || 0, b || 0);
+const earlierDate = (a, b) => (a && b ? (a < b ? a : b) : a || b || null);
 
 function mergeLog(a, b) {
   const out = {};
@@ -155,6 +156,10 @@ export function mergeStates(local, remote) {
     sprints: {
       active: newer.sprints?.active ?? other.sprints?.active ?? null,
       progress: mergeSprintProgress(local.sprints?.progress, remote.sprints?.progress),
+    },
+    vocab: {
+      startDate: earlierDate(local.vocab?.startDate, remote.vocab?.startDate),
+      claimed: [...new Set([...(local.vocab?.claimed || []), ...(remote.vocab?.claimed || [])])],
     },
     lastLead: newer.lastLead ?? other.lastLead ?? null,
   };

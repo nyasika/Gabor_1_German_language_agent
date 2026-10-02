@@ -1,17 +1,30 @@
 {
   "id": "SP01",
-  "title": "Hungarian-speaker pitfalls: articles, gender, plural",
+  "title": "Tipikus magyar anyanyelvi buktatók: névelők, nemek, többes szám",
   "topicId": "SP01",
   "days": [
     {
       "day": 1,
       "focus": "notice",
-      "title": "Notice: why German nouns are hard for Hungarian speakers",
+      "title": "Figyeld meg: miért nehezek a német főnevek magyar anyanyelvűeknek",
       "intro": [
-        "Hungarian has no grammatical gender, so der/die/das has to be memorized noun by noun — best done through endings and patterns, not one at a time.",
-        "A handful of endings predict gender reliably: -ung/-heit/-keit/-schaft/-tion/-ie → die; -chen/-lein/-ment/-um → das; days, months and seasons → der.",
-        "German plurals are irregular and must be learned with the noun (-e, -er, -(e)n, -s, or an Umlaut, or nothing at all).",
-        "Case changes the article, not the noun's gender: der Tisch stays masculine even as den Tisch or dem Tisch."
+        "A magyarban nincs nyelvtani nem, ezért a der/die/das-t főnevenként kell megjegyezni — ezt legjobb végződések és minták alapján tanulni, nem egyesével, mechanikusan.",
+        "Néhány végződés megbízhatóan megjósolja a nemet: -ung/-heit/-keit/-schaft/-tion/-ie → die; -chen/-lein/-ment/-um → das; a napok, hónapok, évszakok → der.",
+        "A német többes szám szabálytalan: mindig a főnévvel együtt kell megtanulni (-e, -er, -(e)n, -s, Umlaut, vagy akár semmilyen változás).",
+        "Az eset megváltoztatja a névelőt, de nem a főnév nemét: a der Tisch hímnemű marad akkor is, ha den Tisch vagy dem Tisch alakban áll.",
+        "Ez a sprint két részre bontja a témát: a 2. napon a nem-minták, a 3. napon a többes szám-minták kerülnek sorra."
+      ],
+      "tables": [
+        {
+          "title": "Gyors áttekintés",
+          "headers": ["Minta", "Példa"],
+          "rows": [
+            ["-ung, -heit, -keit, -schaft, -tion → die", "die Entscheidung, die Freiheit"],
+            ["-chen, -lein, -ment, -um → das", "das Mädchen, das Museum"],
+            ["napok, hónapok, évszakok → der", "der Montag, der Sommer"],
+            ["többes szám: nincs egységes szabály, mindig a szóval együtt tanuld", "der Tisch → die Tische, das Kind → die Kinder"]
+          ]
+        }
       ],
       "chunks": [
         { "de": "Das ist eine wichtige Entscheidung." },
@@ -24,38 +37,38 @@
     {
       "day": 2,
       "focus": "drill",
-      "title": "Endings that predict gender",
+      "title": "Végződések, amelyek megjósolják a nemet",
       "exercises": [
-        { "id": "SP01-d2-01", "type": "article", "topic": "SP01", "noun": "Entscheidung", "hu": "döntés", "answer": "die", "explain": "-ung nouns are always feminine." },
-        { "id": "SP01-d2-02", "type": "article", "topic": "SP01", "noun": "Freiheit", "hu": "szabadság", "answer": "die", "explain": "-heit nouns are always feminine." },
-        { "id": "SP01-d2-03", "type": "article", "topic": "SP01", "noun": "Mädchen", "hu": "lány", "answer": "das", "explain": "-chen nouns are always neuter, even for a female person." },
-        { "id": "SP01-d2-04", "type": "mc", "topic": "SP01", "prompt": "Which ending is always neuter?", "options": ["-chen", "-ung", "-heit", "-schaft"], "answer": "-chen" },
-        { "id": "SP01-d2-05", "type": "article", "topic": "SP01", "noun": "Museum", "hu": "múzeum", "answer": "das", "explain": "-um nouns (often from Latin) are usually neuter." },
-        { "id": "SP01-d2-06", "type": "article", "topic": "SP01", "noun": "Nation", "hu": "nemzet", "answer": "die", "explain": "-tion nouns are always feminine." },
-        { "id": "SP01-d2-07", "type": "match", "topic": "SP01", "prompt": "Match the ending pattern with its gender.", "pairs": [["-ung, -heit, -keit, -schaft, -tion", "always feminine"], ["-chen, -lein, -ment, -um", "always neuter"], ["days, months, seasons", "masculine by convention"], ["most male people/professions", "masculine (natural gender)"]] },
-        { "id": "SP01-d2-08", "type": "article", "topic": "SP01", "noun": "Montag", "hu": "hétfő", "answer": "der", "explain": "Days of the week are masculine: der Montag." },
-        { "id": "SP01-d2-09", "type": "mc", "topic": "SP01", "prompt": "Der/die/das Freundschaft — which article?", "options": ["die", "der", "das", "den"], "answer": "die", "explain": "-schaft nouns are feminine: die Freundschaft." }
+        { "id": "SP01-d2-01", "type": "article", "topic": "SP01", "noun": "Entscheidung", "hu": "döntés", "answer": "die", "explain": "A -ung végű főnevek mindig nőneműek." },
+        { "id": "SP01-d2-02", "type": "article", "topic": "SP01", "noun": "Freiheit", "hu": "szabadság", "answer": "die", "explain": "A -heit végű főnevek mindig nőneműek." },
+        { "id": "SP01-d2-03", "type": "article", "topic": "SP01", "noun": "Mädchen", "hu": "lány", "answer": "das", "explain": "A -chen végű főnevek mindig semlegesek, még nőnemű személy esetén is." },
+        { "id": "SP01-d2-04", "type": "mc", "topic": "SP01", "prompt": "Melyik végződés mindig semleges?", "options": ["-chen", "-ung", "-heit", "-schaft"], "answer": "-chen" },
+        { "id": "SP01-d2-05", "type": "article", "topic": "SP01", "noun": "Museum", "hu": "múzeum", "answer": "das", "explain": "A -um végű (gyakran latin eredetű) főnevek általában semlegesek." },
+        { "id": "SP01-d2-06", "type": "article", "topic": "SP01", "noun": "Nation", "hu": "nemzet", "answer": "die", "explain": "A -tion végű főnevek mindig nőneműek." },
+        { "id": "SP01-d2-07", "type": "match", "topic": "SP01", "prompt": "Párosítsd a végződésmintát a nemével.", "pairs": [["-ung, -heit, -keit, -schaft, -tion", "mindig nőnemű"], ["-chen, -lein, -ment, -um", "mindig semleges"], ["napok, hónapok, évszakok", "hagyományosan hímnemű"], ["a legtöbb férfi személy/foglalkozás", "hímnemű (természetes nem)"]] },
+        { "id": "SP01-d2-08", "type": "article", "topic": "SP01", "noun": "Montag", "hu": "hétfő", "answer": "der", "explain": "A hét napjai hímneműek: der Montag." },
+        { "id": "SP01-d2-09", "type": "mc", "topic": "SP01", "prompt": "Der/die/das Freundschaft — melyik névelő?", "options": ["die", "der", "das", "den"], "answer": "die", "explain": "A -schaft végű főnevek nőneműek: die Freundschaft." }
       ]
     },
     {
       "day": 3,
       "focus": "drill",
-      "title": "Plural patterns",
+      "title": "Többes szám minták",
       "exercises": [
-        { "id": "SP01-d3-01", "type": "cloze", "topic": "SP01", "prompt": "Plural of 'das Kind'.", "sentence": "Wir haben zwei ___.", "answers": ["Kinder"], "hint": "gyerekek", "explain": "Kind → Kinder: an -er plural." },
-        { "id": "SP01-d3-02", "type": "mc", "topic": "SP01", "prompt": "Plural of 'der Tisch'?", "options": ["Tische", "Tischer", "Tischen", "Tisch"], "answer": "Tische", "explain": "Most masculine nouns take -e in the plural." },
-        { "id": "SP01-d3-03", "type": "cloze", "topic": "SP01", "prompt": "Plural of 'die Frau'.", "sentence": "Dort stehen drei ___.", "answers": ["Frauen"], "hint": "nők", "explain": "Most feminine nouns take -(e)n: Frauen." },
-        { "id": "SP01-d3-04", "type": "mc", "topic": "SP01", "prompt": "Plural of 'das Auto'?", "options": ["Autos", "Autoe", "Autoen", "Auton"], "answer": "Autos", "explain": "Many loanwords take -s in the plural." },
-        { "id": "SP01-d3-05", "type": "cloze", "topic": "SP01", "prompt": "An Umlaut plural.", "sentence": "Wir haben zwei neue ___.", "answers": ["Häuser"], "hint": "das Haus → ? (Umlaut + -er)", "explain": "Haus → Häuser: -er plural with an Umlaut." },
-        { "id": "SP01-d3-06", "type": "match", "topic": "SP01", "prompt": "Match the plural ending with a typical example.", "pairs": [["-e (often + Umlaut)", "der Tisch → die Tische"], ["-(e)n", "die Frau → die Frauen"], ["-er (often + Umlaut)", "das Kind → die Kinder"], ["-s", "das Auto → die Autos"]] },
-        { "id": "SP01-d3-07", "type": "mc", "topic": "SP01", "prompt": "Plural of 'der Mann'?", "options": ["Männer", "Manne", "Männen", "Manns"], "answer": "Männer", "explain": "Mann → Männer: -er plural with an Umlaut." },
-        { "id": "SP01-d3-08", "type": "cloze", "topic": "SP01", "prompt": "No change at all in the plural.", "sentence": "Wir haben zwei neue ___.", "answers": ["Computer"], "hint": "der Computer → ? (nincs változás)", "explain": "Some nouns ending in -er/-en/-el don't change in the plural." }
+        { "id": "SP01-d3-01", "type": "cloze", "topic": "SP01", "prompt": "A „das Kind” többes száma.", "sentence": "Wir haben zwei ___.", "answers": ["Kinder"], "hint": "gyerekek", "explain": "Kind → Kinder: -er végű többes szám." },
+        { "id": "SP01-d3-02", "type": "mc", "topic": "SP01", "prompt": "A „der Tisch” többes száma?", "options": ["Tische", "Tischer", "Tischen", "Tisch"], "answer": "Tische", "explain": "A legtöbb hímnemű főnév -e végződést kap többes számban." },
+        { "id": "SP01-d3-03", "type": "cloze", "topic": "SP01", "prompt": "A „die Frau” többes száma.", "sentence": "Dort stehen drei ___.", "answers": ["Frauen"], "hint": "nők", "explain": "A legtöbb nőnemű főnév -(e)n végződést kap: Frauen." },
+        { "id": "SP01-d3-04", "type": "mc", "topic": "SP01", "prompt": "A „das Auto” többes száma?", "options": ["Autos", "Autoe", "Autoen", "Auton"], "answer": "Autos", "explain": "Sok jövevényszó -s végződést kap többes számban." },
+        { "id": "SP01-d3-05", "type": "cloze", "topic": "SP01", "prompt": "Umlautos többes szám.", "sentence": "Wir haben zwei neue ___.", "answers": ["Häuser"], "hint": "das Haus → ? (Umlaut + -er)", "explain": "Haus → Häuser: -er végű többes szám Umlauttal." },
+        { "id": "SP01-d3-06", "type": "match", "topic": "SP01", "prompt": "Párosítsd a többes szám végződést egy jellemző példával.", "pairs": [["-e (gyakran + Umlaut)", "der Tisch → die Tische"], ["-(e)n", "die Frau → die Frauen"], ["-er (gyakran + Umlaut)", "das Kind → die Kinder"], ["-s", "das Auto → die Autos"]] },
+        { "id": "SP01-d3-07", "type": "mc", "topic": "SP01", "prompt": "A „der Mann” többes száma?", "options": ["Männer", "Manne", "Männen", "Manns"], "answer": "Männer", "explain": "Mann → Männer: -er végű többes szám Umlauttal." },
+        { "id": "SP01-d3-08", "type": "cloze", "topic": "SP01", "prompt": "Nincs változás a többes számban.", "sentence": "Wir haben zwei neue ___.", "answers": ["Computer"], "hint": "der Computer → ? (nincs változás)", "explain": "Néhány -er/-en/-el végű főnév nem változik többes számban." }
       ]
     },
     {
       "day": 4,
       "focus": "produce",
-      "title": "Say it: articles and plurals out loud",
+      "title": "Mondd ki: névelők és többes számok hangosan",
       "speak_items": [
         { "id": "SP01-4-1", "de": "Das ist eine wichtige Entscheidung.", "hu": "Ez egy fontos döntés." },
         { "id": "SP01-4-2", "de": "Wir haben zwei neue Kollegen.", "hu": "Két új kollégánk van." },
@@ -68,17 +81,17 @@
     {
       "day": 5,
       "focus": "check",
-      "title": "Mixed check",
+      "title": "Vegyes ellenőrzés",
       "exercises": [
-        { "id": "SP01-d5-01", "type": "article", "topic": "SP01", "noun": "Verspätung", "hu": "késés", "answer": "die", "explain": "-ung → feminine." },
-        { "id": "SP01-d5-02", "type": "mc", "topic": "SP01", "prompt": "Plural of 'die Firma'?", "options": ["Firmen", "Firmas", "Firmer", "Firma"], "answer": "Firmen" },
-        { "id": "SP01-d5-03", "type": "cloze", "topic": "SP01", "prompt": "der Kollege is an n-noun.", "sentence": "Wir haben zwei ___.", "answers": ["Kollegen"], "hint": "der Kollege → ? (n-deklináció)", "explain": "n-nouns add -n in the plural and in most other cases too." },
+        { "id": "SP01-d5-01", "type": "article", "topic": "SP01", "noun": "Verspätung", "hu": "késés", "answer": "die", "explain": "-ung → nőnemű." },
+        { "id": "SP01-d5-02", "type": "mc", "topic": "SP01", "prompt": "A „die Firma” többes száma?", "options": ["Firmen", "Firmas", "Firmer", "Firma"], "answer": "Firmen", "explain": "Firma → Firmen (rendhagyó, de -n végű többes szám)." },
+        { "id": "SP01-d5-03", "type": "cloze", "topic": "SP01", "prompt": "A der Kollege egy n-deklinációs főnév.", "sentence": "Wir haben zwei ___.", "answers": ["Kollegen"], "hint": "der Kollege → ? (n-deklináció)", "explain": "Az n-deklinációs főnevek -n-t kapnak többes számban és a legtöbb más esetben is." },
         { "id": "SP01-d5-04", "type": "article", "topic": "SP01", "noun": "Museum", "hu": "múzeum", "answer": "das" },
-        { "id": "SP01-d5-05", "type": "mc", "topic": "SP01", "prompt": "Which ending is always feminine?", "options": ["-heit", "-chen", "-um", "-lein"], "answer": "-heit" },
-        { "id": "SP01-d5-06", "type": "cloze", "topic": "SP01", "prompt": "Loanwords take -s.", "sentence": "Das sind unsere neuen ___.", "answers": ["Autos"], "hint": "-s végződés" },
-        { "id": "SP01-d5-07", "type": "match", "topic": "SP01", "prompt": "Match the pattern with the type it covers.", "pairs": [["-ung", "a feminine gender ending"], ["-chen", "a neuter gender ending"], ["-e (masc./neuter nouns)", "a common plural ending"], ["-s (loanwords)", "a plural ending for loanwords"]] },
-        { "id": "SP01-d5-08", "type": "article", "topic": "SP01", "noun": "Ereignis", "hu": "esemény", "answer": "das", "explain": "-nis nouns are usually neuter." },
-        { "id": "SP01-d5-09", "type": "mc", "topic": "SP01", "prompt": "Plural of 'der Tag'?", "options": ["Tage", "Tager", "Tagen", "Tags"], "answer": "Tage" }
+        { "id": "SP01-d5-05", "type": "mc", "topic": "SP01", "prompt": "Melyik végződés mindig nőnemű?", "options": ["-heit", "-chen", "-um", "-lein"], "answer": "-heit" },
+        { "id": "SP01-d5-06", "type": "cloze", "topic": "SP01", "prompt": "A jövevényszavak -s-t kapnak.", "sentence": "Das sind unsere neuen ___.", "answers": ["Autos"], "hint": "-s végződés" },
+        { "id": "SP01-d5-07", "type": "match", "topic": "SP01", "prompt": "Párosítsd a mintát azzal, hogy mit fed le.", "pairs": [["-ung", "nőnemű végződés"], ["-chen", "semleges végződés"], ["-e (hímnem/semleges főnevek)", "gyakori többes szám végződés"], ["-s (jövevényszavak)", "jövevényszavak többes szám végződése"]] },
+        { "id": "SP01-d5-08", "type": "article", "topic": "SP01", "noun": "Ereignis", "hu": "esemény", "answer": "das", "explain": "A -nis végű főnevek általában semlegesek." },
+        { "id": "SP01-d5-09", "type": "mc", "topic": "SP01", "prompt": "A „der Tag” többes száma?", "options": ["Tage", "Tager", "Tagen", "Tags"], "answer": "Tage" }
       ]
     }
   ]

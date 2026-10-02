@@ -1,24 +1,43 @@
 {
   "id": "G05",
-  "title": "Konjunktiv II: wishes, suggestions, politeness",
+  "title": "Konjunktiv II: kívánságok, javaslatok, udvariasság",
   "topic": "G05",
   "intro": [
-    "Use Konjunktiv II for unreal conditions (Wenn ich Zeit hätte, ...), wishes (Ich wäre so gern ...) and polite requests (Könnten Sie ...?).",
-    "Learn the irregular forms by heart: sein → wäre, haben → hätte, können → könnte, müssen → müsste, dürfen → dürfte.",
-    "For most other verbs use würde + infinitive at the end of the clause: Ich würde gern verreisen."
+    "A Konjunktiv II-t irreális feltételek (Ha lenne időm...), kívánságok (Olyan szívesen lennék...) és udvarias kérések (Tudna segíteni?) kifejezésére használjuk.",
+    "A legfontosabb rendhagyó alakokat érdemes fejből tudni: sein→wäre, haben→hätte, können→könnte, müssen→müsste, dürfen→dürfte, sollen→sollte, wollen→wollte, werden→würde.",
+    "A legtöbb más igénél a würde + főnévi igenév szerkezetet használjuk (ami a werden jelen idejű Konjunktiv II alakjából épül fel): Ich würde gern verreisen.",
+    "Feltételes mondatban (wenn ... dann ...) mindkét tagmondatnak Konjunktiv II-ben kell állnia: Wenn ich mehr Zeit hätte, würde ich öfter reisen.",
+    "A múltra vonatkozó irreális mondatokhoz — amit meg kellett volna tenni, de nem történt meg — a hätte/wäre + Partizip II szerkezetet használjuk: Ich wäre gern früher gekommen.",
+    "Udvarias kérésben a Konjunktiv II sokkal lágyabban hangzik, mint az egyszerű jelen idő: a Könnten Sie mir helfen? jóval udvariasabb, mint a Können Sie mir helfen?"
+  ],
+  "tables": [
+    {
+      "title": "A legfontosabb rendhagyó Konjunktiv II alakok",
+      "headers": ["Főnévi igenév", "Konjunktiv II", "Jelentés"],
+      "rows": [
+        ["sein", "wäre", "lenne"],
+        ["haben", "hätte", "lenne neki / volna"],
+        ["können", "könnte", "tudna"],
+        ["müssen", "müsste", "kellene"],
+        ["dürfen", "dürfte", "szabad lenne"],
+        ["sollen", "sollte", "kellene (külső elvárás)"],
+        ["wollen", "wollte", "akarna"],
+        ["werden", "würde", "a würde + Infinitiv szerkezet segédigéje"]
+      ]
+    }
   ],
   "exercises": [
-    { "id": "G05-01", "type": "mc", "topic": "G05", "prompt": "Wenn ich mehr Zeit ___, würde ich öfter reisen.", "options": ["hätte", "hatte", "habe", "haben"], "answer": "hätte", "explain": "haben → hätte: Konjunktiv II for an unreal condition." },
-    { "id": "G05-02", "type": "cloze", "topic": "G05", "prompt": "Reserve a room politely.", "sentence": "Ich ___ gern ein Zimmer für zwei Nächte reservieren.", "answers": ["möchte", "würde"], "hint": "Udvariasan: szeretnék ...", "explain": "möchte (from mögen) or würde gern + infinitive both work." },
-    { "id": "G05-03", "type": "order", "topic": "G05", "prompt": "Ha lenne időm, elutaznék.", "tiles": ["Wenn", "ich", "Zeit", "hätte,", "würde", "ich", "verreisen."], "answers": ["Wenn ich Zeit hätte, würde ich verreisen."], "explain": "After the wenn-clause the verb comes first in the main clause: würde ich." },
-    { "id": "G05-04", "type": "errorspot", "topic": "G05", "prompt": "Tap the word that is wrong.", "tokens": ["Wenn", "wir", "mehr", "Geld", "haben,", "würden", "wir", "ein", "Auto", "kaufen."], "wrongIndex": 4, "fixed": "Wenn wir mehr Geld hätten, würden wir ein Auto kaufen.", "explain": "An unreal condition needs Konjunktiv II: hätten." },
-    { "id": "G05-05", "type": "mc", "topic": "G05", "prompt": "Which request sounds the most polite?", "options": ["Könnten Sie mir bitte helfen?", "Können Sie mir helfen?", "Helfen Sie mir!", "Sie helfen mir jetzt."], "answer": "Könnten Sie mir bitte helfen?", "explain": "könnte + bitte is the polite standard." },
-    { "id": "G05-06", "type": "cloze", "topic": "G05", "prompt": "Say it would be very kind.", "sentence": "Das ___ sehr nett von Ihnen.", "answers": ["wäre"], "hint": "sein → ?", "explain": "sein → wäre." },
-    { "id": "G05-07", "type": "match", "topic": "G05", "prompt": "Match the infinitive with its Konjunktiv II form.", "pairs": [["sein", "wäre"], ["haben", "hätte"], ["können", "könnte"], ["müssen", "müsste"], ["dürfen", "dürfte"]] },
-    { "id": "G05-08", "type": "order", "topic": "G05", "prompt": "A te helyedben elfogadnám az ajánlatot.", "tiles": ["An", "deiner", "Stelle", "würde", "ich", "das", "Angebot", "annehmen."], "answers": ["An deiner Stelle würde ich das Angebot annehmen."], "explain": "An deiner Stelle + würde is the classic advice phrase." },
-    { "id": "G05-09", "type": "cloze", "topic": "G05", "prompt": "Complete the conditional.", "sentence": "Wenn ich mehr Geld hätte, ___ ich ein Auto kaufen.", "answers": ["würde"], "hint": "vennék", "explain": "würde + infinitive in the main clause." },
-    { "id": "G05-10", "type": "mc", "topic": "G05", "prompt": "Which sentence expresses a wish?", "options": ["Ich wäre so gern in Berlin.", "Ich bin gern in Berlin.", "Ich war gern in Berlin.", "Ich werde gern in Berlin sein."], "answer": "Ich wäre so gern in Berlin.", "explain": "wäre + gern/so gern expresses a wish." },
-    { "id": "G05-11", "type": "errorspot", "topic": "G05", "prompt": "Tap the word that is in the wrong place.", "tokens": ["Ich", "würde", "gern", "haben", "ein", "Zimmer", "mit", "Balkon."], "wrongIndex": 3, "fixed": "Ich würde gern ein Zimmer mit Balkon haben.", "explain": "The infinitive belongs at the end of the sentence (Satzklammer)." },
-    { "id": "G05-12", "type": "cloze", "topic": "G05", "prompt": "Konjunktiv II of the past: I would have liked to come earlier.", "sentence": "Ich ___ gern früher gekommen, aber der Zug hatte Verspätung.", "answers": ["wäre"], "hint": "wäre + Partizip II", "explain": "Past unreal: wäre/hätte + Partizip II (kommen uses sein)." }
+    { "id": "G05-01", "type": "mc", "topic": "G05", "prompt": "Wenn ich mehr Zeit ___, würde ich öfter reisen.", "options": ["hätte", "hatte", "habe", "haben"], "answer": "hätte", "explain": "haben → hätte: Konjunktiv II egy irreális feltételhez." },
+    { "id": "G05-02", "type": "cloze", "topic": "G05", "prompt": "Foglalj szobát udvariasan.", "sentence": "Ich ___ gern ein Zimmer für zwei Nächte reservieren.", "answers": ["möchte", "würde"], "hint": "Udvariasan: szeretnék ...", "explain": "A möchte (a mögen igéből) vagy a würde gern + főnévi igenév is helyes." },
+    { "id": "G05-03", "type": "order", "topic": "G05", "prompt": "Ha lenne időm, elutaznék.", "tiles": ["Wenn", "ich", "Zeit", "hätte,", "würde", "ich", "verreisen."], "answers": ["Wenn ich Zeit hätte, würde ich verreisen."], "explain": "A wenn-tagmondat után a főmondat az igével kezdődik: würde ich." },
+    { "id": "G05-04", "type": "errorspot", "topic": "G05", "prompt": "Koppints a hibás szóra.", "tokens": ["Wenn", "wir", "mehr", "Geld", "haben,", "würden", "wir", "ein", "Auto", "kaufen."], "wrongIndex": 4, "fixed": "Wenn wir mehr Geld hätten, würden wir ein Auto kaufen.", "explain": "Egy irreális feltételhez Konjunktiv II kell: hätten." },
+    { "id": "G05-05", "type": "mc", "topic": "G05", "prompt": "Melyik kérés hangzik a legudvariasabbnak?", "options": ["Könnten Sie mir bitte helfen?", "Können Sie mir helfen?", "Helfen Sie mir!", "Sie helfen mir jetzt."], "answer": "Könnten Sie mir bitte helfen?", "explain": "A könnte + bitte az udvarias forma standardja." },
+    { "id": "G05-06", "type": "cloze", "topic": "G05", "prompt": "Mondd, hogy ez nagyon kedves lenne.", "sentence": "Das ___ sehr nett von Ihnen.", "answers": ["wäre"], "hint": "sein → ?", "explain": "sein → wäre." },
+    { "id": "G05-07", "type": "match", "topic": "G05", "prompt": "Párosítsd a főnévi igenevet a Konjunktiv II alakjával.", "pairs": [["sein", "wäre"], ["haben", "hätte"], ["können", "könnte"], ["müssen", "müsste"], ["dürfen", "dürfte"]] },
+    { "id": "G05-08", "type": "order", "topic": "G05", "prompt": "A te helyedben elfogadnám az ajánlatot.", "tiles": ["An", "deiner", "Stelle", "würde", "ich", "das", "Angebot", "annehmen."], "answers": ["An deiner Stelle würde ich das Angebot annehmen."], "explain": "Az An deiner Stelle + würde a klasszikus tanácsadó fordulat." },
+    { "id": "G05-09", "type": "cloze", "topic": "G05", "prompt": "Egészítsd ki a feltételes mondatot.", "sentence": "Wenn ich mehr Geld hätte, ___ ich ein Auto kaufen.", "answers": ["würde"], "hint": "vennék", "explain": "würde + főnévi igenév a főmondatban." },
+    { "id": "G05-10", "type": "mc", "topic": "G05", "prompt": "Melyik mondat fejez ki kívánságot?", "options": ["Ich wäre so gern in Berlin.", "Ich bin gern in Berlin.", "Ich war gern in Berlin.", "Ich werde gern in Berlin sein."], "answer": "Ich wäre so gern in Berlin.", "explain": "A wäre + gern/so gern kívánságot fejez ki." },
+    { "id": "G05-11", "type": "errorspot", "topic": "G05", "prompt": "Koppints a rossz helyen álló szóra.", "tokens": ["Ich", "würde", "gern", "haben", "ein", "Zimmer", "mit", "Balkon."], "wrongIndex": 3, "fixed": "Ich würde gern ein Zimmer mit Balkon haben.", "explain": "A főnévi igenév a mondat végére tartozik (Satzklammer)." },
+    { "id": "G05-12", "type": "cloze", "topic": "G05", "prompt": "Konjunktiv II múltra vonatkoztatva: szívesebben jöttem volna korábban.", "sentence": "Ich ___ gern früher gekommen, aber der Zug hatte Verspätung.", "answers": ["wäre"], "hint": "wäre + Partizip II", "explain": "Múltra vonatkozó irreális forma: wäre/hätte + Partizip II (a kommen sein-t használ)." }
   ]
 }

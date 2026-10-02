@@ -1,7 +1,7 @@
 {
   "name": "Wortweg",
   "short_name": "Wortweg",
-  "description": "Daily German practice with spaced repetition and varied lessons.",
+  "description": "Napi némettanulás ismétlőkártyákkal és változatos leckékkel.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

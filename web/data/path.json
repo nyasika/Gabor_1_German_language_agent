@@ -1,7 +1,7 @@
 {
   "chapters": [
-    { "id": "c1", "title": "Sentence building & the past", "subtitle": "Word order, Perfekt vs. Präteritum, giving reasons, everyday requests", "lessons": ["G01", "G02", "G03", "G04"] },
-    { "id": "c2", "title": "Describing things precisely", "subtitle": "Politeness, relative clauses, adjective endings, prepositions, separable/reflexive verbs", "lessons": ["G05", "G06", "G07", "G08", "G09"] },
-    { "id": "c3", "title": "Passive & connecting ideas", "subtitle": "The passive voice, infinitive clauses, ordering events in time", "lessons": ["G10", "G11", "G12"] }
+    { "id": "c1", "title": "Mondatszerkezet és múlt idő", "subtitle": "Szórend, Perfekt vs. Präteritum, okok kifejezése, mindennapi kérések", "lessons": ["G01", "G02", "G03", "G04"] },
+    { "id": "c2", "title": "Pontos leírás", "subtitle": "Udvariasság, vonatkozó mellékmondatok, melléknévvégződések, elöljárók, elváló/visszaható igék", "lessons": ["G05", "G06", "G07", "G08", "G09"] },
+    { "id": "c3", "title": "Szenvedő szerkezet és kapcsolódó gondolatok", "subtitle": "A passzívum, főnévi igeneves szerkezetek, események időbeli sorrendje", "lessons": ["G10", "G11", "G12"] }
   ]
 }

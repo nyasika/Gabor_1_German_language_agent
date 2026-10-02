@@ -77,7 +77,7 @@ try {
   // ============ Scenario A: speech supported ============
   const page = await newPage(withFakeSpeech);
   await page.goto(base, { waitUntil: 'networkidle' });
-  await page.waitForSelector('text=Speaking practice');
+  await page.waitForSelector('text=Beszédgyakorlat');
   const today = await localDate(page);
   await page.shot('s01-home');
   assert.ok(await page.locator('button.listen').count() >= 1, 'mission rows have a Listen button');
@@ -89,37 +89,37 @@ try {
   await page.click('button:has-text("+1")'); await page.click('button:has-text("+1")');
   assert.equal(await page.locator('[data-role=talks]').innerText(), '2');
   assert.equal((await page.state()).talks[today], 2, 'counter saved immediately');
-  await page.click('button:has-text("undo")');
+  await page.click('button:has-text("visszavonás")');
   assert.equal((await page.state()).talks[today], 1);
   ok('conversation counter saves in place');
 
-  await page.click('a:has-text("Start speaking")');
-  await page.waitForSelector('text=Hear it, say it');
+  await page.click('a:has-text("Beszéd indítása")');
+  await page.waitForSelector('text=Halld, mondd ki');
   await page.shot('s02-intro');
-  await page.click('button:has-text("Start")');
+  await page.click('button:has-text("Indítás")');
   const target = () => page.locator('.card-answer').first().innerText();
   const say = async (text) => { await page.evaluate((t) => { window.__heard = t; window.__sttError = null; }, text); await page.click('[data-role=speak]'); };
   let item = 0;
   let sawFail = false; let sawBlocked = false; let sawOverrule = false;
   for (let guard = 0; guard < 20; guard++) {
-    if (await page.locator('text=Speaking done').count()) break;
+    if (await page.locator('text=Beszédgyakorlat kész').count()) break;
     await page.waitForSelector('[data-role=speak]');
-    const isPrompt = (await page.locator('.eyebrow').first().innerText()).toLowerCase().includes('from memory');
-    if (isPrompt) await page.click('button:has-text("Peek")');
+    const isPrompt = (await page.locator('.eyebrow').first().innerText()).toLowerCase().includes('emlékezetből');
+    if (isPrompt) await page.click('button:has-text("Súgás")');
     const t = await target();
     if (item === 1) {
       await say('guten tag wie geht es'); // a bad attempt
-      await page.waitForSelector('text=0%: not quite yet');
+      await page.waitForSelector('text=0%: még nem az igazi');
       assert.ok(await page.locator('.w-missing, .w-wrong').count() >= 1, 'wrong words are marked');
-      assert.ok(await page.locator('button:has-text("Try again (2 left)")').count() === 1);
+      assert.ok(await page.locator('button:has-text("Próbáld újra (2 van hátra)")').count() === 1);
       await page.shot('s03-fail');
-      await page.click('button:has-text("Count it as correct")');
-      await page.waitForSelector('text=Counted as correct');
+      await page.click('button:has-text("Számítson helyesnek")');
+      await page.waitForSelector('text=Helyesnek számítva');
       sawFail = true; sawOverrule = true;
     } else if (item === 2) {
       await page.evaluate(() => { window.__sttError = 'not-allowed'; });
       await page.click('[data-role=speak]');
-      await page.waitForSelector('text=microphone is blocked');
+      await page.waitForSelector('text=mikrofon le van tiltva');
       await page.shot('s04-blocked');
       sawBlocked = true;
       await say(t);
@@ -131,17 +131,17 @@ try {
     }
     const mid = await page.state();
     assert.ok(mid.speaking.log[today].attempts >= item + 1, 'every attempt is saved immediately');
-    await page.click('.speak-actions button:has-text("Next")');
+    await page.click('.speak-actions button:has-text("Tovább")');
     item++;
   }
-  await page.waitForSelector('text=Speaking done');
+  await page.waitForSelector('text=Beszédgyakorlat kész');
   await page.shot('s06-summary');
   assert.ok(sawFail && sawBlocked && sawOverrule);
   assert.ok(item >= 6, `a full session has 6+ items, got ${item}`);
   ok(`session of ${item} items: pass, mishearing + overrule, blocked microphone message, retry`);
 
-  await page.click('button:has-text("4 good")');
-  await page.waitForSelector('text=Saved. Your confidence trend');
+  await page.click('button:has-text("4 jó")');
+  await page.waitForSelector('text=Mentve. A magabiztosság-trended');
   const st = await page.state();
   assert.equal(st.speaking.log[today].confidence, 4);
   assert.ok(st.speaking.log[today].passes >= item - 1);
@@ -150,12 +150,12 @@ try {
   ok('confidence rating and per-phrase history saved');
 
   await page.goto(`${base}#/stats`);
-  await page.waitForSelector('text=Speaking');
+  await page.waitForSelector('text=Beszéd');
   assert.ok(await page.locator('text=4.0 / 5').count() === 1);
   await page.shot('s07-stats');
   await page.goto(base);
-  await page.waitForSelector('text=Speaking practice');
-  assert.ok(await page.locator('text=Confidence rated today: 4 / 5').count() === 1);
+  await page.waitForSelector('text=Beszédgyakorlat');
+  assert.ok(await page.locator('text=Mai magabiztosság: 4 / 5').count() === 1);
   await page.reload({ waitUntil: 'networkidle' });
   assert.equal((await page.state()).speaking.log[today].confidence, 4, 'persists across reload');
   ok('stats show confidence and conversations; data persists across reload');
@@ -164,25 +164,25 @@ try {
   // ============ Scenario B: no speech support ============
   const plain = await newPage(withoutSpeech);
   await plain.goto(base, { waitUntil: 'networkidle' });
-  await plain.waitForSelector('text=Speaking practice');
+  await plain.waitForSelector('text=Beszédgyakorlat');
   assert.equal(await plain.locator('button.listen').count(), 0, 'no Listen buttons without a synthesiser');
-  await plain.click('a:has-text("Start speaking")');
-  await plain.waitForSelector('text=no speech recognition');
+  await plain.click('a:has-text("Beszéd indítása")');
+  await plain.waitForSelector('text=nincs beszédfelismerés');
   await plain.shot('s08-nosupport-intro');
-  await plain.click('button:has-text("Start")');
-  await plain.waitForSelector('button:has-text("I said it well")');
-  assert.equal(await plain.locator('button:has-text("Listen")').count(), 0);
-  await plain.click('button:has-text("I said it well")');
-  await plain.waitForSelector('text=Noted');
+  await plain.click('button:has-text("Indítás")');
+  await plain.waitForSelector('button:has-text("Jól mondtam")');
+  assert.equal(await plain.locator('button:has-text("Lejátszás")').count(), 0);
+  await plain.click('button:has-text("Jól mondtam")');
+  await plain.waitForSelector('text=Rögzítve');
   await plain.shot('s09-nosupport-rated');
   const ps = await plain.state();
   const day = Object.values(ps.speaking.log)[0];
   assert.equal(day.attempts, 1);
   assert.equal(day.passes, 1);
-  await plain.click('.speak-actions button:has-text("Next")');
-  await plain.waitForSelector('button:has-text("Needs more practice")');
-  await plain.click('button:has-text("Needs more practice")');
-  await plain.click('.speak-actions button:has-text("Next")');
+  await plain.click('.speak-actions button:has-text("Tovább")');
+  await plain.waitForSelector('button:has-text("Többet kell gyakorolni")');
+  await plain.click('button:has-text("Többet kell gyakorolni")');
+  await plain.click('.speak-actions button:has-text("Tovább")');
   assert.equal(Object.values((await plain.state()).speaking.log)[0].attempts, 2);
   ok('browser without speech: clear notice, self-rating still works and is saved');
   assert.deepEqual(plain.problems, [], plain.problems.join('\n'));

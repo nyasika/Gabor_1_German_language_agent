@@ -53,7 +53,7 @@ export function createStore(storage, key = KEY) {
     importJson(text) {
       const parsed = JSON.parse(text);
       if (!parsed || typeof parsed !== 'object' || !parsed.log || !parsed.cards) {
-        throw new Error('Not a Wortweg backup file');
+        throw new Error('Ez nem egy Wortweg biztonsági mentés fájl');
       }
       this.replace(parsed);
     },

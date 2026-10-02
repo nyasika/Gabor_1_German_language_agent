@@ -101,6 +101,16 @@ async function answerDrillDay(day, { wrongAt = -1 } = {}) {
       const prompt = (await page.locator('.ex-match .prompt').innerText()).trim();
       const ex = exercises.find((e) => e.type === 'match' && e.prompt === prompt);
       assert.ok(ex, `match exercise found for "${prompt}"`);
+      if (wrong) {
+        // Matching tolerates a single mistake (mismatches <= 1 still counts as correct), so deliberately
+        // mismatch the first pair twice before finishing correctly - this pushes the exercise to "wrong"
+        // while still satisfying ready() (every pair ends up matched).
+        const wrongRight = ex.pairs[1][1];
+        for (let k = 0; k < 2; k++) {
+          await page.locator('.match-cols .col').nth(0).locator('.opt:not(:disabled)', { hasText: rx(ex.pairs[0][0]) }).first().click();
+          await page.locator('.match-cols .col').nth(1).locator('.opt:not(:disabled)', { hasText: rx(wrongRight) }).first().click();
+        }
+      }
       for (const [a, b] of ex.pairs) {
         await page.locator('.match-cols .col').nth(0).locator('.opt:not(:disabled)', { hasText: rx(a) }).first().click();
         await page.locator('.match-cols .col').nth(1).locator('.opt:not(:disabled)', { hasText: rx(b) }).first().click();
@@ -111,8 +121,8 @@ async function answerDrillDay(day, { wrongAt = -1 } = {}) {
       assert.ok(ex, `errorspot exercise found for "${shown}"`);
       await page.locator('.ex-spot .word').nth(wrong ? (ex.wrongIndex === 0 ? 1 : 0) : ex.wrongIndex).click();
     } else throw new Error('Unrecognised exercise on screen');
-    await page.click('button:has-text("Check")');
-    await page.click('.footer button:has-text("Continue"), .footer button:has-text("Finish")');
+    await page.click('button:has-text("Ellenőrzés")');
+    await page.click('.footer button:has-text("Tovább"), .footer button:has-text("Befejezés")');
   }
 }
 
@@ -121,37 +131,37 @@ try {
   await page.goto(base, { waitUntil: 'networkidle' });
   await page.evaluate((json) => localStorage.setItem('wortweg.state.v1', json), JSON.stringify(seedState));
   await page.reload({ waitUntil: 'networkidle' });
-  await page.waitForSelector('text=Worth a closer look');
+  await page.waitForSelector('text=Érdemes ránézni');
   await shot('sp01-home-suggestion');
   ok('a weak, sampled topic produces a real sprint suggestion on Home');
 
-  await page.click('a:has-text("Start a sprint")');
-  await page.waitForSelector('text=Konjunktiv II, deep dive');
+  await page.click('a:has-text("Sprint indítása")');
+  await page.waitForSelector('text=Konjunktiv II elmélyítve');
   assert.equal(await page.locator('.node.locked').count(), 4, 'days 2-5 start locked');
   await shot('sp02-overview');
   ok('sprint overview shows the 5-day plan, only day 1 open');
 
   // ---- Day 1: notice
-  await page.click('a:has-text("Start the sprint")');
-  await page.waitForSelector('text=Phrases to notice'); // day-1-specific: the overview's day list already contains the day title text
+  await page.click('a:has-text("Sprint indítása")');
+  await page.waitForSelector('text=Megfigyelendő kifejezések'); // day-1-specific: the overview's day list already contains the day title text
   const chunkCount = await page.locator('.chunk-row').count();
   assert.equal(chunkCount, dayContent(1).chunks.length);
-  await page.click('.chunk-row >> nth=0 >> button:has-text("Listen")');
+  await page.click('.chunk-row >> nth=0 >> button:has-text("Lejátszás")');
   assert.ok((await page.evaluate(() => window.__spoken)).length >= 1, 'Listen actually calls speech synthesis');
   await shot('sp03-day1-notice');
-  await page.click('button:has-text("Continue")');
-  await page.waitForSelector('text=Day 1 of 5 done');
+  await page.click('button:has-text("Tovább")');
+  await page.waitForSelector('text=1. nap / 5 kész');
   const s1 = await state();
   assert.equal(s1.sprints.progress.G05.day, 2);
   assert.ok(s1.sprints.progress.G05.dayResults['1'].done);
   ok('day 1 (notice) completes, advances to day 2, saved immediately');
 
   // ---- Day 2: drill, with one deliberate mistake
-  await page.click('a:has-text("Start Day 2")');
+  await page.click('a:has-text("2. nap indítása")');
   await page.waitForSelector('.ex');
   await shot('sp04-day2-drill');
   await answerDrillDay(dayContent(2), { wrongAt: 2 });
-  await page.waitForSelector('text=Day 2 of 5 done');
+  await page.waitForSelector('text=2. nap / 5 kész');
   const s2 = await state();
   assert.equal(s2.sprints.progress.G05.day, 3);
   assert.equal(s2.sprints.progress.G05.dayResults['2'].score, 0.9, '9 of 10 correct on day 2');
@@ -160,20 +170,20 @@ try {
   ok(`day 2 (drill): score ${s2.sprints.progress.G05.dayResults['2'].score}, mistake turned into a review card`);
 
   // ---- Day 3: drill, all correct
-  await page.click('a:has-text("Start Day 3")');
+  await page.click('a:has-text("3. nap indítása")');
   await page.waitForSelector('.ex');
   await answerDrillDay(dayContent(3));
-  await page.waitForSelector('text=Day 3 of 5 done');
+  await page.waitForSelector('text=3. nap / 5 kész');
   const s3 = await state();
   assert.equal(s3.sprints.progress.G05.dayResults['3'].score, 1);
   assert.equal(s3.sprints.progress.G05.day, 4);
   ok('day 3 (drill) all correct: score 100%, advances to day 4');
 
   // ---- Day 4: produce (speaking)
-  await page.click('a:has-text("Start Day 4")');
-  await page.waitForSelector('text=phrases to say out loud'); // "Say it: diplomacy..." is already in the previous page's "Start Day 4" button text
+  await page.click('a:has-text("4. nap indítása")');
+  await page.waitForSelector('text=kifejezést kell hangosan kimondanod'); // "Say it: diplomacy..." is already in the previous page's "Start Day 4" button text
   await shot('sp05-day4-intro');
-  await page.click('button:has-text("Start")');
+  await page.click('button:has-text("Indítás")');
   const speakCount = dayContent(4).speak_items.length;
   for (let i = 0; i < speakCount; i++) {
     await page.waitForSelector('.card-answer.big-de');
@@ -181,9 +191,9 @@ try {
     await page.evaluate((t) => { window.__heard = t; }, target);
     await page.click('[data-role=speak]');
     await page.waitForSelector('text=Gut!');
-    await page.click('.speak-actions button:has-text("Next")');
+    await page.click('.speak-actions button:has-text("Tovább")');
   }
-  await page.waitForSelector('text=Day 4 of 5 done');
+  await page.waitForSelector('text=4. nap / 5 kész');
   const s4 = await state();
   assert.equal(s4.sprints.progress.G05.day, 5);
   assert.ok(s4.sprints.progress.G05.dayResults['4'].score > 0.9, 'produce day score reflects the speaking accuracy');
@@ -191,10 +201,10 @@ try {
   ok(`day 4 (produce): ${speakCount} phrases spoken, score ${s4.sprints.progress.G05.dayResults['4'].score.toFixed(2)}, counted in speaking stats`);
 
   // ---- Day 5: check, all correct, completes the sprint
-  await page.click('a:has-text("Start Day 5")');
+  await page.click('a:has-text("5. nap indítása")');
   await page.waitForSelector('.ex');
   await answerDrillDay(dayContent(5));
-  await page.waitForSelector('text=Sprint complete!');
+  await page.waitForSelector('text=Sprint kész!');
   await shot('sp06-complete');
   const s5 = await state();
   assert.equal(s5.sprints.active, null);
@@ -205,16 +215,16 @@ try {
 
   // ---- Home no longer suggests a finished sprint; stats and list reflect it
   await page.goto(base);
-  await page.waitForSelector('text=Speaking practice');
-  assert.equal(await page.locator('text=Worth a closer look').count(), 0, 'a completed sprint is not suggested again');
+  await page.waitForSelector('text=Beszédgyakorlat');
+  assert.equal(await page.locator('text=Érdemes ránézni').count(), 0, 'a completed sprint is not suggested again');
   await shot('sp07-home-after');
 
   await page.goto(`${base}#/stats`);
-  await page.waitForSelector('text=Grammar mastery');
+  await page.waitForSelector('text=Nyelvtani tudásszint');
   await shot('sp08-stats');
 
   await page.goto(`${base}#/sprints`);
-  await page.waitForSelector('text=Sprints');
+  await page.waitForSelector('text=Sprintek');
   await page.waitForSelector('.node.done');
   assert.equal(await page.locator('.node').count(), 2);
   await shot('sp09-list');

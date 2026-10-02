@@ -6,6 +6,7 @@ import { makeTracker } from './progress.js';
 import { homeView, pathView, lessonIntroView, lessonRunView, reviewRunView, logView, statsView, settingsView } from './views.js';
 import { speakView } from './speak_view.js';
 import { sprintsListView, sprintOverviewView, sprintDayView } from './sprint_view.js';
+import { vocabListView, vocabPackView } from './vocab_view.js';
 
 const app = document.getElementById('app');
 
@@ -22,19 +23,20 @@ async function boot() {
     storage.setItem('wortweg.probe', '1');
     storage.removeItem('wortweg.probe');
   } catch {
-    app.replaceChildren(h('div', { class: 'card error' }, h('strong', {}, 'Storage is blocked'), h('p', {}, 'This browser blocks local storage, so progress could not be saved. Allow site data for this page and reload.')));
+    app.replaceChildren(h('div', { class: 'card error' }, h('strong', {}, 'A tárolás le van tiltva'), h('p', {}, 'Ez a böngésző letiltja a helyi tárolást, ezért a haladás nem menthető. Engedélyezd az oldal adatait, majd töltsd újra.')));
     return;
   }
 
-  const [path, deck, missions, chunks, topics, sprintIds] = await Promise.all([
+  const [path, deck, missions, chunks, topics, sprintIds, vocabPacks] = await Promise.all([
     getJson('data/path.json'), getJson('data/cards.json'), getJson('data/missions.json'),
     getJson('data/chunks.json'), getJson('data/topics.json'), getJson('data/sprints.json'),
+    getJson('data/vocab_packs.json'),
   ]);
   const lessonIds = path.chapters.flatMap((c) => c.lessons);
   const lessons = Object.fromEntries((await Promise.all(lessonIds.map((id) => getJson(`data/lessons/${id}.json`)))).map((l) => [l.id, l]));
   const sprints = {};
   const data = {
-    path, deck, missions, chunks, topics, sprintIds,
+    path, deck, missions, chunks, topics, sprintIds, vocabPacks,
     lessonTitles: Object.fromEntries(Object.values(lessons).map((l) => [l.id, l.title])),
     loadLesson: (id) => (lessons[id] ? Promise.resolve(lessons[id]) : Promise.reject(new Error(`Unknown lesson ${id}`))),
     loadSprint: async (id) => {
@@ -48,22 +50,22 @@ async function boot() {
   const sync = createSync(store);
   const ctx = { store, sync, data, tracker: makeTracker(120000), go: (hash) => { location.hash = hash; } };
 
-  const saved = h('span', { class: 'saved' }, 'Loaded');
+  const saved = h('span', { class: 'saved' }, 'Betöltve');
   const syncBadge = h('span', { class: 'syncbadge' });
   const main = h('main', { id: 'main' });
-  const nav = h('nav', { class: 'tabs', 'aria-label': 'Main' },
-    [['#/', 'Home'], ['#/path', 'Path'], ['#/stats', 'Progress'], ['#/settings', 'Settings']].map(([href, label]) =>
+  const nav = h('nav', { class: 'tabs', 'aria-label': 'Fő navigáció' },
+    [['#/', 'Kezdőlap'], ['#/path', 'Útvonal'], ['#/stats', 'Haladás'], ['#/settings', 'Beállítások']].map(([href, label]) =>
       h('a', { href, 'data-href': href }, label)));
   app.replaceChildren(h('header', { class: 'top' }, h('a', { class: 'brand', href: '#/' }, 'Wortweg'), h('span', { class: 'top-right' }, syncBadge, saved)), main, nav);
 
   function updateSaved() {
     const { savedAt, error } = store.status();
-    if (error) { saved.textContent = 'NOT SAVED: storage error'; saved.className = 'saved bad'; return; }
-    if (savedAt) { saved.textContent = `Saved ${new Date(savedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`; saved.className = 'saved ok'; }
+    if (error) { saved.textContent = 'NINCS MENTVE: tárolási hiba'; saved.className = 'saved bad'; return; }
+    if (savedAt) { saved.textContent = `Mentve ${new Date(savedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`; saved.className = 'saved ok'; }
   }
   function updateSync() {
     const st = sync.status();
-    syncBadge.textContent = st.state === 'off' ? '' : st.state === 'ok' ? 'synced' : st.state === 'syncing' ? 'syncing…' : 'sync error';
+    syncBadge.textContent = st.state === 'off' ? '' : st.state === 'ok' ? 'szinkronban' : st.state === 'syncing' ? 'szinkronizálás…' : 'szinkronhiba';
     syncBadge.className = `syncbadge ${st.state}`;
     syncBadge.title = st.message;
   }
@@ -80,6 +82,8 @@ async function boot() {
     [/^#\/sprints$/, () => sprintsListView(ctx)],
     [/^#\/sprint\/(\w+)$/, (m) => sprintOverviewView(ctx, m[1])],
     [/^#\/sprint\/(\w+)\/(\d+)$/, (m) => sprintDayView(ctx, m[1], m[2])],
+    [/^#\/vocab$/, () => vocabListView(ctx)],
+    [/^#\/vocab\/(\w+)$/, (m) => vocabPackView(ctx, m[1])],
     [/^#\/log$/, () => logView(ctx)],
     [/^#\/stats$/, () => statsView(ctx)],
     [/^#\/settings$/, () => settingsView(ctx)],
@@ -94,7 +98,7 @@ async function boot() {
     }
     document.body.classList.toggle('running', /^#\/(run|review|speak)/.test(hash) || /^#\/sprint\/\w+\/\d+/.test(hash));
     nav.querySelectorAll('a').forEach((a) => a.classList.toggle('active', a.dataset.href === hash || (a.dataset.href === '#/path' && hash.startsWith('#/lesson'))));
-    main.replaceChildren(view || h('div', { class: 'card' }, h('p', {}, 'Page not found.'), h('a', { class: 'btn', href: '#/' }, 'Home')));
+    main.replaceChildren(view || h('div', { class: 'card' }, h('p', {}, 'Az oldal nem található.'), h('a', { class: 'btn', href: '#/' }, 'Kezdőlap')));
     window.scrollTo(0, 0);
   }
   window.addEventListener('hashchange', render);
@@ -105,5 +109,5 @@ async function boot() {
 }
 
 boot().catch((e) => {
-  app.replaceChildren(h('div', { class: 'card error' }, h('strong', {}, 'The app could not start'), h('p', {}, String(e.message || e))));
+  app.replaceChildren(h('div', { class: 'card error' }, h('strong', {}, 'Az alkalmazás nem tudott elindulni'), h('p', {}, String(e.message || e))));
 });

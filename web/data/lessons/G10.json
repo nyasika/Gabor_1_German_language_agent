@@ -1,26 +1,38 @@
 {
   "id": "G10",
-  "title": "Passive: process and result",
+  "title": "Szenvedő szerkezet (Passiv): folyamat és állapot",
   "topic": "G10",
   "intro": [
-    "Vorgangspassiv = werden + Partizip II: Das Haus wird renoviert.",
-    "Past: wurde + Partizip II (Präteritum); Perfekt: ist + Partizip II + worden (not geworden!).",
-    "Name the agent with von + Dativ: Der Patient wird vom Arzt untersucht.",
-    "Zustandspassiv (sein + Partizip II) describes a result, not a process: Das Geschäft ist geschlossen."
+    "A Vorgangspassiv (folyamat-passzívum) azt fejezi ki, hogy valamivel történik valami: werden + Partizip II. Das Haus wird renoviert.",
+    "Múlt időben: wurde + Partizip II (Präteritum). Perfektben: ist + Partizip II + worden — fontos: nem geworden, hanem worden!",
+    "A cselekvőt von + Dativ szerkezettel nevezhetjük meg, ha fontos megemlíteni: Der Patient wird vom Arzt untersucht (vom = von + dem).",
+    "A Zustandspassiv (állapot-passzívum, sein + Partizip II) nem folyamatot, hanem már kész állapotot ír le: Das Geschäft ist geschlossen (már zárva van) — szemben azzal, hogy éppen most zárják (Das Geschäft wird geschlossen).",
+    "A passzívum a cselekvő megnevezése nélkül is tökéletesen működik, sőt gyakran alany sincs rá szükség: Hier wird Deutsch gesprochen (itt németül beszélnek) — ez az úgynevezett személytelen passzívum."
+  ],
+  "tables": [
+    {
+      "title": "A Passiv három fő igeideje",
+      "headers": ["Igeidő", "Szerkezet", "Példa"],
+      "rows": [
+        ["Präsens", "werden + Partizip II", "Das Haus wird gebaut."],
+        ["Präteritum", "wurde + Partizip II", "Das Haus wurde gebaut."],
+        ["Perfekt", "ist + Partizip II + worden", "Das Haus ist gebaut worden."]
+      ]
+    }
   ],
   "exercises": [
     { "id": "G10-01", "type": "mc", "topic": "G10", "prompt": "Das Haus ___ gerade renoviert.", "options": ["wird", "ist", "hat", "war"], "answer": "wird", "explain": "Vorgangspassiv Präsens: werden + Partizip II." },
-    { "id": "G10-02", "type": "cloze", "topic": "G10", "prompt": "Passive present, plural.", "sentence": "Die Medikamente ___ in der Apotheke ausgegeben.", "answers": ["werden"], "hint": "Plural → werden", "explain": "Plural subject: werden." },
-    { "id": "G10-03", "type": "order", "topic": "G10", "prompt": "A beteget az orvos vizsgálja.", "tiles": ["Der", "Patient", "wird", "vom", "Arzt", "untersucht."], "answers": ["Der Patient wird vom Arzt untersucht."], "explain": "vom = von + dem (agent in Dativ)." },
-    { "id": "G10-04", "type": "errorspot", "topic": "G10", "prompt": "Tap the wrong word.", "tokens": ["Das", "Fenster", "ist", "geöffnet", "geworden."], "wrongIndex": 4, "fixed": "Das Fenster ist geöffnet worden.", "explain": "Perfekt Passiv uses worden, not geworden." },
-    { "id": "G10-05", "type": "cloze", "topic": "G10", "prompt": "Passive perfect.", "sentence": "Der Brief ist gestern abgeschickt ___.", "answers": ["worden"], "hint": "Perfekt Passiv", "explain": "ist ... worden." },
-    { "id": "G10-06", "type": "mc", "topic": "G10", "prompt": "Which sentence describes a process (not a state)?", "options": ["Das Geschäft wird geschlossen.", "Das Geschäft ist geschlossen.", "Das Geschäft war geschlossen.", "Das Geschäft bleibt geschlossen."], "answer": "Das Geschäft wird geschlossen.", "explain": "werden + Partizip II = process; sein + Partizip II = state." },
-    { "id": "G10-07", "type": "cloze", "topic": "G10", "prompt": "Name the agent.", "sentence": "Der Patient wird ___ Arzt behandelt.", "answers": ["vom", "von dem"], "hint": "von + Dativ (der Arzt)", "explain": "von + dem Arzt = vom Arzt." },
-    { "id": "G10-08", "type": "match", "topic": "G10", "prompt": "Match the passive form with its tense.", "pairs": [["wird gebaut", "Präsens"], ["wurde gebaut", "Präteritum"], ["ist gebaut worden", "Perfekt"], ["war gebaut worden", "Plusquamperfekt"]] },
-    { "id": "G10-09", "type": "errorspot", "topic": "G10", "prompt": "Tap the wrong word.", "tokens": ["Das", "Buch", "wurde", "von", "der", "Autor", "geschrieben."], "wrongIndex": 4, "fixed": "Das Buch wurde von dem Autor geschrieben.", "explain": "von takes Dativ: von dem Autor (vom Autor)." },
-    { "id": "G10-10", "type": "order", "topic": "G10", "prompt": "A várost a munkások felújítják.", "tiles": ["Die", "Stadt", "wird", "von", "den", "Arbeitern", "renoviert."], "answers": ["Die Stadt wird von den Arbeitern renoviert."], "explain": "Plural Dativ: den Arbeitern (with -n)." },
-    { "id": "G10-11", "type": "cloze", "topic": "G10", "prompt": "Impersonal passive.", "sentence": "Hier ___ Deutsch gesprochen.", "answers": ["wird"], "hint": "Deutsch (singular) → ?", "explain": "The passive verb agrees with the subject Deutsch: wird." },
-    { "id": "G10-12", "type": "mc", "topic": "G10", "prompt": "Perfekt Passiv: which form is correct?", "options": ["Es ist gemacht worden.", "Es hat gemacht worden.", "Es ist gemacht geworden.", "Es wird gemacht worden."], "answer": "Es ist gemacht worden.", "explain": "sein + Partizip II + worden." },
-    { "id": "G10-13", "type": "mc", "topic": "G10", "prompt": "Active to passive: 'Man öffnet das Museum um 9 Uhr.'", "options": ["Das Museum wird um 9 Uhr geöffnet.", "Das Museum ist um 9 Uhr geöffnet worden.", "Das Museum wurde von 9 Uhr öffnet.", "Das Museum öffnet um 9 Uhr werden."], "answer": "Das Museum wird um 9 Uhr geöffnet.", "explain": "Present active → present passive; man disappears." }
+    { "id": "G10-02", "type": "cloze", "topic": "G10", "prompt": "Jelen idejű passzívum, többes szám.", "sentence": "Die Medikamente ___ in der Apotheke ausgegeben.", "answers": ["werden"], "hint": "Plural → werden", "explain": "Többes számú alany: werden." },
+    { "id": "G10-03", "type": "order", "topic": "G10", "prompt": "A beteget az orvos vizsgálja.", "tiles": ["Der", "Patient", "wird", "vom", "Arzt", "untersucht."], "answers": ["Der Patient wird vom Arzt untersucht."], "explain": "vom = von + dem (a cselekvő Dativban áll)." },
+    { "id": "G10-04", "type": "errorspot", "topic": "G10", "prompt": "Koppints a hibás szóra.", "tokens": ["Das", "Fenster", "ist", "geöffnet", "geworden."], "wrongIndex": 4, "fixed": "Das Fenster ist geöffnet worden.", "explain": "A Perfekt Passiv worden-t használ, nem geworden-t." },
+    { "id": "G10-05", "type": "cloze", "topic": "G10", "prompt": "Befejezett (Perfekt) passzívum.", "sentence": "Der Brief ist gestern abgeschickt ___.", "answers": ["worden"], "hint": "Perfekt Passiv", "explain": "ist ... worden." },
+    { "id": "G10-06", "type": "mc", "topic": "G10", "prompt": "Melyik mondat folyamatot ír le (nem állapotot)?", "options": ["Das Geschäft wird geschlossen.", "Das Geschäft ist geschlossen.", "Das Geschäft war geschlossen.", "Das Geschäft bleibt geschlossen."], "answer": "Das Geschäft wird geschlossen.", "explain": "werden + Partizip II = folyamat; sein + Partizip II = állapot." },
+    { "id": "G10-07", "type": "cloze", "topic": "G10", "prompt": "Nevezd meg a cselekvőt.", "sentence": "Der Patient wird ___ Arzt behandelt.", "answers": ["vom", "von dem"], "hint": "von + Dativ (der Arzt)", "explain": "von + dem Arzt = vom Arzt." },
+    { "id": "G10-08", "type": "match", "topic": "G10", "prompt": "Párosítsd a passzív alakot az igeidejével.", "pairs": [["wird gebaut", "Präsens"], ["wurde gebaut", "Präteritum"], ["ist gebaut worden", "Perfekt"], ["war gebaut worden", "Plusquamperfekt"]] },
+    { "id": "G10-09", "type": "errorspot", "topic": "G10", "prompt": "Koppints a hibás szóra.", "tokens": ["Das", "Buch", "wurde", "von", "der", "Autor", "geschrieben."], "wrongIndex": 4, "fixed": "Das Buch wurde von dem Autor geschrieben.", "explain": "A von Dativot vonz: von dem Autor (vom Autor)." },
+    { "id": "G10-10", "type": "order", "topic": "G10", "prompt": "A várost a munkások felújítják.", "tiles": ["Die", "Stadt", "wird", "von", "den", "Arbeitern", "renoviert."], "answers": ["Die Stadt wird von den Arbeitern renoviert."], "explain": "Többes számú Dativ: den Arbeitern (-n végződéssel)." },
+    { "id": "G10-11", "type": "cloze", "topic": "G10", "prompt": "Személytelen passzívum.", "sentence": "Hier ___ Deutsch gesprochen.", "answers": ["wird"], "hint": "Deutsch (egyes szám) → ?", "explain": "A passzív ige a Deutsch alanyhoz igazodik: wird." },
+    { "id": "G10-12", "type": "mc", "topic": "G10", "prompt": "Perfekt Passiv: melyik alak helyes?", "options": ["Es ist gemacht worden.", "Es hat gemacht worden.", "Es ist gemacht geworden.", "Es wird gemacht worden."], "answer": "Es ist gemacht worden.", "explain": "sein + Partizip II + worden." },
+    { "id": "G10-13", "type": "mc", "topic": "G10", "prompt": "Cselekvőből szenvedő: „Man öffnet das Museum um 9 Uhr.”", "options": ["Das Museum wird um 9 Uhr geöffnet.", "Das Museum ist um 9 Uhr geöffnet worden.", "Das Museum wurde von 9 Uhr öffnet.", "Das Museum öffnet um 9 Uhr werden."], "answer": "Das Museum wird um 9 Uhr geöffnet.", "explain": "Jelen idejű cselekvőből jelen idejű szenvedő lesz; a man eltűnik." }
   ]
 }

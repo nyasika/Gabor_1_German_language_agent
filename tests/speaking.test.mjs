@@ -80,7 +80,7 @@ test('speech: listen resolves with alternatives, and maps errors to readable mes
   await assert.rejects(listen({ w: { webkitSpeechRecognition: fakeRecognizer((r) => r.onerror({ error: 'not-allowed' })) } }), { code: 'not-allowed' });
   await assert.rejects(listen({ w: { webkitSpeechRecognition: fakeRecognizer((r) => r.onend()) } }), { code: 'no-speech' });
   await assert.rejects(listen({ w: {} }), { code: 'unsupported' });
-  assert.match(errorText('not-allowed'), /microphone is blocked/);
+  assert.match(errorText('not-allowed'), /mikrofon le van tiltva/);
   assert.match(errorText('weird'), /weird/);
   assert.equal(await speak('x', { w: {} }), false);
 });

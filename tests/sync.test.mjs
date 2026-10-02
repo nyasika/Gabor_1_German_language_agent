@@ -89,7 +89,7 @@ test('sync: a network failure never touches local progress', async () => {
   server.fail();
   await a.sync.syncNow();
   assert.equal(a.sync.status().state, 'error');
-  assert.match(a.sync.status().message, /still saved on this device/);
+  assert.match(a.sync.status().message, /továbbra is mentve van ezen az eszközön/);
   assert.equal(totalXp(a.store.get()), 25);
   await a.sync.syncNow(); // recovers on the next attempt
   assert.equal(a.sync.status().state, 'ok');
@@ -101,6 +101,6 @@ test('sync: wrong password gives a readable error and keeps local data', async (
   a.store.save((s) => addActivity(s, '2026-09-24', 'lesson', { xp: 10 }));
   await a.sync.syncNow();
   assert.equal(a.sync.status().state, 'error');
-  assert.match(a.sync.status().message, /Wrong email or password/);
+  assert.match(a.sync.status().message, /Hibás email cím vagy jelszó/);
   assert.equal(totalXp(a.store.get()), 10);
 });

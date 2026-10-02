@@ -1,28 +1,52 @@
 {
   "id": "G08",
-  "title": "Case and prepositions: two-way and fixed combinations",
+  "title": "Eset és elöljárók: Wechselpräpositionen és fix igei vonzatok",
   "topic": "G08",
   "intro": [
-    "Nine prepositions take Dativ or Akkusativ: an, auf, hinter, in, neben, über, unter, vor, zwischen.",
-    "Wo? (position, no movement) → Dativ: Das Buch liegt auf dem Tisch.",
-    "Wohin? (movement to a new place) → Akkusativ: Ich lege das Buch auf den Tisch.",
-    "Pairs help: stehen/stellen, liegen/legen, sitzen/setzen, hängen/hängen.",
-    "Some verbs always pair with one fixed preposition and case: warten auf + Akk., sich freuen über + Akk."
+    "Kilenc elöljárószó hol Akkusativot, hol Dativot vonz, a jelentéstől függően: an, auf, hinter, in, neben, über, unter, vor, zwischen.",
+    "Wo? (hol, helyzet, nincs mozgás) → Dativ: Das Buch liegt auf dem Tisch.",
+    "Wohin? (hova, mozgás egy új hely felé) → Akkusativ: Ich lege das Buch auf den Tisch.",
+    "Segít megjegyezni az igepárokat: stehen/stellen, liegen/legen, sitzen/setzen, hängen/hängen (ez utóbbi mindkét irányban ugyanúgy hangzik).",
+    "Néhány ige fix elöljárót és esetet vonz, függetlenül attól, hogy Wo? vagy Wohin? kérdésre válaszolnánk éppen: pl. warten auf + Akk., sich freuen über + Akk., denken an + Akk. Ezeket egyenként kell megtanulni, mert nem a Wo?/Wohin? logika dönti el őket.",
+    "A főnevek nemét gyakran a végződésük jelzi előre: pl. az -ung végű főnevek mindig nőneműek, a -zeug végűek mindig semlegesek."
+  ],
+  "tables": [
+    {
+      "title": "A kilenc Wechselpräposition",
+      "headers": ["Elöljáró", "Wo? (Dativ)", "Wohin? (Akkusativ)"],
+      "rows": [
+        ["an", "Das Bild hängt an der Wand.", "Er hängt das Bild an die Wand."],
+        ["auf", "Das Buch liegt auf dem Tisch.", "Ich lege das Buch auf den Tisch."],
+        ["in", "Ich bin in der Stadt.", "Ich gehe in die Stadt."],
+        ["vor", "Das Auto steht vor dem Haus.", "Das Auto fährt vor das Haus."],
+        ["zwischen", "Es liegt zwischen den Büchern.", "Ich lege es zwischen die Bücher."]
+      ]
+    },
+    {
+      "title": "Néhány fix igei vonzat",
+      "headers": ["Ige", "Elöljáró + eset"],
+      "rows": [
+        ["warten", "auf + Akkusativ"],
+        ["sich freuen", "über + Akkusativ (örülni valaminek) / auf + Akkusativ (várni valamit)"],
+        ["denken", "an + Akkusativ"],
+        ["sich interessieren", "für + Akkusativ"]
+      ]
+    }
   ],
   "exercises": [
-    { "id": "G08-01", "type": "mc", "topic": "G08", "prompt": "Ich lege das Buch auf ___ Tisch.", "options": ["den", "dem", "der", "das"], "answer": "den", "explain": "Wohin? → Akkusativ. Tisch is masculine: den." },
+    { "id": "G08-01", "type": "mc", "topic": "G08", "prompt": "Ich lege das Buch auf ___ Tisch.", "options": ["den", "dem", "der", "das"], "answer": "den", "explain": "Wohin? → Akkusativ. A Tisch hímnemű: den." },
     { "id": "G08-02", "type": "mc", "topic": "G08", "prompt": "Das Buch liegt auf ___ Tisch.", "options": ["den", "dem", "der", "das"], "answer": "dem", "explain": "Wo? → Dativ: dem." },
     { "id": "G08-03", "type": "article", "topic": "G08", "noun": "Bahnhof", "hu": "pályaudvar", "answer": "der" },
-    { "id": "G08-04", "type": "article", "topic": "G08", "noun": "Verspätung", "hu": "késés", "answer": "die", "explain": "Nouns ending in -ung are always feminine." },
-    { "id": "G08-05", "type": "article", "topic": "G08", "noun": "Flugzeug", "hu": "repülőgép", "answer": "das", "explain": "Nouns with -zeug are neuter." },
-    { "id": "G08-06", "type": "cloze", "topic": "G08", "prompt": "Wohin? → Akkusativ.", "sentence": "Er hängt das Bild an ___ Wand.", "answers": ["die"], "hint": "Wohin? – Akkusativ", "explain": "Wand is feminine; Akkusativ feminine = die." },
-    { "id": "G08-07", "type": "cloze", "topic": "G08", "prompt": "Wo? → Dativ.", "sentence": "Das Bild hängt an ___ Wand.", "answers": ["der"], "hint": "Wo? – Dativ", "explain": "Dativ feminine = der." },
-    { "id": "G08-08", "type": "order", "topic": "G08", "prompt": "A városba megyünk (járművel).", "tiles": ["Wir", "fahren", "in", "die", "Stadt."], "answers": ["Wir fahren in die Stadt."], "explain": "Movement into the city: in + Akkusativ." },
-    { "id": "G08-09", "type": "errorspot", "topic": "G08", "prompt": "Tap the wrong word.", "tokens": ["Ich", "gehe", "in", "dem", "Supermarkt."], "wrongIndex": 3, "fixed": "Ich gehe in den Supermarkt.", "explain": "gehen = movement (Wohin?) → Akkusativ: in den." },
-    { "id": "G08-10", "type": "mc", "topic": "G08", "prompt": "Ich sitze auf ___ Sofa.", "options": ["dem", "das", "den", "die"], "answer": "dem", "explain": "Wo? → Dativ. Sofa is neuter: auf dem Sofa." },
-    { "id": "G08-11", "type": "match", "topic": "G08", "prompt": "Match each item with the question or case it goes with.", "pairs": [["stehen / liegen", "Position: Dativ"], ["stellen / legen", "Movement: Akkusativ"], ["Ich bin in der Küche.", "Wo?"], ["Ich gehe in die Küche.", "Wohin?"]] },
-    { "id": "G08-12", "type": "cloze", "topic": "G08", "prompt": "A fixed verb-preposition pair.", "sentence": "Ich warte ___ den Bus.", "answers": ["auf"], "hint": "warten auf + Akk.", "explain": "warten auf is a fixed pair: it always takes Akkusativ, regardless of Wo?/Wohin?." },
-    { "id": "G08-13", "type": "mc", "topic": "G08", "prompt": "Er stellt die Flasche in ___ Kühlschrank.", "options": ["den", "dem", "der", "die"], "answer": "den", "explain": "stellen = Wohin? → Akkusativ; Kühlschrank is masculine." },
-    { "id": "G08-14", "type": "order", "topic": "G08", "prompt": "A repülő a repülőtéren száll le.", "tiles": ["Das", "Flugzeug", "landet", "auf", "dem", "Flughafen."], "answers": ["Das Flugzeug landet auf dem Flughafen."], "explain": "The landing takes place at a location (Wo?): auf dem." }
+    { "id": "G08-04", "type": "article", "topic": "G08", "noun": "Verspätung", "hu": "késés", "answer": "die", "explain": "A -ung végű főnevek mindig nőneműek." },
+    { "id": "G08-05", "type": "article", "topic": "G08", "noun": "Flugzeug", "hu": "repülőgép", "answer": "das", "explain": "A -zeug végű főnevek semlegesek." },
+    { "id": "G08-06", "type": "cloze", "topic": "G08", "prompt": "Wohin? → Akkusativ.", "sentence": "Er hängt das Bild an ___ Wand.", "answers": ["die"], "hint": "Wohin? – Akkusativ", "explain": "A Wand nőnemű; Akkusativ nőnem = die." },
+    { "id": "G08-07", "type": "cloze", "topic": "G08", "prompt": "Wo? → Dativ.", "sentence": "Das Bild hängt an ___ Wand.", "answers": ["der"], "hint": "Wo? – Dativ", "explain": "Dativ nőnem = der." },
+    { "id": "G08-08", "type": "order", "topic": "G08", "prompt": "A városba megyünk (járművel).", "tiles": ["Wir", "fahren", "in", "die", "Stadt."], "answers": ["Wir fahren in die Stadt."], "explain": "Mozgás a városba: in + Akkusativ." },
+    { "id": "G08-09", "type": "errorspot", "topic": "G08", "prompt": "Koppints a hibás szóra.", "tokens": ["Ich", "gehe", "in", "dem", "Supermarkt."], "wrongIndex": 3, "fixed": "Ich gehe in den Supermarkt.", "explain": "A gehen mozgást fejez ki (Wohin?) → Akkusativ: in den." },
+    { "id": "G08-10", "type": "mc", "topic": "G08", "prompt": "Ich sitze auf ___ Sofa.", "options": ["dem", "das", "den", "die"], "answer": "dem", "explain": "Wo? → Dativ. A Sofa semleges: auf dem Sofa." },
+    { "id": "G08-11", "type": "match", "topic": "G08", "prompt": "Párosítsd az elemet a hozzá tartozó kérdéssel vagy esettel.", "pairs": [["stehen / liegen", "helyzet: Dativ"], ["stellen / legen", "mozgás: Akkusativ"], ["Ich bin in der Küche.", "Wo?"], ["Ich gehe in die Küche.", "Wohin?"]] },
+    { "id": "G08-12", "type": "cloze", "topic": "G08", "prompt": "Egy fix igei-elöljárós vonzat.", "sentence": "Ich warte ___ den Bus.", "answers": ["auf"], "hint": "warten auf + Akk.", "explain": "A warten auf fix vonzat: mindig Akkusativot kap, függetlenül a Wo?/Wohin? kérdéstől." },
+    { "id": "G08-13", "type": "mc", "topic": "G08", "prompt": "Er stellt die Flasche in ___ Kühlschrank.", "options": ["den", "dem", "der", "die"], "answer": "den", "explain": "A stellen Wohin? kérdésre válaszol → Akkusativ; a Kühlschrank hímnemű." },
+    { "id": "G08-14", "type": "order", "topic": "G08", "prompt": "A repülő a repülőtéren száll le.", "tiles": ["Das", "Flugzeug", "landet", "auf", "dem", "Flughafen."], "answers": ["Das Flugzeug landet auf dem Flughafen."], "explain": "A leszállás egy helyen történik (Wo?): auf dem." }
   ]
 }

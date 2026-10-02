@@ -2,409 +2,409 @@
   {
     "id": "G01-1",
     "topic": "G01",
-    "title": "Sentence building: verb second, inversion, Satzklammer",
+    "title": "Mondatszerkezet: fordított szórend és a mondatkeret (Satzklammer)",
     "de": "Morgen habe ich einen Termin."
   },
   {
     "id": "G01-2",
     "topic": "G01",
-    "title": "Sentence building: verb second, inversion, Satzklammer",
+    "title": "Mondatszerkezet: fordított szórend és a mondatkeret (Satzklammer)",
     "de": "Heute möchte ich kurz etwas dazu sagen."
   },
   {
     "id": "G02-1",
     "topic": "G02",
-    "title": "Perfekt and Präteritum in conversation",
+    "title": "Perfekt és Präteritum a beszélt nyelvben",
     "de": "Ich war gestern im Büro."
   },
   {
     "id": "G02-2",
     "topic": "G02",
-    "title": "Perfekt and Präteritum in conversation",
+    "title": "Perfekt és Präteritum a beszélt nyelvben",
     "de": "Ich habe das gestern erledigt."
   },
   {
     "id": "G03-1",
     "topic": "G03",
-    "title": "Subordinate clauses: weil, dass, wenn, obwohl",
+    "title": "Mellékmondatok: weil, dass, wenn, obwohl",
     "de": "Ich komme später, weil ich noch einen Termin habe."
   },
   {
     "id": "G03-2",
     "topic": "G03",
-    "title": "Subordinate clauses: weil, dass, wenn, obwohl",
+    "title": "Mellékmondatok: weil, dass, wenn, obwohl",
     "de": "Ich denke, dass wir das heute klären können."
   },
   {
     "id": "G04-1",
     "topic": "G04",
-    "title": "Modal verbs and everyday requests",
+    "title": "Módbeli segédigék a mindennapokban",
     "de": "Kannst du mir bitte helfen?"
   },
   {
     "id": "G04-2",
     "topic": "G04",
-    "title": "Modal verbs and everyday requests",
+    "title": "Módbeli segédigék a mindennapokban",
     "de": "Ich muss das noch prüfen."
   },
   {
     "id": "G05-1",
     "topic": "G05",
-    "title": "Konjunktiv II: wishes, suggestions, politeness",
+    "title": "Konjunktiv II: kívánságok, javaslatok, udvariasság",
     "de": "Ich würde vorschlagen, dass wir morgen weitermachen."
   },
   {
     "id": "G05-2",
     "topic": "G05",
-    "title": "Konjunktiv II: wishes, suggestions, politeness",
+    "title": "Konjunktiv II: kívánságok, javaslatok, udvariasság",
     "de": "Wenn ich mehr Zeit hätte, würde ich das anders lösen."
   },
   {
     "id": "G06-1",
     "topic": "G06",
-    "title": "Relative clauses (nominative, accusative, dative)",
+    "title": "Vonatkozó mellékmondatok (Relativsätze)",
     "de": "Das ist der Kollege, der das Projekt leitet."
   },
   {
     "id": "G06-2",
     "topic": "G06",
-    "title": "Relative clauses (nominative, accusative, dative)",
+    "title": "Vonatkozó mellékmondatok (Relativsätze)",
     "de": "Das Problem, das wir haben, ist die Zeit."
   },
   {
     "id": "G07-1",
     "topic": "G07",
-    "title": "Adjective endings",
+    "title": "Melléknévragozás (Adjektivdeklination)",
     "de": "ein wichtiger Termin"
   },
   {
     "id": "G07-2",
     "topic": "G07",
-    "title": "Adjective endings",
+    "title": "Melléknévragozás (Adjektivdeklination)",
     "de": "die neue Version"
   },
   {
     "id": "G08-1",
     "topic": "G08",
-    "title": "Case and prepositions: two-way and fixed combinations",
+    "title": "Eset és elöljárók: Wechselpräpositionen és fix igei vonzatok",
     "de": "Ich warte auf deine Antwort."
   },
   {
     "id": "G08-2",
     "topic": "G08",
-    "title": "Case and prepositions: two-way and fixed combinations",
+    "title": "Eset és elöljárók: Wechselpräpositionen és fix igei vonzatok",
     "de": "Wir sprechen über das Budget."
   },
   {
     "id": "G09-1",
     "topic": "G09",
-    "title": "Reflexive and separable verbs",
+    "title": "Elváló igék és visszaható igék",
     "de": "Ich kümmere mich darum."
   },
   {
     "id": "G09-2",
     "topic": "G09",
-    "title": "Reflexive and separable verbs",
+    "title": "Elváló igék és visszaható igék",
     "de": "Wir fangen um neun an."
   },
   {
     "id": "G10-1",
     "topic": "G10",
-    "title": "Passive: process and result",
+    "title": "Szenvedő szerkezet (Passiv): folyamat és állapot",
     "de": "Das wird bis Freitag erledigt."
   },
   {
     "id": "G10-2",
     "topic": "G10",
-    "title": "Passive: process and result",
+    "title": "Szenvedő szerkezet (Passiv): folyamat és állapot",
     "de": "Die Datei wurde gestern hochgeladen."
   },
   {
     "id": "G11-1",
     "topic": "G11",
-    "title": "Infinitive clauses: zu, um ... zu, ohne ... zu",
+    "title": "Főnévi igeneves szerkezetek: zu, um ... zu, ohne ... zu",
     "de": "Ich habe vergessen, dich anzurufen."
   },
   {
     "id": "G11-2",
     "topic": "G11",
-    "title": "Infinitive clauses: zu, um ... zu, ohne ... zu",
+    "title": "Főnévi igeneves szerkezetek: zu, um ... zu, ohne ... zu",
     "de": "Ich nutze das Tool, um Zeit zu sparen."
   },
   {
     "id": "G12-1",
     "topic": "G12",
-    "title": "Time links: als, wenn, seit, bevor, nachdem, während",
+    "title": "Időhatározói mellékmondatok: als, wenn, seit, bevor, nachdem, während",
     "de": "Bevor wir anfangen, kurz eine Frage."
   },
   {
     "id": "G12-2",
     "topic": "G12",
-    "title": "Time links: als, wenn, seit, bevor, nachdem, während",
+    "title": "Időhatározói mellékmondatok: als, wenn, seit, bevor, nachdem, während",
     "de": "Nachdem ich die E-Mail gelesen hatte, habe ich angerufen."
   },
   {
     "id": "G13-1",
     "topic": "G13",
-    "title": "Connectors in main clauses: deshalb, trotzdem, außerdem",
+    "title": "Kötőszavak főmondatban: deshalb, trotzdem, außerdem",
     "de": "Deshalb schlage ich vor, dass wir früher anfangen."
   },
   {
     "id": "G13-2",
     "topic": "G13",
-    "title": "Connectors in main clauses: deshalb, trotzdem, außerdem",
+    "title": "Kötőszavak főmondatban: deshalb, trotzdem, außerdem",
     "de": "Trotzdem finde ich die Idee gut."
   },
   {
     "id": "G14-1",
     "topic": "G14",
-    "title": "Comparison: je ... desto and degrees",
+    "title": "Fokozás: je ... desto és a melléknévfokozás",
     "de": "Je früher, desto besser."
   },
   {
     "id": "G14-2",
     "topic": "G14",
-    "title": "Comparison: je ... desto and degrees",
+    "title": "Fokozás: je ... desto és a melléknévfokozás",
     "de": "Das ist deutlich einfacher als vorher."
   },
   {
     "id": "G15-1",
     "topic": "G15",
-    "title": "Verb-preposition pairs and pronominal adverbs (darauf, worüber)",
+    "title": "Igei vonzatok és névmási határozószók (darauf, worüber)",
     "de": "Darauf freue ich mich."
   },
   {
     "id": "G15-2",
     "topic": "G15",
-    "title": "Verb-preposition pairs and pronominal adverbs (darauf, worüber)",
+    "title": "Igei vonzatok és névmási határozószók (darauf, worüber)",
     "de": "Worüber sprechen wir gerade?"
   },
   {
     "id": "G16-1",
     "topic": "G16",
-    "title": "Passive extended: modal verbs, state passive, man",
+    "title": "Passiv kibővítve: módbeli segédigékkel, Zustandspassiv, man",
     "de": "Das muss noch geprüft werden."
   },
   {
     "id": "G16-2",
     "topic": "G16",
-    "title": "Passive extended: modal verbs, state passive, man",
+    "title": "Passiv kibővítve: módbeli segédigékkel, Zustandspassiv, man",
     "de": "Die Tür ist geschlossen."
   },
   {
     "id": "G17-1",
     "topic": "G17",
-    "title": "Konjunktiv II of the past",
+    "title": "Konjunktiv II múlt időben",
     "de": "Ich hätte das früher sagen sollen."
   },
   {
     "id": "G17-2",
     "topic": "G17",
-    "title": "Konjunktiv II of the past",
+    "title": "Konjunktiv II múlt időben",
     "de": "Das wäre besser gewesen."
   },
   {
     "id": "G18-1",
     "topic": "G18",
-    "title": "Conditions: falls, sofern, es sei denn, unreal sentences",
+    "title": "Feltételek: falls, sofern, es sei denn, irreális mondatok",
     "de": "Falls Sie Fragen haben, melden Sie sich."
   },
   {
     "id": "G18-2",
     "topic": "G18",
-    "title": "Conditions: falls, sofern, es sei denn, unreal sentences",
+    "title": "Feltételek: falls, sofern, es sei denn, irreális mondatok",
     "de": "Es sei denn, es gibt ein Problem."
   },
   {
     "id": "G19-1",
     "topic": "G19",
-    "title": "Reasons, results, aims: da, zumal, sodass, damit",
+    "title": "Okok, következmények, célok: da, zumal, sodass, damit",
     "de": "Da das Budget knapp ist, priorisieren wir."
   },
   {
     "id": "G19-2",
     "topic": "G19",
-    "title": "Reasons, results, aims: da, zumal, sodass, damit",
+    "title": "Okok, következmények, célok: da, zumal, sodass, damit",
     "de": "Wir müssen das klären, damit es keine Missverständnisse gibt."
   },
   {
     "id": "G20-1",
     "topic": "G20",
-    "title": "Contrast and concession: zwar ... aber, während, wohingegen",
+    "title": "Ellentét és engedmény: zwar ... aber, während, wohingegen",
     "de": "Das ist zwar aufwendig, aber sinnvoll."
   },
   {
     "id": "G20-2",
     "topic": "G20",
-    "title": "Contrast and concession: zwar ... aber, während, wohingegen",
+    "title": "Ellentét és engedmény: zwar ... aber, während, wohingegen",
     "de": "Während A schnell ist, ist B genauer."
   },
   {
     "id": "G21-1",
     "topic": "G21",
-    "title": "Genitive and prepositions with genitive: wegen, trotz, aufgrund",
+    "title": "Genitiv és genitivuszi elöljárók: wegen, trotz, aufgrund",
     "de": "Wegen der Verspätung fangen wir später an."
   },
   {
     "id": "G21-2",
     "topic": "G21",
-    "title": "Genitive and prepositions with genitive: wegen, trotz, aufgrund",
+    "title": "Genitiv és genitivuszi elöljárók: wegen, trotz, aufgrund",
     "de": "Aufgrund der aktuellen Lage ändern wir den Plan."
   },
   {
     "id": "G22-1",
     "topic": "G22",
-    "title": "Relative clauses extended: preposition, was, wo, genitive",
+    "title": "Vonatkozó mellékmondatok kibővítve: elöljáróval, was, wo, genitivus",
     "de": "Das Projekt, an dem ich arbeite, ist wichtig."
   },
   {
     "id": "G22-2",
     "topic": "G22",
-    "title": "Relative clauses extended: preposition, was, wo, genitive",
+    "title": "Vonatkozó mellékmondatok kibővítve: elöljáróval, was, wo, genitivus",
     "de": "Alles, was du brauchst, ist hier."
   },
   {
     "id": "G23-1",
     "topic": "G23",
-    "title": "Verb-noun phrases and fixed expressions (Funktionsverbgefüge)",
+    "title": "Ige-főnév szerkezetek és állandósult kifejezések (Funktionsverbgefüge)",
     "de": "eine Entscheidung treffen"
   },
   {
     "id": "G23-2",
     "topic": "G23",
-    "title": "Verb-noun phrases and fixed expressions (Funktionsverbgefüge)",
+    "title": "Ige-főnév szerkezetek és állandósult kifejezések (Funktionsverbgefüge)",
     "de": "zur Verfügung stellen"
   },
   {
     "id": "G24-1",
     "topic": "G24",
-    "title": "Modal particles: doch, mal, eben, halt, ja",
+    "title": "Módosítószók: doch, mal, eben, halt, ja",
     "de": "Schau doch mal kurz drauf."
   },
   {
     "id": "G24-2",
     "topic": "G24",
-    "title": "Modal particles: doch, mal, eben, halt, ja",
+    "title": "Módosítószók: doch, mal, eben, halt, ja",
     "de": "Das ist halt so."
   },
   {
     "id": "G25-1",
     "topic": "G25",
-    "title": "Discourse markers and conversation strategies",
+    "title": "Beszédjelölők és beszélgetési stratégiák",
     "de": "Also, ich sehe das so: ..."
   },
   {
     "id": "G25-2",
     "topic": "G25",
-    "title": "Discourse markers and conversation strategies",
+    "title": "Beszédjelölők és beszélgetési stratégiák",
     "de": "Eigentlich wollte ich sagen, dass ..."
   },
   {
     "id": "G26-1",
     "topic": "G26",
-    "title": "Politeness and register: du/Sie, formal and informal",
+    "title": "Udvariasság és regiszter: du/Sie, formális és informális nyelvhasználat",
     "de": "Wären Sie so freundlich, mir das zu schicken?"
   },
   {
     "id": "G26-2",
     "topic": "G26",
-    "title": "Politeness and register: du/Sie, formal and informal",
+    "title": "Udvariasság és regiszter: du/Sie, formális és informális nyelvhasználat",
     "de": "Sag Bescheid, wenn du Zeit hast."
   },
   {
     "id": "G27-1",
     "topic": "G27",
-    "title": "Word order in the middle field, stress and negation",
+    "title": "Szórend a mondat belsejében, hangsúly és tagadás",
     "de": "Das habe ich dir doch gestern gesagt."
   },
   {
     "id": "G27-2",
     "topic": "G27",
-    "title": "Word order in the middle field, stress and negation",
+    "title": "Szórend a mondat belsejében, hangsúly és tagadás",
     "de": "Nicht ich habe das entschieden, sondern das Team."
   },
   {
     "id": "G28-1",
     "topic": "G28",
-    "title": "Indirect speech: Konjunktiv I and substitutes",
+    "title": "Függő beszéd: Konjunktiv I és helyettesítő formák",
     "de": "Er sagte, er habe keine Zeit."
   },
   {
     "id": "G28-2",
     "topic": "G28",
-    "title": "Indirect speech: Konjunktiv I and substitutes",
+    "title": "Függő beszéd: Konjunktiv I és helyettesítő formák",
     "de": "Sie meint, das sei kein Problem."
   },
   {
     "id": "G29-1",
     "topic": "G29",
-    "title": "Participial attributes and extended attributes",
+    "title": "Melléknévi igeneves és bővített jelzők",
     "de": "die geplante Änderung"
   },
   {
     "id": "G29-2",
     "topic": "G29",
-    "title": "Participial attributes and extended attributes",
+    "title": "Melléknévi igeneves és bővített jelzők",
     "de": "die am Montag beschlossene Regelung"
   },
   {
     "id": "G30-1",
     "topic": "G30",
-    "title": "Nominalisation and nominal style",
+    "title": "Főnevesítés és a főnévi stílus",
     "de": "nach Abschluss des Projekts"
   },
   {
     "id": "G30-2",
     "topic": "G30",
-    "title": "Nominalisation and nominal style",
+    "title": "Főnevesítés és a főnévi stílus",
     "de": "zur Verbesserung der Qualität"
   },
   {
     "id": "G31-1",
     "topic": "G31",
-    "title": "Reporting and referring: laut, zufolge, demnach",
+    "title": "Hivatkozás és forrásmegjelölés: laut, zufolge, demnach",
     "de": "Laut dem Bericht ist das Projekt im Plan."
   },
   {
     "id": "G31-2",
     "topic": "G31",
-    "title": "Reporting and referring: laut, zufolge, demnach",
+    "title": "Hivatkozás és forrásmegjelölés: laut, zufolge, demnach",
     "de": "Demnach ist alles vorbereitet."
   },
   {
     "id": "G32-1",
     "topic": "G32",
-    "title": "Nuance: lassen constructions, sein + zu, passive alternatives",
+    "title": "Árnyalatok: lassen szerkezetek, sein + zu, passzíva-alternatívák",
     "de": "Das lässt sich lösen."
   },
   {
     "id": "G32-2",
     "topic": "G32",
-    "title": "Nuance: lassen constructions, sein + zu, passive alternatives",
+    "title": "Árnyalatok: lassen szerkezetek, sein + zu, passzíva-alternatívák",
     "de": "Das ist leicht zu erledigen."
   },
   {
     "id": "G33-1",
     "topic": "G33",
-    "title": "Arguing and weighing: supporting, limiting, concluding",
+    "title": "Érvelés és mérlegelés: alátámasztás, korlátozás, következtetés",
     "de": "Einerseits spart das Zeit, andererseits kostet es Qualität."
   },
   {
     "id": "G33-2",
     "topic": "G33",
-    "title": "Arguing and weighing: supporting, limiting, concluding",
+    "title": "Érvelés és mérlegelés: alátámasztás, korlátozás, következtetés",
     "de": "Daraus folgt, dass wir umplanen müssen."
   },
   {
     "id": "G34-1",
     "topic": "G34",
-    "title": "Precision: prefix verbs and word formation",
+    "title": "Pontosság: igekötős igék és szóképzés",
     "de": "ausarbeiten, überarbeiten, umarbeiten"
   },
   {
     "id": "G34-2",
     "topic": "G34",
-    "title": "Precision: prefix verbs and word formation",
+    "title": "Pontosság: igekötős igék és szóképzés",
     "de": "die Bearbeitung, der Bearbeiter"
   }
 ]

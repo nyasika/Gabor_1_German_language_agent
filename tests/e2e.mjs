@@ -50,8 +50,8 @@ const ok = (msg) => console.log(`  ok ${++step}. ${msg}`);
 try {
   // ---- boot + home
   await page.goto(base, { waitUntil: 'networkidle' });
-  await page.waitForSelector('text=Session 1');
-  assert.ok(await page.locator('text=Session 2').count());
+  await page.waitForSelector('text=1. foglalkozás');
+  assert.ok(await page.locator('text=2. foglalkozás').count());
   ok('home renders both sessions');
   const s0 = await state();
   assert.ok(s0, 'state is written on first load');
@@ -60,38 +60,38 @@ try {
   await shot('01-home');
 
   // ---- review session
-  await page.click('a:has-text("Start review")');
-  await page.waitForSelector('text=Colleague missions for today');
+  await page.click('a:has-text("Ismétlés indítása")');
+  await page.waitForSelector('text=Mai kolléga-küldetések');
   await shot('02-missions');
-  await page.click('button:has-text("Start review")');
+  await page.click('button:has-text("Ismétlés indítása")');
   let reviewed = 0;
   let againCount = 0;
   let practiced = 0;
   for (let guard = 0; guard < 60; guard++) {
-    if (await page.locator('text=Review complete').count()) break;
-    if (await page.locator('button:has-text("Show answer")').count()) {
+    if (await page.locator('text=Ismétlés kész').count()) break;
+    if (await page.locator('button:has-text("Válasz megmutatása")').count()) {
       if (reviewed === 0) await shot('03-card');
-      await page.click('button:has-text("Show answer")');
+      await page.click('button:has-text("Válasz megmutatása")');
       if (reviewed === 0) await shot('04-rating');
       if (await page.locator('.rate').count()) {
         const rate = (reviewed % 4 === 3) ? 'Again' : 'Good';
-        await page.click(`.rate button:has-text("${rate}")`);
+        await page.click(`.rate button.rate-${rate.toLowerCase()}`);
         reviewed++;
         if (rate === 'Again') againCount++;
         const st = await state();
         assert.equal(st.log[today].review.answers, reviewed, 'each graded card is saved immediately');
       } else {
         practiced++; // a card rated Again comes back once as an ungraded practice repeat
-        await page.click('button:has-text("Got it")');
+        await page.click('button:has-text("Megvan")');
       }
     } else if (await page.locator('.cloze-input').count()) {
       await page.fill('.cloze-input', 'x');
-      await page.click('button:has-text("Check")');
-      await page.click('button:has-text("Continue")');
+      await page.click('button:has-text("Ellenőrzés")');
+      await page.click('button:has-text("Tovább")');
       reviewed++;
     } else await page.waitForTimeout(50);
   }
-  await page.waitForSelector('text=Review complete');
+  await page.waitForSelector('text=Ismétlés kész');
   const s1 = await state();
   assert.ok(reviewed >= 7);
   assert.ok(Object.values(s1.cards).some((c) => c.state === 'review' && c.due > today), 'reviewed cards are scheduled into the future');
@@ -101,9 +101,9 @@ try {
 
   // ---- lesson: variety + save-after-every-answer + retry + error card
   await page.goto(`${base}#/lesson/G01`);
-  await page.waitForSelector('text=Start lesson');
+  await page.waitForSelector('text=Lecke indítása');
   await shot('06-lesson-intro');
-  await page.click('a:has-text("Start lesson")');
+  await page.click('a:has-text("Lecke indítása")');
   await page.waitForSelector('.run .ex');
   const labels = [];
   const shotTypes = new Set();
@@ -112,8 +112,8 @@ try {
   const findEx = (L, probe) => lessons[L].exercises.find(probe);
 
   for (let guard = 0; guard < 40; guard++) {
-    if (await page.locator('text=Lesson complete').count()) break;
-    const label = (await page.locator('.eyebrow').first().innerText()).replace(/second try/i, '').trim();
+    if (await page.locator('text=Lecke kész').count()) break;
+    const label = (await page.locator('.eyebrow').first().innerText()).replace(/második próbálkozás/i, '').trim();
     const isRetry = (await page.locator('.eyebrow .chip').count()) > 0;
     if (!isRetry) labels.push(label);
     if (!isRetry && !shotTypes.has(label)) { shotTypes.add(label); await shot(`ex-${label.toLowerCase().replace(/\s+/g, '-')}`); }
@@ -156,7 +156,7 @@ try {
 
     if (wrongOnPurpose) deliberateWrong++;
     if (answered === 0) await shot('07-exercise');
-    await page.click('button:has-text("Check")');
+    await page.click('button:has-text("Ellenőrzés")');
     await noJunk(`feedback after exercise ${answered + 1}${wrongOnPurpose ? ' (wrong on purpose)' : ''}`);
     if (answered === 0) {
       const st = await state();
@@ -165,9 +165,9 @@ try {
       await shot('08-feedback');
     }
     if (!isRetry) answered++;
-    await page.click('.footer button:has-text("Continue"), .footer button:has-text("Finish")');
+    await page.click('.footer button:has-text("Tovább"), .footer button:has-text("Befejezés")');
   }
-  await page.waitForSelector('text=Lesson complete');
+  await page.waitForSelector('text=Lecke kész');
   await shot('09-lesson-complete');
   assert.ok(labels.length === 10, `10 first-try exercises, got ${labels.length}: ${labels.join(' | ')}`);
   for (let i = 1; i < labels.length; i++) assert.notEqual(labels[i], labels[i - 1], `no same-type back-to-back at ${i}: ${labels.join(' | ')}`);
@@ -183,7 +183,7 @@ try {
 
   // ---- unlock chain
   await page.goto(`${base}#/path`);
-  await page.waitForSelector('text=Learning path');
+  await page.waitForSelector('text=Tanulási útvonal');
   assert.ok(await page.locator('.node.done').count() === 1);
   assert.ok(await page.locator('.node.locked').count() >= 1);
   await shot('10-path');
@@ -191,12 +191,12 @@ try {
 
   // ---- evening log
   await page.goto(`${base}#/log`);
-  await page.waitForSelector('text=Evening log');
+  await page.waitForSelector('text=Esti napló');
   await shot('11a-log-empty');
   await page.fill('textarea', 'I wanted to say we should postpone the meeting');
-  await page.fill('input[aria-label="German version"]', 'Wir sollten das Meeting verschieben.');
-  await page.click('button:has-text("Save")');
-  await page.waitForSelector('text=Recent entries');
+  await page.fill('input[aria-label="Német verzió"]', 'Wir sollten das Meeting verschieben.');
+  await page.click('button:has-text("Mentés")');
+  await page.waitForSelector('text=Legutóbbi bejegyzések');
   const s3 = await state();
   assert.equal(s3.gaps.length, 1);
   assert.ok(Object.values(s3.cards).some((c) => c.src === 'gap' && c.back.includes('verschieben')));
@@ -205,14 +205,14 @@ try {
 
   // ---- stats + settings
   await page.goto(`${base}#/stats`);
-  await page.waitForSelector('text=Grammar mastery');
+  await page.waitForSelector('text=Nyelvtani tudásszint');
   assert.equal(await page.locator('.hm').count(), 84);
   await shot('12-stats');
   await page.goto(`${base}#/settings`);
-  await page.waitForSelector('text=Backup');
+  await page.waitForSelector('text=Biztonsági mentés');
   await shot('13-settings');
   const dl = page.waitForEvent('download');
-  await page.click('button:has-text("Download backup")');
+  await page.click('button:has-text("Biztonsági mentés letöltése")');
   const d = await dl;
   assert.match(d.suggestedFilename(), /^wortweg-backup-\d{4}-\d{2}-\d{2}\.json$/);
   ok('stats heatmap renders, backup download works');
@@ -220,10 +220,10 @@ try {
   // ---- persistence across a full reload
   await page.reload({ waitUntil: 'networkidle' });
   await page.goto(base);
-  await page.waitForSelector('text=Session 2');
+  await page.waitForSelector('text=2. foglalkozás');
   const homeText = await page.innerText('body');
-  assert.ok(/done today/.test(homeText), 'home remembers today\'s sessions after reload');
-  assert.ok(/Saved \d{2}:\d{2}:\d{2}/.test(homeText), 'save indicator visible');
+  assert.ok(/ma kész/.test(homeText), 'home remembers today\'s sessions after reload');
+  assert.ok(/Mentve \d{2}:\d{2}:\d{2}/.test(homeText), 'save indicator visible');
   const s4 = await state();
   assert.equal(s4.lessons.G01.done, true);
   await shot('14-home-after');

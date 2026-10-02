@@ -34,15 +34,15 @@ export function speak(text, { rate = 0.95, w = globalThis.window ?? globalThis }
 }
 
 export const ERROR_TEXT = {
-  'not-allowed': 'The microphone is blocked. Allow microphone access for this site in your browser settings, then try again.',
-  'service-not-allowed': 'The microphone is blocked. Allow microphone access for this site in your browser settings, then try again.',
-  'no-speech': 'I did not hear anything. Tap Speak and start talking right away.',
-  'audio-capture': 'No microphone was found.',
-  network: 'Speech recognition needs an internet connection.',
-  unsupported: 'This browser has no speech recognition. Use Chrome, or rate yourself below.',
-  aborted: 'Listening was interrupted. Try again.',
+  'not-allowed': 'A mikrofon le van tiltva. Engedélyezd a mikrofonhasználatot ennek az oldalnak a böngésző beállításaiban, majd próbáld újra.',
+  'service-not-allowed': 'A mikrofon le van tiltva. Engedélyezd a mikrofonhasználatot ennek az oldalnak a böngésző beállításaiban, majd próbáld újra.',
+  'no-speech': 'Nem hallottam semmit. Koppints a Mondd ki gombra, és rögtön kezdj el beszélni.',
+  'audio-capture': 'Nem található mikrofon.',
+  network: 'A beszédfelismeréshez internetkapcsolat szükséges.',
+  unsupported: 'Ebben a böngészőben nincs beszédfelismerés. Használj Chrome-ot, vagy értékeld magad lent.',
+  aborted: 'A hallgatás megszakadt. Próbáld újra.',
 };
-export const errorText = (code) => ERROR_TEXT[code] || `Speech recognition failed (${code}). Try again.`;
+export const errorText = (code) => ERROR_TEXT[code] || `A beszédfelismerés nem sikerült (${code}). Próbáld újra.`;
 
 // Resolves with { alternatives: [{transcript, confidence}] } or rejects with { code }.
 export function listen({ lang = 'de-DE', maxMs = 9000, w = globalThis.window ?? globalThis } = {}) {

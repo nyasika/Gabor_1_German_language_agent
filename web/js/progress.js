@@ -25,6 +25,7 @@ export function defaultState() {
     speaking: { phrases: {}, log: {} },
     talks: {},
     sprints: { active: null, progress: {} },
+    vocab: { startDate: null, claimed: [] },
     lastLead: null,
   };
 }

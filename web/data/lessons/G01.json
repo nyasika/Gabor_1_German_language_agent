@@ -1,24 +1,37 @@
 {
   "id": "G01",
-  "title": "Sentence building: verb second, inversion, Satzklammer",
+  "title": "Mondatszerkezet: fordított szórend és a mondatkeret (Satzklammer)",
   "topic": "G01",
   "intro": [
-    "The conjugated verb is always in position 2 of a main clause — not necessarily the 2nd word.",
-    "If something other than the subject opens the sentence (time, place, a connector), subject and verb swap: inversion.",
-    "If the verb has two parts (haben/sein + Partizip II, or a modal + infinitive), the second part goes to the very end: the Satzklammer.",
-    "nicht negating the whole clause goes at the end, just before the final verb part."
+    "A német kijelentő mondatban a ragozott ige mindig a mondat 2. helyén áll — ezt hívjuk V2-szabálynak. Ez nem a 2. SZÓT jelenti, hanem a 2. MONDATRÉSZT: állhat ott egyetlen szó (az alany), de egy több szóból álló időhatározói kifejezés is, mint a „Nächste Woche”.",
+    "Ha a mondat nem az alannyal kezdődik — hanem időhatározóval, hellyel, vagy egy olyan kötőszóval mint a „deshalb” —, akkor az alany és az ige felcserélődik (ez az inverzió), hogy az ige mindenképp a 2. helyen maradjon.",
+    "Ha az állítmány két részből áll (pl. segédige + Partizip II, vagy módbeli segédige + főnévi igenév), a ragozott rész a 2. helyen marad, a másik rész pedig a mondat legvégére kerül. Ezt hívjuk Satzklammernek (mondatkeretnek): a két igerész mintegy közrefogja a mondat többi elemét.",
+    "A teljes mondatot tagadó „nicht” jellemzően a mondat vége felé áll, közvetlenül a Satzklammer záró eleme (a főnévi igenév vagy a Partizip II) előtt.",
+    "Ha egy mondatban több határozó is szerepel, a sorrendjük jellemzően a TeKaMoLo elvet követi: Temporal (mikor) → Kausal (miért) → Modal (hogyan, mivel) → Lokal (hol, hova)."
+  ],
+  "tables": [
+    {
+      "title": "Hol áll az ige? — mondattípusok áttekintése",
+      "headers": ["Mondattípus", "Példa", "Az ige helye"],
+      "rows": [
+        ["Egyenes szórend", "Ich lerne jeden Tag Deutsch.", "2. hely, közvetlenül az alany után"],
+        ["Inverzió (nem az alannyal kezdődik)", "Jeden Tag lerne ich Deutsch.", "2. hely, de az alany az ige UTÁN áll"],
+        ["Satzklammer (két részes állítmány)", "Ich habe gestern Deutsch gelernt.", "A ragozott rész (habe) a 2. helyen, a másik rész (gelernt) a mondat végén"],
+        ["Mellékmondat", "..., weil ich Deutsch lerne.", "Az ige a mellékmondat legvégén áll"]
+      ]
+    }
   ],
   "exercises": [
-    { "id": "G01-01", "type": "mc", "topic": "G01", "prompt": "Heute ___ ich ins Büro.", "options": ["gehe", "gehst", "geht", "gehen"], "answer": "gehe", "explain": "ich gehe — the verb still agrees with ich even though Heute opens the sentence." },
-    { "id": "G01-02", "type": "mc", "topic": "G01", "prompt": "Nach der Besprechung ___ wir weiter.", "options": ["arbeiten", "arbeitet", "arbeite", "arbeitest"], "answer": "arbeiten", "explain": "wir arbeiten — inversion after the opening phrase, verb still in position 2." },
-    { "id": "G01-03", "type": "cloze", "topic": "G01", "prompt": "Even after 'Morgen', the verb stays in position 2.", "sentence": "Morgen ___ ich einen Termin.", "answers": ["habe"], "hint": "haben, ich-alak", "explain": "Morgen habe ich — habe is still the 2nd sentence element." },
-    { "id": "G01-04", "type": "order", "topic": "G01", "prompt": "Ma este találkozom egy kollégával.", "tiles": ["Heute", "Abend", "treffe", "ich", "einen", "Kollegen."], "answers": ["Heute Abend treffe ich einen Kollegen."], "explain": "Time phrase first, then the verb (position 2), then the subject: inversion." },
-    { "id": "G01-05", "type": "errorspot", "topic": "G01", "prompt": "Tap the word in the wrong place.", "tokens": ["Heute", "ich", "gehe", "ins", "Büro."], "wrongIndex": 1, "fixed": "Heute gehe ich ins Büro.", "explain": "After an opening time phrase, verb and subject swap: gehe ich." },
-    { "id": "G01-06", "type": "mc", "topic": "G01", "prompt": "Which sentence has the correct word order?", "options": ["Deshalb hat er nicht geantwortet.", "Deshalb er hat nicht geantwortet.", "Deshalb hat nicht er geantwortet.", "Er deshalb hat nicht geantwortet."], "answer": "Deshalb hat er nicht geantwortet.", "explain": "deshalb also triggers inversion: hat er." },
-    { "id": "G01-07", "type": "cloze", "topic": "G01", "prompt": "sein + Partizip II for a movement verb.", "sentence": "Ich ___ gestern spät nach Hause gekommen.", "answers": ["bin"], "hint": "sein, ich-alak", "explain": "bin ... gekommen: the auxiliary sits in position 2, the participle at the end (Satzklammer)." },
-    { "id": "G01-08", "type": "order", "topic": "G01", "prompt": "Tegnap sokáig dolgoztam.", "tiles": ["Ich", "habe", "gestern", "lange", "gearbeitet."], "answers": ["Ich habe gestern lange gearbeitet."], "explain": "habe ... gearbeitet forms the Satzklammer; everything else sits in the middle." },
-    { "id": "G01-09", "type": "match", "topic": "G01", "prompt": "Match the sentence with what happens to the verb.", "pairs": [["Ich lerne jeden Tag.", "verb in position 2, right after the subject"], ["Jeden Tag lerne ich.", "verb in position 2, subject moves after it"], ["Deshalb lerne ich.", "verb in position 2, after 'deshalb'"], ["Weil ich lerne, ...", "verb at the very end (subordinate clause)"]] },
-    { "id": "G01-10", "type": "mc", "topic": "G01", "prompt": "Ich habe das Dokument ___ gelesen.", "options": ["nicht", "kein", "nie", "nichts"], "answer": "nicht", "explain": "nicht goes right before the final verb part when negating the whole clause." },
-    { "id": "G01-11", "type": "order", "topic": "G01", "prompt": "Holnap a vonattal megyek Bernbe a munka miatt.", "tiles": ["Ich", "fahre", "morgen", "wegen", "der", "Arbeit", "mit", "dem", "Zug", "nach", "Bern."], "answers": ["Ich fahre morgen wegen der Arbeit mit dem Zug nach Bern."], "explain": "TeKaMoLo order: temporal (morgen) → kausal (wegen der Arbeit) → modal (mit dem Zug) → lokal (nach Bern)." }
+    { "id": "G01-01", "type": "mc", "topic": "G01", "prompt": "Heute ___ ich ins Büro.", "options": ["gehe", "gehst", "geht", "gehen"], "answer": "gehe", "explain": "Az ige (gehe) továbbra is az ich alanyhoz igazodik, annak ellenére, hogy a mondatot a Heute nyitja." },
+    { "id": "G01-02", "type": "mc", "topic": "G01", "prompt": "Nach der Besprechung ___ wir weiter.", "options": ["arbeiten", "arbeitet", "arbeite", "arbeitest"], "answer": "arbeiten", "explain": "wir arbeiten — inverzió a nyitó kifejezés után, az ige továbbra is a 2. helyen áll." },
+    { "id": "G01-03", "type": "cloze", "topic": "G01", "prompt": "A „Morgen” után is a 2. helyen marad az ige.", "sentence": "Morgen ___ ich einen Termin.", "answers": ["habe"], "hint": "haben, ich-alak", "explain": "Morgen habe ich — a habe továbbra is a mondat 2. eleme." },
+    { "id": "G01-04", "type": "order", "topic": "G01", "prompt": "Ma este találkozom egy kollégával.", "tiles": ["Heute", "Abend", "treffe", "ich", "einen", "Kollegen."], "answers": ["Heute Abend treffe ich einen Kollegen."], "explain": "Előbb az időhatározó, utána az ige (2. hely), majd az alany: ez az inverzió." },
+    { "id": "G01-05", "type": "errorspot", "topic": "G01", "prompt": "Koppints a rossz helyen álló szóra.", "tokens": ["Heute", "ich", "gehe", "ins", "Büro."], "wrongIndex": 1, "fixed": "Heute gehe ich ins Büro.", "explain": "Egy nyitó időhatározó után az ige és az alany helyet cserél: gehe ich." },
+    { "id": "G01-06", "type": "mc", "topic": "G01", "prompt": "Melyik mondatban helyes a szórend?", "options": ["Deshalb hat er nicht geantwortet.", "Deshalb er hat nicht geantwortet.", "Deshalb hat nicht er geantwortet.", "Er deshalb hat nicht geantwortet."], "answer": "Deshalb hat er nicht geantwortet.", "explain": "A deshalb is inverziót vált ki: hat er." },
+    { "id": "G01-07", "type": "cloze", "topic": "G01", "prompt": "sein + Partizip II egy mozgást kifejező igénél.", "sentence": "Ich ___ gestern spät nach Hause gekommen.", "answers": ["bin"], "hint": "sein, ich-alak", "explain": "bin ... gekommen: a segédige a 2. helyen, a melléknévi igenév a mondat végén áll (Satzklammer)." },
+    { "id": "G01-08", "type": "order", "topic": "G01", "prompt": "Tegnap sokáig dolgoztam.", "tiles": ["Ich", "habe", "gestern", "lange", "gearbeitet."], "answers": ["Ich habe gestern lange gearbeitet."], "explain": "habe ... gearbeitet alkotja a Satzklammert; minden más a közepén helyezkedik el." },
+    { "id": "G01-09", "type": "match", "topic": "G01", "prompt": "Párosítsd a mondatot azzal, hogy mi történik az igével.", "pairs": [["Ich lerne jeden Tag.", "ige a 2. helyen, közvetlenül az alany után"], ["Jeden Tag lerne ich.", "ige a 2. helyen, az alany utána kerül"], ["Deshalb lerne ich.", "ige a 2. helyen, a „deshalb” után"], ["Weil ich lerne, ...", "ige a legvégén (mellékmondat)"]] },
+    { "id": "G01-10", "type": "mc", "topic": "G01", "prompt": "Ich habe das Dokument ___ gelesen.", "options": ["nicht", "kein", "nie", "nichts"], "answer": "nicht", "explain": "A nicht közvetlenül az utolsó igerész elé kerül, ha az egész mondatot tagadja." },
+    { "id": "G01-11", "type": "order", "topic": "G01", "prompt": "Holnap a vonattal megyek Bernbe a munka miatt.", "tiles": ["Ich", "fahre", "morgen", "wegen", "der", "Arbeit", "mit", "dem", "Zug", "nach", "Bern."], "answers": ["Ich fahre morgen wegen der Arbeit mit dem Zug nach Bern."], "explain": "TeKaMoLo sorrend: temporális (morgen) → kauzális (wegen der Arbeit) → modális (mit dem Zug) → lokális (nach Bern)." }
   ]
 }

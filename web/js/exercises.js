@@ -48,7 +48,7 @@ function article(ex) {
   const header = h('div', { class: 'noun-card' },
     h('div', { class: 'noun-q' }, '___ ', h('strong', {}, ex.noun)),
     ex.hu ? h('div', { class: 'noun-hu' }, ex.hu) : null,
-    h('p', { class: 'prompt' }, 'Which article?'));
+    h('p', { class: 'prompt' }, 'Melyik névelő?'));
   return choice({ ...ex, options: ['der', 'die', 'das'] }, { keepOrder: true, big: true, header });
 }
 
@@ -56,7 +56,7 @@ function cloze(ex, { onSubmit } = {}) {
   const n = notifier();
   const input = h('input', {
     type: 'text', class: 'cloze-input', autocomplete: 'off', autocapitalize: 'none', spellcheck: 'false',
-    'aria-label': 'Your answer',
+    'aria-label': 'A válaszod',
     oninput: () => n.fire(),
     onkeydown: (e) => { if (e.key === 'Enter' && onSubmit) onSubmit(); },
   });
@@ -94,7 +94,7 @@ function order(ex) {
     answer.replaceChildren(...chosen.map((i) =>
       h('button', { type: 'button', class: 'tile placed', disabled: locked,
         onclick: () => { chosen = chosen.filter((x) => x !== i); render(); n.fire(); } }, ex.tiles[i])));
-    if (!chosen.length) answer.append(h('span', { class: 'placeholder' }, 'Tap the words in order'));
+    if (!chosen.length) answer.append(h('span', { class: 'placeholder' }, 'Koppints a szavakra sorrendben'));
   }
   render();
   const el = h('div', { class: 'ex ex-order' }, h('p', { class: 'prompt' }, ex.prompt), answer, bank);
@@ -145,7 +145,7 @@ function match(ex) {
     focus() {},
     check() {
       const correct = mistakes <= 1;
-      return { correct, answerText: mistakes ? `${mistakes} mismatch${mistakes > 1 ? 'es' : ''}` : 'All matched' };
+      return { correct, answerText: mistakes ? `${mistakes} hibás pár` : 'Minden pár megvan' };
     },
   };
 }
@@ -193,8 +193,8 @@ export function createExercise(ex, opts = {}) {
 }
 
 export const TYPE_LABEL = {
-  mc: 'Multiple choice', article: 'Article', cloze: 'Fill the gap', order: 'Build the sentence',
-  match: 'Match pairs', errorspot: 'Spot the error',
+  mc: 'Feleletválasztós', article: 'Névelő', cloze: 'Hiányzó szó', order: 'Mondatépítés',
+  match: 'Párosítás', errorspot: 'Keresd a hibát',
 };
 
 // Build a review card from a wrongly answered exercise, so errors come back tomorrow.
@@ -208,11 +208,11 @@ export function cardFromExercise(ex) {
       if (ex.prompt.includes('___')) return { ...base, type: 'cloze', sentence: ex.prompt, answers: [ex.answer], hu: ex.explain || '' };
       return { ...base, type: 'flip', front: ex.prompt, back: ex.answer, hint: ex.explain || '' };
     case 'order':
-      return { ...base, type: 'flip', front: ex.prompt, back: ex.answers[0], hint: 'Word order' };
+      return { ...base, type: 'flip', front: ex.prompt, back: ex.answers[0], hint: 'Szórend' };
     case 'errorspot':
-      return { ...base, type: 'flip', front: `Correct this: ${ex.tokens.join(' ')}`, back: ex.fixed, hint: ex.explain || '' };
+      return { ...base, type: 'flip', front: `Javítsd ki: ${ex.tokens.join(' ')}`, back: ex.fixed, hint: ex.explain || '' };
     case 'article':
-      return { ...base, type: 'flip', front: `${ex.noun} (${ex.hu || 'article?'})`, back: `${ex.answer} ${ex.noun}`, hint: ex.explain || '' };
+      return { ...base, type: 'flip', front: `${ex.noun} (${ex.hu || 'névelő?'})`, back: `${ex.answer} ${ex.noun}`, hint: ex.explain || '' };
     default:
       return null;
   }

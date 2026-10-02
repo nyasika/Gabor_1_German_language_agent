@@ -11,7 +11,7 @@ export function createSync(store, { fetchImpl = (...a) => fetch(...a), storage =
   let timer = null;
   let suppress = false;
   let busy = false;
-  const status = { state: 'off', message: 'Not configured (progress stays on this device)', at: null };
+  const status = { state: 'off', message: 'Nincs beállítva (a haladás ezen az eszközön marad)', at: null };
   const listeners = new Set();
   const set = (state, message) => {
     status.state = state;
@@ -32,7 +32,7 @@ export function createSync(store, { fetchImpl = (...a) => fetch(...a), storage =
       headers: { apikey: anonKey, 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password: getPassword() }),
     });
-    if (!res.ok) throw new Error(res.status === 400 ? 'Wrong email or password' : `Sign-in failed (${res.status})`);
+    if (!res.ok) throw new Error(res.status === 400 ? 'Hibás email cím vagy jelszó' : `Sikertelen bejelentkezés (${res.status})`);
     const j = await res.json();
     token = j.access_token;
     userId = j.user.id;
@@ -46,8 +46,8 @@ export function createSync(store, { fetchImpl = (...a) => fetch(...a), storage =
       ...init,
       headers: { apikey: anonKey, Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', ...(init.headers || {}) },
     });
-    if (res.status === 401) { token = null; throw new Error('Session expired, retrying next time'); }
-    if (!res.ok) throw new Error(`Server said ${res.status}`);
+    if (res.status === 401) { token = null; throw new Error('A munkamenet lejárt, legközelebb újra próbálkozunk'); }
+    if (!res.ok) throw new Error(`A szerver hibát jelzett (${res.status})`);
     return res;
   }
 
@@ -58,10 +58,10 @@ export function createSync(store, { fetchImpl = (...a) => fetch(...a), storage =
   }
 
   async function syncNow() {
-    if (!configured()) { set('off', 'Not configured (progress stays on this device)'); return; }
+    if (!configured()) { set('off', 'Nincs beállítva (a haladás ezen az eszközön marad)'); return; }
     if (busy) return;
     busy = true;
-    set('syncing', 'Syncing…');
+    set('syncing', 'Szinkronizálás…');
     try {
       const remote = await pull();
       let local = store.get();
@@ -79,10 +79,10 @@ export function createSync(store, { fetchImpl = (...a) => fetch(...a), storage =
         headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
         body: JSON.stringify({ user_id: userId, data: local, updated_at: new Date().toISOString() }),
       });
-      set('ok', `Synced at ${new Date().toLocaleTimeString()}`);
+      set('ok', `Szinkronizálva: ${new Date().toLocaleTimeString()}`);
     } catch (e) {
       suppress = false;
-      set('error', `Sync failed: ${e.message}. Your progress is still saved on this device.`);
+      set('error', `Sikertelen szinkronizálás: ${e.message}. A haladásod továbbra is mentve van ezen az eszközön.`);
     } finally {
       busy = false;
     }

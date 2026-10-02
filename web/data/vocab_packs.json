@@ -1,0 +1,53 @@
+[
+  {
+    "id": "VP01",
+    "category": "verb",
+    "title": "Alapigék múlt idejű alakokkal 1.",
+    "items": [
+      { "de": "gehen", "hu": "menni", "praeteritum": "ging", "partizip2": "gegangen", "aux": "sein" },
+      { "de": "kommen", "hu": "jönni", "praeteritum": "kam", "partizip2": "gekommen", "aux": "sein" },
+      { "de": "sehen", "hu": "látni", "praeteritum": "sah", "partizip2": "gesehen", "aux": "haben" },
+      { "de": "geben", "hu": "adni", "praeteritum": "gab", "partizip2": "gegeben", "aux": "haben" },
+      { "de": "nehmen", "hu": "venni, fogni", "praeteritum": "nahm", "partizip2": "genommen", "aux": "haben" },
+      { "de": "sprechen", "hu": "beszélni", "praeteritum": "sprach", "partizip2": "gesprochen", "aux": "haben" },
+      { "de": "finden", "hu": "találni", "praeteritum": "fand", "partizip2": "gefunden", "aux": "haben" },
+      { "de": "bleiben", "hu": "maradni", "praeteritum": "blieb", "partizip2": "geblieben", "aux": "sein" },
+      { "de": "beginnen", "hu": "elkezdeni", "praeteritum": "begann", "partizip2": "begonnen", "aux": "haben" },
+      { "de": "helfen", "hu": "segíteni", "praeteritum": "half", "partizip2": "geholfen", "aux": "haben" }
+    ]
+  },
+  {
+    "id": "VP02",
+    "category": "adjective",
+    "title": "Alap melléknevek 1.",
+    "items": [
+      { "de": "groß", "hu": "nagy", "opposite": "klein (kicsi)" },
+      { "de": "klein", "hu": "kicsi", "opposite": "groß (nagy)" },
+      { "de": "gut", "hu": "jó", "opposite": "schlecht (rossz)" },
+      { "de": "schlecht", "hu": "rossz", "opposite": "gut (jó)" },
+      { "de": "neu", "hu": "új", "opposite": "alt (régi)" },
+      { "de": "alt", "hu": "régi, idős", "opposite": "neu (új)" },
+      { "de": "schnell", "hu": "gyors", "opposite": "langsam (lassú)" },
+      { "de": "langsam", "hu": "lassú", "opposite": "schnell (gyors)" },
+      { "de": "einfach", "hu": "egyszerű", "opposite": "schwierig (nehéz)" },
+      { "de": "schwierig", "hu": "nehéz", "opposite": "einfach (egyszerű)" }
+    ]
+  },
+  {
+    "id": "VP03",
+    "category": "adverb",
+    "title": "Alap határozószók 1.",
+    "items": [
+      { "de": "oft", "hu": "gyakran" },
+      { "de": "manchmal", "hu": "néha" },
+      { "de": "selten", "hu": "ritkán" },
+      { "de": "immer", "hu": "mindig" },
+      { "de": "nie", "hu": "soha" },
+      { "de": "schon", "hu": "már" },
+      { "de": "noch", "hu": "még" },
+      { "de": "gleich", "hu": "rögtön, mindjárt" },
+      { "de": "vielleicht", "hu": "talán" },
+      { "de": "unbedingt", "hu": "feltétlenül" }
+    ]
+  }
+]

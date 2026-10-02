@@ -6,6 +6,20 @@ import { dirname, join } from 'node:path';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', 'web', 'data');
 const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
 
+// Structurally validates an optional grammar table (shared by lesson intros and sprint notice days).
+export function validateTables(tables, err) {
+  if (tables === undefined) return;
+  if (!Array.isArray(tables)) { err('tables must be an array'); return; }
+  tables.forEach((t, i) => {
+    const w = `table ${i + 1}${t.title ? ` (${t.title})` : ''}`;
+    if (!Array.isArray(t.headers) || t.headers.length < 2) err(`${w}: needs >= 2 headers`);
+    if (!Array.isArray(t.rows) || !t.rows.length) err(`${w}: needs >= 1 row`);
+    else for (const row of t.rows) {
+      if (!Array.isArray(row) || row.length !== t.headers?.length) err(`${w}: each row must have exactly ${t.headers?.length} cells`);
+    }
+  });
+}
+
 // Structurally validates one exercise object (shared by lessons and sprint days). `err(msg)` reports a problem.
 export function validateExercise(ex, err) {
   if (!ex.topic) err('missing topic');
@@ -79,6 +93,7 @@ export function validateContent() {
     if (f !== `${L}.json`) err(L, 'file name does not match id');
     if (!lesson.title || !lesson.topic) err(L, 'missing title/topic');
     if (!Array.isArray(lesson.intro) || !lesson.intro.length) err(L, 'missing intro');
+    validateTables(lesson.tables, (msg) => err(L, msg));
     const types = new Set();
     for (const ex of lesson.exercises) {
       const w = ex.id || `${L}?`;

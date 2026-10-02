@@ -163,3 +163,13 @@ textarea, input[type=text], input[type=url], input[type=email], input[type=passw
 .chunk-row .btn { margin: 0; }
 .chrow span:first-child { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .chrow .btn.small { margin: 0; }
+
+.grammar-intro .intro { margin-bottom: 4px; }
+.grammar-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0; border: 1px solid var(--border); border-radius: 12px; }
+.grammar-table-title { margin: 0; padding: 10px 12px 0; font-size: .95rem; }
+.grammar-table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+.grammar-table th, .grammar-table td { padding: 8px 12px; text-align: left; white-space: nowrap; border-bottom: 1px solid var(--border); }
+.grammar-table th { background: var(--brand-soft); color: var(--brand); font-weight: 700; white-space: normal; }
+.grammar-table tbody tr:last-child td { border-bottom: 0; }
+.grammar-table tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface) 96%, var(--text)); }
+.chunk-row { word-break: break-word; }

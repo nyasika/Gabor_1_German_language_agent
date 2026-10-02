@@ -6,10 +6,10 @@
   "description": "Wortweg - a Duolingo-style German learning PWA (FSRS review + varied lessons)",
   "scripts": {
     "serve": "python -m http.server 8080 --directory web",
-    "test": "node --test tests/core.test.mjs tests/content.test.mjs tests/sync.test.mjs tests/reminders.test.mjs tests/map.test.mjs tests/speaking.test.mjs tests/sprint_content.test.mjs tests/sprint_state.test.mjs",
-    "validate": "node tools/validate_content.mjs && node tools/validate_map.mjs && node tools/validate_sprints.mjs",
+    "test": "node --test tests/core.test.mjs tests/content.test.mjs tests/sync.test.mjs tests/reminders.test.mjs tests/map.test.mjs tests/speaking.test.mjs tests/sprint_content.test.mjs tests/sprint_state.test.mjs tests/vocab_content.test.mjs tests/vocabpack_state.test.mjs",
+    "validate": "node tools/validate_content.mjs && node tools/validate_map.mjs && node tools/validate_sprints.mjs && node tools/validate_vocab.mjs",
     "icons": "node tools/make_icons.mjs",
-    "e2e": "node tests/e2e.mjs && node tests/e2e_speak.mjs && node tests/e2e_sprint.mjs",
+    "e2e": "node tests/e2e.mjs && node tests/e2e_speak.mjs && node tests/e2e_sprint.mjs && node tests/e2e_vocab.mjs",
     "chunks": "node tools/build_chunks.mjs",
     "topics": "node tools/build_topics.mjs",
     "vapid": "node scripts/gen_vapid.mjs"

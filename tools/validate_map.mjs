@@ -16,7 +16,7 @@ export function validateMap(map = JSON.parse(readFileSync(FILE, 'utf8'))) {
     seen(g.id);
     rank.set(g.id, i);
     if (!map.levels.includes(g.level)) err(g.id, `unknown level ${g.level}`);
-    if (!/^I can /.test(g.cando || '')) err(g.id, 'cando must start with "I can "');
+    if (!g.cando || g.cando.length < 10) err(g.id, 'needs a real can-do statement');
     if (!g.title || !g.chunks?.length) err(g.id, 'needs title and spoken chunks');
   });
   for (const g of map.grammar) {

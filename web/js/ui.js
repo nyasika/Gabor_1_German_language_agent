@@ -38,7 +38,7 @@ export function bar(fraction, cls = '') {
   return h('div', { class: `bar ${cls}` }, h('div', { class: 'bar-fill', style: `width:${(f * 100).toFixed(0)}%` }));
 }
 
-export const fmtMin = (seconds) => `${Math.round(seconds / 60)} min`;
+export const fmtMin = (seconds) => `${Math.round(seconds / 60)} perc`;
 
 // Null-safe replaceChildren: the DOM would render a literal "null" for null/false arguments.
 export function mount(parent, ...kids) {

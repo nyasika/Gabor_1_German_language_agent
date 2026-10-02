@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { validateExercise } from './validate_content.mjs';
+import { validateExercise, validateTables } from './validate_content.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', 'web', 'data');
 const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
@@ -46,6 +46,7 @@ export function validateSprints() {
 
       if (d.focus === 'notice') {
         if (!Array.isArray(d.intro) || !d.intro.length) err(w, 'notice day needs intro[]');
+        validateTables(d.tables, (msg) => err(w, msg));
         if (!Array.isArray(d.chunks) || d.chunks.length < 3) err(w, 'notice day needs >= 3 chunks');
         else for (const c of d.chunks) if (!c.de || c.de.split(/\s+/).length < 2) err(w, 'each chunk needs a real German phrase (de)');
       } else if (d.focus === 'produce') {
