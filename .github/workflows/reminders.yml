@@ -1,7 +1,10 @@
 name: Reminders
 
-# GitHub cron is UTC. Each slot runs at both possible UTC hours (summer/winter time);
-# scripts/reminder_slots.mjs sends only the run that matches 7:00 / 20:30 Swiss time.
+# GitHub cron is UTC and, for this repo, unreliable: scheduled runs have been
+# landing hours late (sometimes past local midnight). scripts/send_push.mjs no
+# longer assumes "now" is close to a slot's clock time - it sends every slot not
+# yet recorded in reminder_state.json for its latest Zurich-local occurrence,
+# and this workflow commits that file back when something was sent.
 on:
   schedule:
     - cron: '0 5,6 * * *'
@@ -12,6 +15,9 @@ on:
         description: 'Send a test notification now'
         type: boolean
         default: false
+
+permissions:
+  contents: write
 
 jobs:
   push:
@@ -30,3 +36,15 @@ jobs:
           VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
           PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
           FORCE: ${{ inputs.force }}
+      - name: Record which reminders were sent
+        if: always()
+        run: |
+          if ! git diff --quiet -- reminder_state.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add reminder_state.json
+            git commit -m "Record sent reminders"
+            git push
+          else
+            echo "No state change to commit."
+          fi

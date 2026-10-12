@@ -43,7 +43,7 @@ npm run validate     # structural check of all lesson content
 
 Sync merges instead of overwriting: phone and PC progress are combined, so doing the review on the phone and the lesson on the PC loses nothing.
 
-## Reminders (7:00 and 20:30 Swiss time)
+## Reminders (nominally 7:00 and 20:30 Swiss time)
 
 1. `npm run vapid` prints a key pair. Put the **public** key into `web/config.js` (`vapidPublicKey`), commit, deploy.
 2. Add repo secrets: `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` (e.g. `mailto:you@example.com`).
@@ -51,7 +51,7 @@ Sync merges instead of overwriting: phone and PC progress are combined, so doing
 4. Actions, Reminders, **Run workflow** with "force" ticked to send a test notification.
 5. On Android, exclude Chrome/the app from battery optimisation, otherwise notifications can arrive late.
 
-GitHub's scheduler can start a few minutes late; a run more than 45 minutes late is skipped rather than sent at a wrong time.
+GitHub's scheduler for this repo has been landing scheduled runs hours after their cron time, sometimes past local midnight - too unreliable to key sending off "is it close to the target clock time right now". Instead `scripts/send_push.mjs` / `reminder_slots.mjs` track, in `reminder_state.json`, the last Zurich-local calendar day each slot (`review` / `lesson`) was actually sent, and send any slot whose latest occurrence isn't recorded yet - whenever GitHub next happens to run the job, however late. The workflow commits that file back after a successful send. This means reminders arrive reliably once a day each, but not at a precise time; a slot can land well after 7:00 or 20:30 if GitHub itself is slow.
 
 ## Speaking
 

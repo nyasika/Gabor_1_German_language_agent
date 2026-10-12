@@ -3,6 +3,8 @@ name: Deploy app
 on:
   push:
     branches: [main, master]
+    paths-ignore:
+      - reminder_state.json
   workflow_dispatch:
 
 permissions:
