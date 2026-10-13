@@ -76,7 +76,7 @@ async function boot() {
     [/^#\/?$/, () => homeView(ctx)],
     [/^#\/path$/, () => pathView(ctx)],
     [/^#\/lesson\/(\w+)$/, (m) => lessonIntroView(ctx, m[1])],
-    [/^#\/run\/(\w+)$/, (m) => lessonRunView(ctx, m[1])],
+    [/^#\/run\/(\w+)(?:\/(easy|medium|hard))?$/, (m) => lessonRunView(ctx, m[1], m[2])],
     [/^#\/review$/, () => reviewRunView(ctx)],
     [/^#\/speak$/, () => speakView(ctx)],
     [/^#\/sprints$/, () => sprintsListView(ctx)],

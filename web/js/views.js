@@ -159,6 +159,9 @@ export function pathView(ctx) {
     }));
 }
 
+const LEVEL_LABEL = { easy: 'Könnyű', medium: 'Közepes', hard: 'Nehéz' };
+const MIN_LEVEL_POOL = 5;
+
 export function lessonIntroView(ctx, id) {
   const root = h('div', {}, h('p', { class: 'muted' }, 'Betöltés…'));
   ctx.data.loadLesson(id).then((lesson) => {
@@ -167,13 +170,17 @@ export function lessonIntroView(ctx, id) {
       mount(root, h('div', { class: 'card' }, h('h2', {}, lesson.title), h('p', {}, 'Előbb fejezd be az előző leckét.'), h('a', { class: 'btn', href: '#/path' }, 'Vissza az útvonalhoz')));
       return;
     }
+    const levels = Object.keys(LEVEL_LABEL).filter((lv) => lesson.exercises.filter((ex) => ex.level === lv).length >= MIN_LEVEL_POOL);
     mount(root, h('div', { class: 'card' },
       h('p', { class: 'eyebrow' }, ctx.data.topics[lesson.topic]?.title || lesson.topic),
       h('h1', {}, lesson.title),
       renderIntro(lesson),
       h('p', { class: 'muted' }, '10 feladat, kb. 5 perc. A hibák a lecke végén még egyszer előkerülnek, holnap pedig ismétlőkártyaként is visszatérnek.'),
       h('a', { class: 'btn primary', href: `#/run/${id}` }, 'Lecke indítása'),
-      h('a', { class: 'btn ghost', href: '#/path' }, 'Vissza')));
+      h('a', { class: 'btn ghost', href: '#/path' }, 'Vissza'),
+      levels.length ? h('div', { class: 'practice-levels' },
+        h('p', { class: 'muted small' }, 'Szeretnéd külön gyakorolni ezt a témát? Válassz nehézséget — mindig friss, kevert feladatsort kapsz ugyanabból a szintből.'),
+        h('div', { class: 'row' }, levels.map((lv) => h('a', { class: 'btn', href: `#/run/${id}/${lv}` }, `${LEVEL_LABEL[lv]} gyakorlás`)))) : null));
   }).catch((e) => mount(root, errorBox(e)));
   return root;
 }
@@ -192,13 +199,14 @@ export function renderIntro(content) {
 }
 
 // ---------------------------------------------------------------- Lesson runner
-export function lessonRunView(ctx, lessonId) {
+export function lessonRunView(ctx, lessonId, level) {
   const root = h('div', { class: 'run' }, h('p', { class: 'muted' }, 'Betöltés…'));
   ctx.data.loadLesson(lessonId).then(start).catch((e) => mount(root, errorBox(e)));
 
   function start(lesson) {
     const today = localDateStr();
-    const items = buildLesson(lesson.exercises, { n: 10, prevLead: ctx.store.get().lastLead });
+    const pool = level ? lesson.exercises.filter((ex) => ex.level === level) : lesson.exercises;
+    const items = buildLesson(pool, { n: Math.min(10, pool.length), prevLead: ctx.store.get().lastLead });
     ctx.store.save((s) => { s.lastLead = items[0]?.type ?? null; });
     const queue = items.map((ex) => ({ ex, retry: false }));
     const firstTry = {};
@@ -219,7 +227,7 @@ export function lessonRunView(ctx, lessonId) {
       mount(root,
         topBar(lesson.title, ctx),
         bar(idx / queue.length, 'progress'),
-        h('p', { class: 'eyebrow' }, TYPE_LABEL[ex.type], retry ? h('span', { class: 'chip warn' }, 'második próbálkozás') : null),
+        h('p', { class: 'eyebrow' }, TYPE_LABEL[ex.type], level ? h('span', { class: 'chip' }, LEVEL_LABEL[level]) : null, retry ? h('span', { class: 'chip warn' }, 'második próbálkozás') : null),
         exercise.el, feedback, footer);
       exercise.focus();
 
@@ -256,6 +264,15 @@ export function lessonRunView(ctx, lessonId) {
       const total = items.length;
       const ok = items.filter((ex) => firstTry[ex.id]).length;
       const score = ok / total;
+      if (level) {
+        mount(root, h('div', { class: 'card summary' },
+          h('p', { class: 'eyebrow' }, `Gyakorlás kész · ${LEVEL_LABEL[level]}`),
+          h('h1', {}, `${Math.round(score * 100)}% elsőre`),
+          h('p', {}, `${ok}/${total} helyes elsőre${xpGained ? ` · +${xpGained} XP` : ''}`),
+          h('a', { class: 'btn primary', href: `#/lesson/${lessonId}` }, 'Vissza a leckéhez'),
+          h('a', { class: 'btn ghost', href: '#/' }, 'Kezdőlap')));
+        return;
+      }
       const first = !ctx.store.get().lessons[lessonId]?.done;
       const bonus = first ? 20 : 5;
       ctx.store.save((s) => {

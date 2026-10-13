@@ -101,6 +101,7 @@ export function validateContent() {
       if (seenIds.has(ex.id)) err(w, 'duplicate exercise id');
       seenIds.add(ex.id);
       if (!ex.id?.startsWith(L)) err(w, 'id should start with lesson id');
+      if (ex.level !== undefined && !['easy', 'medium', 'hard'].includes(ex.level)) err(w, 'level must be easy/medium/hard');
       validateExercise(ex, (msg) => err(w, msg));
     }
     if (lesson.exercises.length < 10) err(L, 'needs >= 10 exercises to fill a lesson');
