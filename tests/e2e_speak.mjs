@@ -94,7 +94,7 @@ try {
   ok('conversation counter saves in place');
 
   await page.click('a:has-text("Beszéd indítása")');
-  await page.waitForSelector('text=Halld, mondd ki');
+  await page.waitForSelector('text=Mondd ki hangosan');
   await page.shot('s02-intro');
   await page.click('button:has-text("Indítás")');
   const target = () => page.locator('.card-answer').first().innerText();

@@ -54,7 +54,7 @@ async function boot() {
   const syncBadge = h('span', { class: 'syncbadge' });
   const main = h('main', { id: 'main' });
   const nav = h('nav', { class: 'tabs', 'aria-label': 'Fő navigáció' },
-    [['#/', 'Kezdőlap'], ['#/path', 'Útvonal'], ['#/stats', 'Haladás'], ['#/settings', 'Beállítások']].map(([href, label]) =>
+    [['#/', 'Kezdőlap'], ['#/path', 'Útvonal'], ['#/vocab', 'Szótanulás'], ['#/stats', 'Haladás'], ['#/settings', 'Beállítások']].map(([href, label]) =>
       h('a', { href, 'data-href': href }, label)));
   app.replaceChildren(h('header', { class: 'top' }, h('a', { class: 'brand', href: '#/' }, 'Wortweg'), h('span', { class: 'top-right' }, syncBadge, saved)), main, nav);
 
@@ -97,7 +97,9 @@ async function boot() {
       if (m) { view = fn(m); break; }
     }
     document.body.classList.toggle('running', /^#\/(run|review|speak)/.test(hash) || /^#\/sprint\/\w+\/\d+/.test(hash));
-    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('active', a.dataset.href === hash || (a.dataset.href === '#/path' && hash.startsWith('#/lesson'))));
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('active', a.dataset.href === hash
+      || (a.dataset.href === '#/path' && hash.startsWith('#/lesson'))
+      || (a.dataset.href === '#/vocab' && hash.startsWith('#/vocab'))));
     main.replaceChildren(view || h('div', { class: 'card' }, h('p', {}, 'Az oldal nem található.'), h('a', { class: 'btn', href: '#/' }, 'Kezdőlap')));
     window.scrollTo(0, 0);
   }
