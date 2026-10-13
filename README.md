@@ -14,9 +14,9 @@ A Duolingo-style German learning app, in Hungarian, for two 15-20 minute session
 | Curriculum map | `content/curriculum_map.json`: 34 grammar topics B1→C1 in prerequisite order (Hungarian can-do statements + spoken chunks), 13 vocabulary clusters, 12 situations, sprint template. Original content, not the Linie textbook |
 | Content | 12 real B1 lessons (G01-G12, 155 exercises) covering the map's B1 grammar topics, with long, detailed Hungarian explanations and grammar tables (declension/conjugation patterns) where relevant. `G01` is a pilot for difficulty-tagged practice (10 easy/medium/hard exercises each, repeatable from its intro screen); the other 11 lessons don't have levels tagged yet. 46 review cards, 24 colleague missions. **B1+/B2/C1 lessons (G13-G34) not yet written** |
 | Sprints (3-7 day topic deep-dives) | Built: notice → drill → drill → produce (speaking) → check, with a home-page suggestion when a topic's accuracy is low. 2 examples written (`G05` Konjunktiv II, `SP01` Hungarian-speaker pitfalls); more topics can be added as sprint content without touching the engine |
-| Vocabulary packs (every 10 days) | Built: basic verbs (with Präteritum + Partizip II + auxiliary), adjectives and adverbs, unlocked on a 10-day clock and added to the review deck on claim. 3 starter packs (10 words each); more are just a content file away |
+| Vocabulary topics (pick what to learn) | Built: real-world topics (office work, transport, doctor, ...) instead of a fixed rotation. Activating a topic seeds a few words right away and feeds the rest into the normal daily new-card pacing, all the way up to the topic's deepest level (A2→C1). `office` is the pilot, written out to C1 (81 words, nouns carry `der/die/das`, verbs their Präteritum/Partizip II). The other 9 topics (transport, health, kids/Kita, housing, admin, banking, shopping, clubs, telecom) are listed but not yet written |
 | Speaking practice (browser speech, free) | Built: hear a phrase, say it, word-by-word feedback, confidence rating, conversation counter. Tested with a fake recogniser; **not yet tried with a real microphone on your phone** |
-| Not built yet | Lessons for G13-G34, more sprint topics, more vocab packs, a placement test, writing task with AI feedback, more exercise types (transformation, dialogue, reading), boss challenges, weekly report |
+| Not built yet | Lessons for G13-G34, difficulty-tagged practice for lessons beyond G01, vocabulary content for the 9 topics beyond office work, more sprint topics, a placement test, writing task with AI feedback, more exercise types (transformation, dialogue, reading), boss challenges, weekly report |
 
 ## Run locally
 
@@ -71,13 +71,15 @@ A sprint is 3-7 focused days on one topic, on top of the normal daily path: **no
 - Mistakes on drill/check days become review cards, same as a lesson.
 - **Adding a sprint**: write `web/data/sprints/<id>.json` (`notice`/`drill`/`drill`/`produce`/`check` days; drill/check days reuse the lesson exercise schema, produce uses `speak_items: [{id, de}]`), add its id to `web/data/sprints.json`, and make sure the id is in `web/data/topics.json` (regenerate with `npm run topics` after editing the curriculum map, or add an `extra_sprints` entry for a topic outside the grammar map). Run `npm run validate` — it checks day numbering, exercise structure, and id uniqueness across all sprints.
 
-## Vocabulary packs
+## Vocabulary topics
 
-A separate, lighter-weight track next to the lessons: basic verbs (with full principal parts), adjectives and adverbs, grouped into 10-word packs. A new pack unlocks every 10 days, counted from the first time the app checks (`web/js/vocabpacks.js`); claiming one (from the Home banner or `#/vocab`) adds every word as a normal FSRS review card, so it folds straight into the existing review session — no separate scheduler.
+A separate, lighter-weight track next to the lessons, organized by real-world topic instead of grammatical category: pick what you actually need (office work, transport, doctor, kids/Kita, ...) rather than working through a fixed rotation, and go as deep as you want — each topic's words are ordered A2→B1→B2→C1, so picking a topic means picking how far to go, not a word count.
 
-- Verb cards show the full principal parts on the back: `gehen – ging – ist gegangen`.
-- Adjective cards carry the opposite as a hint, where there is a natural one.
-- **Adding a pack**: append an entry to `web/data/vocab_packs.json` (`category`: `verb`/`adjective`/`adverb`; verb items need `praeteritum`, `partizip2`, `aux`). It unlocks automatically once its turn in the array comes up. Run `npm run validate` — it checks every verb item has its past-tense forms and that words aren't duplicated within a pack.
+- Browse topics and their word lists at `#/vocab` / `#/vocab/<id>` (`web/js/vocab_view.js`). A topic with no content yet shows "Hamarosan".
+- **Activating** a topic (`activateTopic` in `web/js/vocabtopics.js`) seeds a handful of its words as review cards immediately, for visible feedback, then the rest trickles in through the normal daily new-card cap (`combinedVocabDeck` feeds `introduceNewCards`, round-robining across every active topic so picking several doesn't starve the others). Deactivating stops new words but never removes cards already added.
+- A word you miss on first try comes back exactly like any other review card — there is no separate "missed words" mechanic, the FSRS scheduler already does this.
+- Noun cards always show the article on the back (`die Besprechung`, not just `Besprechung`), so gender is learned together with the word, never separately. Verb cards with past-tense forms show all three principal parts: `anrufen – rief an – hat angerufen`.
+- **Adding a topic's content**: fill in its `items` array in `web/data/vocab_topics.json`. Each item needs `type` (`noun`/`verb`/`adjective`/`adverb`/`phrase`), `de`, `hu`, `level` (`A2`/`B1`/`B2`/`C1`); nouns need `artikel` (`der`/`die`/`das`); a verb's `praeteritum`/`partizip2`/`aux` (`sein`/`haben`) are optional but must come as a complete set if given. Keep items ordered A2→C1 within the topic — that order is what paces daily introduction. Run `npm run validate` (`tools/validate_vocabtopics.mjs`) — it checks all of this plus no duplicate words within a topic. `office` is the fully-written pilot to copy the pattern from.
 
 ## Content format
 
@@ -88,10 +90,10 @@ Content is plain JSON in `web/data/`:
 - **Difficulty-tagged practice** (optional, currently only `G01`): tag exercises with `"level": "easy"|"medium"|"hard"`. Once a lesson has 5+ exercises at a level, its intro screen shows a "Gyakorlás" button for that level, linking to `#/run/<id>/<level>` — a fresh 10-exercise session sampled only from that difficulty, as many times as you like. It doesn't touch the lesson's done/bestScore bookkeeping (that's still only set by the untagged first pass through the full pool), but mistakes still become review cards as usual. The normal, first-time lesson run ignores `level` and samples from the whole pool. Rolling this out to more lessons means tagging ~10 exercises per level per lesson (see `G01.json` for the pattern).
 - `cards.json`: review deck (`flip` = Hungarian cue to German, `cloze` = typed gap). New cards enter at 4 per day plus 3 colleague missions.
 - `missions.json`: phrases to use with your colleague that day.
-- `vocab_packs.json`: the 10-day vocabulary track, see above.
+- `vocab_topics.json`: the topic-picker vocabulary track, see above.
 - `topics.json`, `chunks.json`: generated from `content/curriculum_map.json` via `npm run topics` / `npm run chunks` — edit the map, not these files. Topic `title`/`cando` in the map are Hungarian; regenerate after editing.
 
-Run `npm run validate` after editing: it checks, for example, that every word-order answer can be built from its tiles, every multiple-choice answer is among the options, sprint days are numbered correctly, every grammar table's rows match its header count, and vocab pack verbs carry their past-tense forms.
+Run `npm run validate` after editing: it checks, for example, that every word-order answer can be built from its tiles, every multiple-choice answer is among the options, sprint days are numbered correctly, every grammar table's rows match its header count, and vocab topic nouns/verbs carry a valid artikel/past-tense set.
 
 ## How it works
 

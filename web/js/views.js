@@ -10,7 +10,7 @@ import { enablePush, pushSupported } from './push.js';
 import { speak, speechSupport } from './speech.js';
 import { addTalk, speakingStats } from './speaking.js';
 import { suggestSprint, isSprintDone, sprintProgress } from './sprint.js';
-import { nextAvailablePack } from './vocabpacks.js';
+import { combinedVocabDeck, topicLearnedCount } from './vocabtopics.js';
 
 const errorBox = (e) => h('div', { class: 'card error' }, h('strong', {}, 'Hiba történt'), h('p', {}, String(e?.message || e)));
 
@@ -24,9 +24,7 @@ export function topBar(title, ctx, { back = '#/' } = {}) {
 export function homeView(ctx) {
   const today = localDateStr();
   const { store, data } = ctx;
-  store.save((s) => introduceNewCards(s, data, today));
-  let availablePack = null;
-  store.save((s) => { availablePack = nextAvailablePack(s, data.vocabPacks, today); });
+  store.save((s) => introduceNewCards(s, { ...data, deck: [...data.deck, ...combinedVocabDeck(data.vocabTopics, s.vocabTopics.active)] }, today));
   const s = store.get();
   const totals = dayTotals(s, today);
   const goal = s.settings.dailyGoalMin * 60;
@@ -90,16 +88,21 @@ export function homeView(ctx) {
           h('a', { class: 'btn primary', href: `#/sprint/${suggestedId}` }, 'Sprint indítása'))
       : null;
 
-  const vocabBanner = availablePack
-    ? h('section', { class: 'card sprint-banner' },
-        h('p', { class: 'eyebrow' }, 'Új szókincs-csomag'),
-        h('p', {}, availablePack.title),
-        h('a', { class: 'btn primary', href: `#/vocab/${availablePack.id}` }, 'Megnézem'))
-    : null;
+  const activeTopics = s.vocabTopics.active.map((id) => data.vocabTopics.find((t) => t.id === id)).filter(Boolean);
+  const vocabSection = activeTopics.length
+    ? h('section', { class: 'card' },
+        h('h2', {}, 'Aktív szókincs-témák'),
+        activeTopics.map((t) => h('div', { class: 'chrow' },
+          h('span', {}, t.title), h('span', { class: 'muted' }, `${topicLearnedCount(s, t.id)}/${t.items.length} szó`),
+          bar(t.items.length ? topicLearnedCount(s, t.id) / t.items.length : 0))),
+        h('a', { class: 'btn ghost', href: '#/vocab' }, 'Témák kezelése'))
+    : h('section', { class: 'card' },
+        h('h2', {}, 'Szótanulás'),
+        h('p', { class: 'muted' }, 'Válassz egy témát (pl. irodai munka), és a szavai fokozatosan bekerülnek a napi ismétlésbe.'),
+        h('a', { class: 'btn primary', href: '#/vocab' }, 'Témák böngészése'));
 
   return h('div', { class: 'home' },
     sprintBanner,
-    vocabBanner,
     h('section', { class: 'hero card' },
       ring(totals.seconds / goal, fmtMin(totals.seconds), `/ ${s.settings.dailyGoalMin} perc`),
       h('div', { class: 'hero-stats' },
@@ -132,6 +135,8 @@ export function homeView(ctx) {
       h('p', { class: 'muted' }, 'Próbáld meg ma éles beszélgetésben használni mindegyiket. Pipáld ki, ha sikerült.'),
       h('div', { class: 'missions' }, missionRows),
       h('a', { class: 'btn', href: '#/log' }, 'Esti napló: amit nem tudtam elmondani')),
+
+    vocabSection,
 
     h('section', { class: 'card' }, h('h2', {}, 'A te útvonalad'), pathRows, h('a', { class: 'btn ghost', href: '#/path' }, 'Teljes útvonal megnyitása')));
 }
@@ -301,7 +306,7 @@ export function lessonRunView(ctx, lessonId, level) {
 export function reviewRunView(ctx) {
   const today = localDateStr();
   const root = h('div', { class: 'run' });
-  ctx.store.save((s) => introduceNewCards(s, ctx.data, today));
+  ctx.store.save((s) => introduceNewCards(s, { ...ctx.data, deck: [...ctx.data.deck, ...combinedVocabDeck(ctx.data.vocabTopics, s.vocabTopics.active)] }, today));
   const s0 = ctx.store.get();
   const missions = pickMissions(ctx.data.missions, today, s0.settings.missionsPerDay);
   const queue = dueCards(s0, today, 30).map((c) => ({ id: c.id, practice: false }));
@@ -514,9 +519,9 @@ export function statsView(ctx) {
     h('section', { class: 'card' }, h('h2', {}, 'Sprintek'),
       h('p', { class: 'muted' }, 'Tölts néhány fókuszált napot egy témával, a megszokott útvonal mellett.'),
       h('a', { class: 'btn', href: '#/sprints' }, 'Sprintek böngészése')),
-    h('section', { class: 'card' }, h('h2', {}, 'Szókincs-csomagok'),
-      h('p', { class: 'muted' }, 'Alapigék, melléknevek és határozószók — egy új csomag 10 naponta nyílik meg.'),
-      h('a', { class: 'btn', href: '#/vocab' }, 'Szókincs-csomagok böngészése')));
+    h('section', { class: 'card' }, h('h2', {}, 'Szótanulás'),
+      h('p', { class: 'muted' }, 'Témák szerinti szókincs (pl. irodai munka) — válaszd ki, mit tanulsz, A2-től C1-ig.'),
+      h('a', { class: 'btn', href: '#/vocab' }, 'Témák böngészése')));
 }
 
 // ---------------------------------------------------------------- Settings
