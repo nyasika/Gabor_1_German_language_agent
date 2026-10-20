@@ -1,4 +1,76 @@
 {
+  "F01": {
+    "title": "Főnevek és névelők: der/die/das, egyes és többes szám",
+    "level": "A1",
+    "cando": "Fel tudom idézni egy főnév névelőjét és többes számát, mert a szóval együtt tanultam meg, nem a jelentésből próbálom kitalálni.",
+    "kind": "grammar"
+  },
+  "F02": {
+    "title": "Jelen idő: szabályos igeragozás",
+    "level": "A1",
+    "cando": "Szabályos igéket helyesen tudok ragozni jelen időben, minden személyben.",
+    "kind": "grammar"
+  },
+  "F03": {
+    "title": "sein és haben jelen időben, gyakori erős igék",
+    "level": "A1",
+    "cando": "A sein és haben igéket, valamint néhány gyakori erős igét helyesen tudom ragozni jelen időben.",
+    "kind": "grammar"
+  },
+  "F04": {
+    "title": "Tárgyeset (Akkusativ): névelők és személyes névmások",
+    "level": "A1",
+    "cando": "Tárgyesetben helyesen tudom használni a névelőket és a személyes névmásokat.",
+    "kind": "grammar"
+  },
+  "F05": {
+    "title": "Birtokos névmások (mein, dein, sein...)",
+    "level": "A1",
+    "cando": "Tudom kifejezni, hogy valami kihez tartozik, a megfelelő birtokos névmással.",
+    "kind": "grammar"
+  },
+  "F06": {
+    "title": "Tagadás: nicht és kein",
+    "level": "A1",
+    "cando": "Helyesen tudok mondatokat és főneveket tagadni nicht-tel és kein-nel.",
+    "kind": "grammar"
+  },
+  "F07": {
+    "title": "Kérdő mondatok: W-kérdések és igen/nem kérdések",
+    "level": "A1",
+    "cando": "Tudok kérdéseket feltenni kérdőszóval és anélkül is.",
+    "kind": "grammar"
+  },
+  "F08": {
+    "title": "Alapvető elöljárószavak Akkusativval és Dativval",
+    "level": "A2",
+    "cando": "A leggyakoribb elöljárószavakat a megfelelő esettel tudom használni.",
+    "kind": "grammar"
+  },
+  "F09": {
+    "title": "Modális igék (können, müssen, wollen, dürfen, sollen)",
+    "level": "A2",
+    "cando": "Tudok képességet, kötelezettséget, szándékot és tiltást kifejezni módbeli segédigékkel.",
+    "kind": "grammar"
+  },
+  "F10": {
+    "title": "Elváló igék (aufstehen, einkaufen...)",
+    "level": "A2",
+    "cando": "Elváló igéket helyesen tudok használni kijelentő mondatban.",
+    "kind": "grammar"
+  },
+  "F11": {
+    "title": "Perfekt alapok: haben/sein + Partizip II",
+    "level": "A2",
+    "cando": "Egyszerű múltbeli eseményekről tudok beszélni Perfekt-tel.",
+    "kind": "grammar"
+  },
+  "F12": {
+    "title": "Melléknevek: alapvető ragozás",
+    "level": "A2",
+    "cando": "A melléknevek alapvető végződéseit helyesen tudom használni határozott és határozatlan névelő után.",
+    "kind": "grammar"
+  },
   "G01": {
     "title": "Mondatszerkezet: fordított szórend és a mondatkeret (Satzklammer)",
     "level": "B1",

@@ -8,7 +8,7 @@
     "Errors feed the review deck; weak topics (mastery below 60%) trigger a sprint suggestion.",
     "Original content only: this map is competence-based and does not copy any textbook."
   ],
-  "levels": ["B1", "B1+", "B2", "C1"],
+  "levels": ["A1", "A2", "B1", "B1+", "B2", "C1"],
   "sprint_template": {
     "days": [
       { "day": 1, "focus": "notice", "what": "See the pattern inside 5-6 spoken chunks and a short dialogue" },
@@ -20,6 +20,18 @@
     "after": "New words and mistakes join the normal FSRS review deck, so the topic keeps coming back for weeks."
   },
   "grammar": [
+    { "id": "F01", "title": "Főnevek és névelők: der/die/das, egyes és többes szám", "level": "A1", "requires": [], "cando": "Fel tudom idézni egy főnév névelőjét és többes számát, mert a szóval együtt tanultam meg, nem a jelentésből próbálom kitalálni.", "chunks": ["Der Tisch ist neu.", "Die Kinder spielen im Garten."] },
+    { "id": "F02", "title": "Jelen idő: szabályos igeragozás", "level": "A1", "requires": [], "cando": "Szabályos igéket helyesen tudok ragozni jelen időben, minden személyben.", "chunks": ["Ich arbeite heute im Büro.", "Wir lernen jeden Tag Deutsch."] },
+    { "id": "F03", "title": "sein és haben jelen időben, gyakori erős igék", "level": "A1", "requires": [], "cando": "A sein és haben igéket, valamint néhány gyakori erős igét helyesen tudom ragozni jelen időben.", "chunks": ["Ich bin heute müde.", "Wir haben eine neue Idee."] },
+    { "id": "F04", "title": "Tárgyeset (Akkusativ): névelők és személyes névmások", "level": "A1", "requires": ["F01"], "cando": "Tárgyesetben helyesen tudom használni a névelőket és a személyes névmásokat.", "chunks": ["Ich sehe den Kollegen.", "Kannst du mich morgen anrufen?"] },
+    { "id": "F05", "title": "Birtokos névmások (mein, dein, sein...)", "level": "A1", "requires": ["F01"], "cando": "Tudom kifejezni, hogy valami kihez tartozik, a megfelelő birtokos névmással.", "chunks": ["Das ist mein Büro.", "Ist das deine Tasche?"] },
+    { "id": "F06", "title": "Tagadás: nicht és kein", "level": "A1", "requires": ["F01"], "cando": "Helyesen tudok mondatokat és főneveket tagadni nicht-tel és kein-nel.", "chunks": ["Das ist kein Problem.", "Ich verstehe das nicht."] },
+    { "id": "F07", "title": "Kérdő mondatok: W-kérdések és igen/nem kérdések", "level": "A1", "requires": ["F02"], "cando": "Tudok kérdéseket feltenni kérdőszóval és anélkül is.", "chunks": ["Wann hast du Zeit?", "Hast du das schon gesehen?"] },
+    { "id": "F08", "title": "Alapvető elöljárószavak Akkusativval és Dativval", "level": "A2", "requires": ["F04"], "cando": "A leggyakoribb elöljárószavakat a megfelelő esettel tudom használni.", "chunks": ["Ich fahre mit dem Zug.", "Wir treffen uns in der Kantine."] },
+    { "id": "F09", "title": "Modális igék (können, müssen, wollen, dürfen, sollen)", "level": "A2", "requires": ["F03"], "cando": "Tudok képességet, kötelezettséget, szándékot és tiltást kifejezni módbeli segédigékkel.", "chunks": ["Ich kann das morgen machen.", "Wir müssen pünktlich sein."] },
+    { "id": "F10", "title": "Elváló igék (aufstehen, einkaufen...)", "level": "A2", "requires": ["F02"], "cando": "Elváló igéket helyesen tudok használni kijelentő mondatban.", "chunks": ["Ich stehe um sieben auf.", "Wir kaufen am Freitag ein."] },
+    { "id": "F11", "title": "Perfekt alapok: haben/sein + Partizip II", "level": "A2", "requires": ["F03"], "cando": "Egyszerű múltbeli eseményekről tudok beszélni Perfekt-tel.", "chunks": ["Ich habe das schon gemacht.", "Wir sind gestern angekommen."] },
+    { "id": "F12", "title": "Melléknevek: alapvető ragozás", "level": "A2", "requires": ["F01"], "cando": "A melléknevek alapvető végződéseit helyesen tudom használni határozott és határozatlan névelő után.", "chunks": ["Das ist ein wichtiger Termin.", "Die neue Kollegin beginnt morgen."] },
     { "id": "G01", "title": "Mondatszerkezet: fordított szórend és a mondatkeret (Satzklammer)", "level": "B1", "requires": [], "cando": "Világos főmondatokat tudok alkotni helyes szórenddel, egy nyitó idő- vagy helyhatározó után is.", "chunks": ["Morgen habe ich einen Termin.", "Heute möchte ich kurz etwas dazu sagen."] },
     { "id": "G02", "title": "Perfekt és Präteritum a beszélt nyelvben", "level": "B1", "requires": [], "cando": "Természetesen tudok múltbeli eseményekről beszélni: Perfekt a legtöbb igénél, Präteritum a sein, haben és a módbeli segédigék esetén.", "chunks": ["Ich war gestern im Büro.", "Ich habe das gestern erledigt."] },
     { "id": "G03", "title": "Mellékmondatok: weil, dass, wenn, obwohl", "level": "B1", "requires": ["G01"], "cando": "Tudok indokolni, állítás tartalmát közölni és feltételt megfogalmazni, az igét a mondat végére téve.", "chunks": ["Ich komme später, weil ich noch einen Termin habe.", "Ich denke, dass wir das heute klären können."] },

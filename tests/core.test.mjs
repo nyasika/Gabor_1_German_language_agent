@@ -4,7 +4,7 @@ import { review, newCardFields, Rating, retrievability, nextInterval, addDays, d
 import { defaultState, addActivity, dayTotals, totalXp, levelInfo, updateStreak, displayStreak, recordTopic, mastery, wordsStuck, makeTracker } from '../web/js/progress.js';
 import { mergeStates } from '../web/js/merge.js';
 import { createStore } from '../web/js/store.js';
-import { buildLesson, pickMissions, introduceNewCards, dueCards, nextLesson, isUnlocked } from '../web/js/session.js';
+import { buildLesson, pickMissions, introduceNewCards, dueCards, nextLesson } from '../web/js/session.js';
 import { norm, matchesAny } from '../web/js/text.js';
 
 const memStorage = () => {
@@ -200,15 +200,14 @@ test('session: due queue puts reviews before new cards and honours the cap', () 
   assert.equal(dueCards(s, '2026-09-24', 1).length, 1);
 });
 
-test('session: lesson path unlocks sequentially', () => {
+test('session: nextLesson suggests the first not-done lesson in path order, but is only a suggestion', () => {
   const path = { chapters: [{ id: 'c1', lessons: ['L1', 'L2'] }, { id: 'c2', lessons: ['L3'] }] };
   const s = defaultState();
   assert.equal(nextLesson(path, s), 'L1');
-  assert.ok(isUnlocked(path, s, 'L1'));
-  assert.ok(!isUnlocked(path, s, 'L2'));
+  s.lessons.L2 = { done: true }; // done out of order - every lesson is freely choosable
+  assert.equal(nextLesson(path, s), 'L1', 'still suggests L1, which is genuinely not done yet');
   s.lessons.L1 = { done: true };
-  assert.ok(isUnlocked(path, s, 'L2'));
-  assert.equal(nextLesson(path, s), 'L2');
+  assert.equal(nextLesson(path, s), 'L3');
 });
 
 test('text: normalisation tolerates case, spacing and umlaut aliases', () => {

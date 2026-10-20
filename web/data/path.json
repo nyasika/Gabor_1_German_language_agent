@@ -1,5 +1,6 @@
 {
   "chapters": [
+    { "id": "c0", "title": "Alapok (A1-A2)", "subtitle": "Főnevek és névelők, igeragozás, Akkusativ, módbeli segédigék és más alapok. Jelenleg: Főnevek és névelők; további témák hamarosan.", "lessons": ["F01"] },
     { "id": "c1", "title": "Mondatszerkezet és múlt idő", "subtitle": "Szórend, Perfekt vs. Präteritum, okok kifejezése, mindennapi kérések", "lessons": ["G01", "G02", "G03", "G04"] },
     { "id": "c2", "title": "Pontos leírás", "subtitle": "Udvariasság, vonatkozó mellékmondatok, melléknévvégződések, elöljárók, elváló/visszaható igék", "lessons": ["G05", "G06", "G07", "G08", "G09"] },
     { "id": "c3", "title": "Szenvedő szerkezet és kapcsolódó gondolatok", "subtitle": "A passzívum, főnévi igeneves szerkezetek, események időbeli sorrendje", "lessons": ["G10", "G11", "G12"] }

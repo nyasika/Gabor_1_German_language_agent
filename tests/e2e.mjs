@@ -181,13 +181,14 @@ try {
   assert.ok(s2.topics['G01'].hist.length >= 10);
   ok(`lesson saved: score ${s2.lessons.G01.bestScore}, mistake turned into a card, topic mastery recorded`);
 
-  // ---- unlock chain
+  // ---- free choice: every lesson is open, none locked, the finished one shows done
   await page.goto(`${base}#/path`);
   await page.waitForSelector('text=Tanulási útvonal');
   assert.ok(await page.locator('.node.done').count() === 1);
-  assert.ok(await page.locator('.node.locked').count() >= 1);
+  assert.equal(await page.locator('.node.locked').count(), 0, 'no lesson is ever locked');
+  assert.ok(await page.locator('.node.open').count() >= 1, 'every other lesson is freely open');
   await shot('10-path');
-  ok('path shows the finished lesson and locks later ones');
+  ok('path shows the finished lesson as done, every other lesson freely open');
 
   // ---- evening log
   await page.goto(`${base}#/log`);

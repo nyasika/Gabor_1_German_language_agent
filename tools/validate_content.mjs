@@ -20,6 +20,22 @@ export function validateTables(tables, err) {
   });
 }
 
+// Structurally validates optional lesson `examples` ({de, hu} pairs) and `pitfalls` (strings).
+export function validateExamplesAndPitfalls(lesson, err) {
+  if (lesson.examples !== undefined) {
+    if (!Array.isArray(lesson.examples) || !lesson.examples.length) err('examples must be a non-empty array');
+    else for (const [i, ex] of lesson.examples.entries()) {
+      if (!ex.de || !ex.hu) err(`example ${i + 1}: needs de and hu`);
+    }
+  }
+  if (lesson.pitfalls !== undefined) {
+    if (!Array.isArray(lesson.pitfalls) || !lesson.pitfalls.length) err('pitfalls must be a non-empty array');
+    else for (const [i, p] of lesson.pitfalls.entries()) {
+      if (typeof p !== 'string' || !p) err(`pitfall ${i + 1}: must be a non-empty string`);
+    }
+  }
+}
+
 // Structurally validates one exercise object (shared by lessons and sprint days). `err(msg)` reports a problem.
 export function validateExercise(ex, err) {
   if (!ex.topic) err('missing topic');
@@ -94,6 +110,7 @@ export function validateContent() {
     if (!lesson.title || !lesson.topic) err(L, 'missing title/topic');
     if (!Array.isArray(lesson.intro) || !lesson.intro.length) err(L, 'missing intro');
     validateTables(lesson.tables, (msg) => err(L, msg));
+    validateExamplesAndPitfalls(lesson, (msg) => err(L, msg));
     const types = new Set();
     for (const ex of lesson.exercises) {
       const w = ex.id || `${L}?`;

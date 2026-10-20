@@ -1,5 +1,149 @@
 [
   {
+    "id": "F01-1",
+    "topic": "F01",
+    "title": "Főnevek és névelők: der/die/das, egyes és többes szám",
+    "de": "Der Tisch ist neu."
+  },
+  {
+    "id": "F01-2",
+    "topic": "F01",
+    "title": "Főnevek és névelők: der/die/das, egyes és többes szám",
+    "de": "Die Kinder spielen im Garten."
+  },
+  {
+    "id": "F02-1",
+    "topic": "F02",
+    "title": "Jelen idő: szabályos igeragozás",
+    "de": "Ich arbeite heute im Büro."
+  },
+  {
+    "id": "F02-2",
+    "topic": "F02",
+    "title": "Jelen idő: szabályos igeragozás",
+    "de": "Wir lernen jeden Tag Deutsch."
+  },
+  {
+    "id": "F03-1",
+    "topic": "F03",
+    "title": "sein és haben jelen időben, gyakori erős igék",
+    "de": "Ich bin heute müde."
+  },
+  {
+    "id": "F03-2",
+    "topic": "F03",
+    "title": "sein és haben jelen időben, gyakori erős igék",
+    "de": "Wir haben eine neue Idee."
+  },
+  {
+    "id": "F04-1",
+    "topic": "F04",
+    "title": "Tárgyeset (Akkusativ): névelők és személyes névmások",
+    "de": "Ich sehe den Kollegen."
+  },
+  {
+    "id": "F04-2",
+    "topic": "F04",
+    "title": "Tárgyeset (Akkusativ): névelők és személyes névmások",
+    "de": "Kannst du mich morgen anrufen?"
+  },
+  {
+    "id": "F05-1",
+    "topic": "F05",
+    "title": "Birtokos névmások (mein, dein, sein...)",
+    "de": "Das ist mein Büro."
+  },
+  {
+    "id": "F05-2",
+    "topic": "F05",
+    "title": "Birtokos névmások (mein, dein, sein...)",
+    "de": "Ist das deine Tasche?"
+  },
+  {
+    "id": "F06-1",
+    "topic": "F06",
+    "title": "Tagadás: nicht és kein",
+    "de": "Das ist kein Problem."
+  },
+  {
+    "id": "F06-2",
+    "topic": "F06",
+    "title": "Tagadás: nicht és kein",
+    "de": "Ich verstehe das nicht."
+  },
+  {
+    "id": "F07-1",
+    "topic": "F07",
+    "title": "Kérdő mondatok: W-kérdések és igen/nem kérdések",
+    "de": "Wann hast du Zeit?"
+  },
+  {
+    "id": "F07-2",
+    "topic": "F07",
+    "title": "Kérdő mondatok: W-kérdések és igen/nem kérdések",
+    "de": "Hast du das schon gesehen?"
+  },
+  {
+    "id": "F08-1",
+    "topic": "F08",
+    "title": "Alapvető elöljárószavak Akkusativval és Dativval",
+    "de": "Ich fahre mit dem Zug."
+  },
+  {
+    "id": "F08-2",
+    "topic": "F08",
+    "title": "Alapvető elöljárószavak Akkusativval és Dativval",
+    "de": "Wir treffen uns in der Kantine."
+  },
+  {
+    "id": "F09-1",
+    "topic": "F09",
+    "title": "Modális igék (können, müssen, wollen, dürfen, sollen)",
+    "de": "Ich kann das morgen machen."
+  },
+  {
+    "id": "F09-2",
+    "topic": "F09",
+    "title": "Modális igék (können, müssen, wollen, dürfen, sollen)",
+    "de": "Wir müssen pünktlich sein."
+  },
+  {
+    "id": "F10-1",
+    "topic": "F10",
+    "title": "Elváló igék (aufstehen, einkaufen...)",
+    "de": "Ich stehe um sieben auf."
+  },
+  {
+    "id": "F10-2",
+    "topic": "F10",
+    "title": "Elváló igék (aufstehen, einkaufen...)",
+    "de": "Wir kaufen am Freitag ein."
+  },
+  {
+    "id": "F11-1",
+    "topic": "F11",
+    "title": "Perfekt alapok: haben/sein + Partizip II",
+    "de": "Ich habe das schon gemacht."
+  },
+  {
+    "id": "F11-2",
+    "topic": "F11",
+    "title": "Perfekt alapok: haben/sein + Partizip II",
+    "de": "Wir sind gestern angekommen."
+  },
+  {
+    "id": "F12-1",
+    "topic": "F12",
+    "title": "Melléknevek: alapvető ragozás",
+    "de": "Das ist ein wichtiger Termin."
+  },
+  {
+    "id": "F12-2",
+    "topic": "F12",
+    "title": "Melléknevek: alapvető ragozás",
+    "de": "Die neue Kollegin beginnt morgen."
+  },
+  {
     "id": "G01-1",
     "topic": "G01",
     "title": "Mondatszerkezet: fordított szórend és a mondatkeret (Satzklammer)",

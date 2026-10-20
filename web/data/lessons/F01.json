@@ -1,0 +1,55 @@
+{
+  "id": "F01",
+  "title": "Főnevek és névelők: der/die/das, egyes és többes szám",
+  "topic": "F01",
+  "intro": [
+    "A német főnevek mindig nagy kezdőbetűvel íródnak, és mindegyiknek van egy nyelvtani neme: hímnemű (der), nőnemű (die) vagy semleges (das). Ez a nem gyakran nem logikus, nem a jelentésből következik, ezért a szót és a névelőt EGYÜTT kell megtanulni, mint egy egységet — soha nem a főnevet önmagában.",
+    "Néhány végződés sokat segít a nem kitalálásában, bár nincs 100%-os szabály: a -ung, -heit, -keit, -schaft, -ion, -tät végű szavak majdnem mindig nőneműek (die); a -chen, -lein végűek és sok főnevesített ige (pl. das Essen) majdnem mindig semlegesek (das).",
+    "A többes szám képzése is változatos: nincs egyetlen végződés, mint az angol -s. A leggyakoribb végződések: -e, -en/-n, -er, -s, vagy akár végződés nélkül, esetenként Umlaut-tal (a→ä, o→ö, u→ü hangváltozással) kombinálva. Ezt is a szóval együtt kell megtanulni.",
+    "A legfontosabb szabály, ami viszont mindig igaz: többes számban MINDEN főnév névelője „die” lesz, függetlenül attól, mi volt az egyes szám névelője (der Tisch → die Tische, das Kind → die Kinder, die Frau → die Frauen)."
+  ],
+  "examples": [
+    { "de": "der Tisch – die Tische", "hu": "az asztal – az asztalok" },
+    { "de": "die Lampe – die Lampen", "hu": "a lámpa – a lámpák" },
+    { "de": "das Kind – die Kinder", "hu": "a gyerek – a gyerekek" },
+    { "de": "der Mann – die Männer", "hu": "a férfi – a férfiak" },
+    { "de": "die Frau – die Frauen", "hu": "a nő – a nők" },
+    { "de": "das Auto – die Autos", "hu": "az autó – az autók" }
+  ],
+  "pitfalls": [
+    "A magyarban nincs nyelvtani nem, ezért ne próbáld logikusan kitalálni a der/die/das-t a jelentésből — tanuld meg a szóval EGYÜTT, lehetőleg egy rövid kifejezésben (pl. „der Tisch”, ne csak „Tisch”).",
+    "A többes szám névelője MINDIG „die”, akkor is, ha az egyes szám „der” vagy „das” volt. Ez az egyik leggyakoribb hiba kezdőknél.",
+    "Ne keverd össze a „die” névelőt: lehet nőnemű EGYES szám (die Frau) VAGY bármilyen nemű TÖBBES szám (die Männer, die Kinder) — a szövegösszefüggésből (pl. az ige alakja, a mellette álló szám) derül ki, melyikről van szó.",
+    "Néhány szónak „álcázott” neme van a jelentés alapján: pl. „das Mädchen” (a lány) semleges, nem nőnemű, mert a „-chen” kicsinyítő végződés mindig semlegessé teszi a szót."
+  ],
+  "tables": [
+    {
+      "title": "Gyakori többes szám-végződések",
+      "headers": ["Végződés", "Példa (egyes)", "Többes szám"],
+      "rows": [
+        ["-e", "der Tisch", "die Tische"],
+        ["-en / -n", "die Lampe", "die Lampen"],
+        ["-er (gyakran Umlaut-tal)", "der Mann", "die Männer"],
+        ["-s (főleg idegen eredetű szavak)", "das Auto", "die Autos"],
+        ["végződés nélkül (gyakran Umlaut-tal)", "der Vater", "die Väter"]
+      ]
+    }
+  ],
+  "exercises": [
+    { "id": "F01-01", "type": "article", "topic": "F01", "noun": "Tisch", "hu": "asztal", "answer": "der" },
+    { "id": "F01-02", "type": "article", "topic": "F01", "noun": "Lampe", "hu": "lámpa", "answer": "die" },
+    { "id": "F01-03", "type": "article", "topic": "F01", "noun": "Kind", "hu": "gyerek", "answer": "das" },
+    { "id": "F01-04", "type": "article", "topic": "F01", "noun": "Buch", "hu": "könyv", "answer": "das" },
+    { "id": "F01-05", "type": "article", "topic": "F01", "noun": "Frau", "hu": "nő, asszony", "answer": "die" },
+    { "id": "F01-06", "type": "article", "topic": "F01", "noun": "Mann", "hu": "férfi", "answer": "der" },
+    { "id": "F01-07", "type": "mc", "topic": "F01", "prompt": "Was ist der Plural von „das Kind”?", "options": ["die Kinder", "die Kindes", "der Kinder", "das Kinder"], "answer": "die Kinder", "explain": "Többes számban minden főnév névelője „die”; a Kind többes száma Umlaut nélkül, -er végződéssel: Kinder." },
+    { "id": "F01-08", "type": "mc", "topic": "F01", "prompt": "Was ist der Plural von „der Tisch”?", "options": ["die Tische", "die Tischen", "der Tische", "das Tische"], "answer": "die Tische", "explain": "A Tisch többes száma -e végződéssel: Tische, és a névelő többes számban mindig „die”." },
+    { "id": "F01-09", "type": "cloze", "topic": "F01", "prompt": "A főnevek többes számban mindig „die” névelőt kapnak.", "sentence": "___ Kinder spielen im Garten.", "answers": ["Die"], "hint": "többes szám névelője", "explain": "Die Kinder — többes szám, tehát „die”, függetlenül attól, hogy egyes számban „das Kind” volt." },
+    { "id": "F01-10", "type": "order", "topic": "F01", "prompt": "A gyerekek a kertben játszanak.", "tiles": ["Die", "Kinder", "spielen", "im", "Garten."], "answers": ["Die Kinder spielen im Garten."], "explain": "Die Kinder — a Kind többes száma, a névelő „die”." },
+    { "id": "F01-11", "type": "errorspot", "topic": "F01", "prompt": "Koppints a hibás névelőre.", "tokens": ["Der", "Frau", "kommt", "aus", "Ungarn."], "wrongIndex": 0, "fixed": "Die Frau kommt aus Ungarn.", "explain": "A Frau nőnemű, tehát „die”, nem „der”." },
+    { "id": "F01-12", "type": "match", "topic": "F01", "prompt": "Párosítsd a főnevet a névelős alakjával.", "pairs": [["Tisch", "der Tisch"], ["Lampe", "die Lampe"], ["Kind", "das Kind"], ["Frau", "die Frau"], ["Mann", "der Mann"]] },
+    { "id": "F01-13", "type": "mc", "topic": "F01", "prompt": "Was ist der Plural von „die Frau”?", "options": ["die Frauen", "die Fraus", "der Frauen", "das Frauen"], "answer": "die Frauen", "explain": "Die Frau többes száma -en végződéssel: Frauen." },
+    { "id": "F01-14", "type": "cloze", "topic": "F01", "prompt": "A „Mädchen” szó semleges nemű, bár a jelentése nőnemű — a „-chen” végződés miatt.", "sentence": "___ Mädchen lernt Deutsch.", "answers": ["Das"], "hint": "semleges névelő", "explain": "Das Mädchen — a „-chen” kicsinyítő végződés mindig „das”-t kap, függetlenül a jelentéstől." },
+    { "id": "F01-15", "type": "article", "topic": "F01", "noun": "Mädchen", "hu": "lány", "answer": "das" }
+  ]
+}

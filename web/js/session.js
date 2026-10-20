@@ -86,6 +86,8 @@ export function dueCards(state, today, cap = 30) {
   return [...reviews, ...fresh].slice(0, cap);
 }
 
+// A soft suggestion for "what next" (Home's lesson card) - not a gate: every lesson is always
+// freely choosable, this just picks the first one not yet done, in path order.
 export function nextLesson(path, state) {
   for (const ch of path.chapters) {
     for (const id of ch.lessons) {
@@ -93,11 +95,4 @@ export function nextLesson(path, state) {
     }
   }
   return null;
-}
-
-export function isUnlocked(path, state, lessonId) {
-  const flat = path.chapters.flatMap((c) => c.lessons);
-  const idx = flat.indexOf(lessonId);
-  if (idx <= 0) return idx === 0;
-  return !!state.lessons[flat[idx - 1]]?.done;
 }

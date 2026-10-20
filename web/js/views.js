@@ -4,7 +4,7 @@ import { localDateStr, review, previewIntervals, formatInterval, newCardFields, 
 import {
   addActivity, dayTotals, totalXp, levelInfo, updateStreak, displayStreak, recordTopic, mastery, wordsStuck,
 } from './progress.js';
-import { buildLesson, introduceNewCards, dueCards, pickMissions, nextLesson, isUnlocked } from './session.js';
+import { buildLesson, introduceNewCards, dueCards, pickMissions, nextLesson } from './session.js';
 import { CONFIG } from '../config.js';
 import { enablePush, pushSupported } from './push.js';
 import { speak, speechSupport } from './speech.js';
@@ -154,10 +154,9 @@ export function pathView(ctx) {
         h('div', { class: 'chapter-head' }, h('div', {}, h('h2', {}, ch.title), h('p', { class: 'muted' }, ch.subtitle)), h('span', { class: 'chip' }, `${done}/${ch.lessons.length}`)),
         ch.lessons.map((id) => {
           const l = s.lessons[id];
-          const unlocked = isUnlocked(data.path, s, id);
-          const status = l?.done ? `Kész · ${Math.round((l.bestScore || 0) * 100)}%` : unlocked ? 'Elérhető' : 'Zárolva';
-          return h(unlocked ? 'a' : 'div', { class: `node ${l?.done ? 'done' : unlocked ? 'open' : 'locked'}`, href: unlocked ? `#/lesson/${id}` : null },
-            h('span', { class: 'node-dot' }, l?.done ? '✓' : unlocked ? '▶' : ''),
+          const status = l?.done ? `Kész · ${Math.round((l.bestScore || 0) * 100)}%` : 'Elérhető';
+          return h('a', { class: `node ${l?.done ? 'done' : 'open'}`, href: `#/lesson/${id}` },
+            h('span', { class: 'node-dot' }, l?.done ? '✓' : '▶'),
             h('span', { class: 'node-title' }, data.lessonTitles[id]),
             h('span', { class: 'node-status' }, status));
         }));
@@ -170,11 +169,6 @@ const MIN_LEVEL_POOL = 5;
 export function lessonIntroView(ctx, id) {
   const root = h('div', {}, h('p', { class: 'muted' }, 'Betöltés…'));
   ctx.data.loadLesson(id).then((lesson) => {
-    const s = ctx.store.get();
-    if (!isUnlocked(ctx.data.path, s, id)) {
-      mount(root, h('div', { class: 'card' }, h('h2', {}, lesson.title), h('p', {}, 'Előbb fejezd be az előző leckét.'), h('a', { class: 'btn', href: '#/path' }, 'Vissza az útvonalhoz')));
-      return;
-    }
     const levels = Object.keys(LEVEL_LABEL).filter((lv) => lesson.exercises.filter((ex) => ex.level === lv).length >= MIN_LEVEL_POOL);
     mount(root, h('div', { class: 'card' },
       h('p', { class: 'eyebrow' }, ctx.data.topics[lesson.topic]?.title || lesson.topic),
@@ -190,15 +184,26 @@ export function lessonIntroView(ctx, id) {
   return root;
 }
 
-// Renders a lesson/sprint intro: paragraphs, bullet points, and any grammar tables.
+// Renders a lesson/sprint intro: paragraphs, optional example sentences, a pitfalls callout,
+// and any grammar tables.
 export function renderIntro(content) {
   const blocks = [h('ul', { class: 'intro' }, content.intro.map((t) => h('li', {}, t)))];
+  if (content.examples?.length) {
+    blocks.push(h('div', { class: 'examples' },
+      h('h3', {}, 'Példamondatok'),
+      content.examples.map((ex) => h('div', { class: 'example-row' }, h('strong', {}, ex.de), h('span', { class: 'muted' }, ex.hu)))));
+  }
   for (const t of content.tables || []) {
     blocks.push(h('div', { class: 'grammar-table-wrap' },
       t.title ? h('h3', { class: 'grammar-table-title' }, t.title) : null,
       h('table', { class: 'grammar-table' },
         h('thead', {}, h('tr', {}, t.headers.map((hd) => h('th', {}, hd)))),
         h('tbody', {}, t.rows.map((row) => h('tr', {}, row.map((cell) => h('td', {}, cell))))))));
+  }
+  if (content.pitfalls?.length) {
+    blocks.push(h('div', { class: 'pitfalls' },
+      h('h3', {}, 'Mikre figyelj'),
+      h('ul', {}, content.pitfalls.map((p) => h('li', {}, p)))));
   }
   return h('div', { class: 'grammar-intro' }, blocks);
 }
